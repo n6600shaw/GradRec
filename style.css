@@ -1,3 +1,7 @@
+.container{
+  margin-top:10px;
+}
+
 .nav{
   color:black;
   
@@ -30,8 +34,8 @@ label{
 }
 input{
   margin: 10px;
+  margin-bottom: 20px;
 
-  width: 50px;
 }
 
 .section{
@@ -50,4 +54,22 @@ textarea {
   height:300px;
   resize: vertical;
 
+}
+
+
+
+.check-label {
+  
+  padding-left: 20px;
+  text-indent: -10px;
+}
+.check-input {
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  margin:0;
+  vertical-align: bottom;
+  position: relative;
+  top: -1px;
+  *overflow: hidden;
 }
