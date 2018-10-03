@@ -1,0 +1,53 @@
+.nav{
+  color:black;
+  
+}
+.navbar{  
+  margin-top: 100px;
+}
+
+.table{
+  
+  background-color:white;
+    display:block;
+  overflow-y:scroll;
+}
+
+.navbar-brand {
+  padding: 0px;
+}
+img{
+  display: block;
+}
+.logo{
+float: left;
+}
+.gradrec{
+float: left;
+}
+label{
+  margin: 10px;
+}
+input{
+  margin: 10px;
+
+  width: 50px;
+}
+
+.section{
+
+  border: 1px solid  silver;
+  margin: 10px;
+  padding:10px;
+
+}
+
+.submit{
+  float: right;
+}
+
+textarea {  
+  height:300px;
+  resize: vertical;
+
+}
