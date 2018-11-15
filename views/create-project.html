@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Create Project</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="jquery-ui/jquery-ui.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="main-script.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-10">
+        <div class="toplog">
+          <div class="logo"><img src="munlogo.png"> </div>
+          <div class="gradrec">
+            <h3>GradRec System</h3>
+          </div>
+        </div>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                aria-expanded="false"> <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+
+              </button>
+              <a class="navbar-brand" href="#"> </a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Create Project</a></li>
+              <li><a href="#">Link1</a></li>
+              <li><a href="#">Link2</a></li>
+              <li><a href="#">Link3</a></li>
+            </ul>
+          </div>
+        </nav>
+        <div class="page-header">
+          <h3>Create Project</h3>
+        </div>
+        <div class="jumbotron">
+          <div class="row">
+            <div class="col-md-6">
+              <form method="post">
+                <div class="section info">
+                  <legend>Project Information</legend>
+                  <div class="form-group">
+                    <label for="stu-f-name">Project Title:</label>
+                    <input type="text" class="form-control" id="project-title">
+                    <label for="stu-f-name">Project Supervisor:</label>
+                    <input type="text" class="form-control" id="project-supervisor"><br>
+                    <label for="usr">Department:</label>
+                    <div class="dropdown">
+                      <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Choose department
+                        <span class="caret"></span></button>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Engineering</a></li>
+                        <li><a href="#">Science</a></li>
+                        <li><a href="#">Medical</a></li>
+                      </ul>
+                    </div> <br>
+                    <label for="">Project timeline:</label><br>
+                    <label for="job-from-1">Start Date</label>  
+                    <input class="form-control field-element text" type="text" id="job-from-1">
+                    <label for="job-from-1">End Date</label>
+                    <input class="form-control field-element text" type="text" id="job-to-1"><br>
+                    <label for="usr">Project Funding ($CAD):</label>
+                    <div class="dropdown">
+                      <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Choose Funding Range
+                        <span class="caret"></span></button>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">0-5000</a></li>
+                        <li><a href="#">5000-10000</a></li>
+                        <li><a href="#">10000-20000</a></li>
+                        <li><a href="#">20000 above</a></li>
+                      </ul>
+                    </div> <br>
+                    <label for="description">Project Description:</label>
+                    <textarea class="description form-control" style="min-width: 100%"></textarea>
+                  </div>
+                </div>
+                <div class="section requirement">
+                  <legend>Matching Criterias</legend>
+                  <div class="form-group">
+                    <div class="sub-section">
+                      <label for="description">Program:</label><br>
+                    <label class="check-label"><input class="check-input" type="checkbox" id="current-1"/> PhD</label>
+                    <label class="check-label"><input class="check-input" type="checkbox" id="current-1"/> Master</label><br>
+
+                    <label for="description">Skills:</label><br>
+                    <label class="check-label"><input class="check-input" type="checkbox" id="current-1"/> Java</label>
+                    <label class="check-label"><input class="check-input" type="checkbox" id="current-1"/> C/C++</label>
+                    <label class="check-label"><input class="check-input" type="checkbox" id="current-1"/> Python</label>
+                    <label class="check-label"><input class="check-input" type="checkbox" id="current-1"/> Ruby</label>
+                    <label class="check-label"><input class="check-input" type="checkbox" id="current-1"/> R</label><br>
+
+
+                    <label for="description">Research Interest:</label><br>
+                    <label class="check-label"><input class="check-input" type="checkbox" id="current-1"/> Data Science</label>
+                    <label class="check-label"><input class="check-input" type="checkbox" id="current-1"/> Machine Learning</label>
+                    <label class="check-label"><input class="check-input" type="checkbox" id="current-1"/> Science Computing</label><br>
+
+                  </div>
+
+                </div>
+                </div>
+                <div class="section comments">
+                  <legend>Additional Information</legend>
+                  <div class="form-group">
+                    <label for="description">Comments:</label>
+                    <textarea class="description form-control" style="min-width: 100%"></textarea>
+                  </div>
+                </div>
+                <div class="form-group submit">
+                  <button type="submit" class="btn btn-default" formaction="/savepro">Save</button>
+                  <button type="submit" class="btn btn-default" id="create" formaction="/createpro">Create</button>
+                </div>
+
+              </form>
+            </div>
+            <div class="col-md-6">
+              <legend>Project list</legend>
+              <table class="table" id="project-list">
+                <thead>
+                  <tr>
+                  <th>Project Title</th>
+                  <th>Project Supervisor</th>
+                  <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                      
+
+                </tbody>
+
+              </table>  
+
+            </div>
+          </div>
+        </div>
+        </div>
+      
+      <div class="col-md-1">
+      </div>
+    </div>
+  </div>
+</body>
