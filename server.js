@@ -8,6 +8,8 @@ var bodyParser = require('body-parser');
 
 require('./models/Project');
 require('./models/Student');
+require('./models/User');
+require('./models/Message');
 
 mongoose.connect(keys.mongoURI);
 
@@ -27,9 +29,9 @@ app.get('/', function (req, res) {
     title: 'Project 1'
 
   }).save();
-  new Student({
-    name: 'xiaolong'
-  }).save();
+ Project.find(function(err,projects){
+   console.log(projects);
+ })
 })
 
 
