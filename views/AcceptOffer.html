@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Project Offer</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="jquery-ui/jquery-ui.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="main-script.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-10">
+        <div class="toplog">
+          <div class="logo"><img src="../images/munlogo.png"> </div>
+          <div class="gradrec">
+            <h3>GradRec System</h3>
+          </div>
+        </div>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                aria-expanded="false"> <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+
+              </button>
+              <a class="navbar-brand" href="#"> </a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Offer</a></li>
+              <li><a href="#">Link1</a></li>
+              <li><a href="#">Link2</a></li>
+              <li><a href="#">Link3</a></li>
+            </ul>
+          </div>
+        </nav>
+        <div class="page-header">
+          <h3>Accept/Decline Offer</h3>
+        </div>
+        <div class="jumbotron">
+          <div class="row">
+            
+             
+            <div class="col-md-12">
+              <legend>Project Offer</legend>
+
+              <div class="row">
+                <div class="col-md-2">
+                  <label for="to_stud">Project Title:</label>
+                </div>
+
+                <label for="to_stud"> Retrieved ProejctTitle</label>
+              </div>
+              <div class="form-group">
+
+                <label for=" Email1msg">Offer Letter:</label>
+                
+                <textarea disabled class="form-control disabled" rows="5">
+Thanks for applying to Mun University
+The University Offers 2 years full coverage with 16000$ per year
+The project Supervisor is Prof. Adrian Fiech </textarea>
+              </div>
+              
+              <div class="form-group submit">
+                <button type="submit" class="btn btn-default" formaction="/AcceptOfferpro">Accept Offer</button>
+                <button type="submit" class="btn btn-default" id="btn_Send" formaction="/DeclineOfferpro">Decline Offer</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-1">
+      </div>
+    </div>
+  </div>
+</body>
