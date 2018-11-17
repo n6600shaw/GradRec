@@ -12,7 +12,7 @@
   <script src="jquery-ui/jquery-ui.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  <script src="main-script.js"></script>
+  <script src="../js/main-script.js"></script>
 </head>
 
 <body>
@@ -56,36 +56,112 @@
               <form method="post">
                 <div class="form-group">
                   <legend>List of Applied Projects: </legend>
-                  <div class="list-group">
-                    <!-- loop on studnets  -->
-                    <a class="list-group-item list-group-item-action active" data-toggle="collapse"href="#" data-target="#collapseExample1">
-                      Project 1
-                      <span class="badge badge-default badge-pill">14</span>
-                      <!--# of applied student-->
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action " data-toggle="collapse" href="#" data-target="#collapseExample2">Project
-                      2</a>
-                    <a href="#" class="list-group-item list-group-item-action" data-toggle="collapse" href="#" data-target="#collapseExample3">Project
-                      3</a>
 
-                  </div>
-                  <div class="collapse" id="collapseExample1">
-                    <legend>candidate Student(Project1): </legend>
-                    <div class="list-group">
-                      <a href="#" class="list-group-item list-group-item-action">Project 1</a>
-                    </div>
-                  </div>
+                 
 
-                  <div class="collapse" id="collapseExample2">
-                      <legend>Applied Students in Project2: </legend>
-                      <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action">Project 2</a>
+                  <div class="accordion" id="accordionEx" role="tablist" aria-multiselectable="true"  >
+
+                      <!-- Accordion card -->
+                      <div class="card">
+
+                        <!-- Card header -->
+                        <div class="card-header" role="tab" id="headingOne">
+                            <a class="list-group-item list-group-item-action active" data-toggle="collapse"href="#" data-target="#collapse1">
+                                Projectt 1
+                                <span class="badge badge-default badge-pill">14</span>
+                                <!--# of applied student-->
+                              </a>
+                        </div>
+
+                        <!-- Card body -->
+                        <div id="collapse1" class="collapsed" role="tabpanel" aria-labelledby="headingOne"
+                          data-parent="#accordionEx">
+                          <div class="card-body">
+                              
+                                  <h5>candidate Students: </h5>
+                                  <ul >
+                                     
+                                      <li><a href="#">Std 1</a></li>
+                                      <li><a href="#">Std 2</a></li>
+                                      
+                                    </ul>
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                      <!--*************************************************************-->
+                      <!-- Accordion card -->
+
+                      <!-- Accordion card -->
+                      <div class="card">
+
+                        <!-- Card header -->
+                        <div class="card-header" role="tab" id="headingTwo">
+                         
+                           
+                            <a class="list-group-item list-group-item-action " data-toggle="collapse"href="#" data-target="#collapse2">
+                                Project 2
+                                <span class="badge badge-default badge-pill">14</span>
+                                <!--# of applied student-->
+                              </a>
+                        </div>
+
+                        <!-- Card body -->
+                        <div id="collapse2" class="collapsed" role="tabpanel" aria-labelledby="headingOne"
+                          data-parent="#accordionEx">
+                          <div class="card-body">
+                              
+                              <h5>candidate Students: </h5>
+                              <ul >
+                                 
+                                  <li><a href="#">Std 1</a></li>
+                                  <li><a href="#">Std 2</a></li>
+                                  
+                                </ul>
+              
+                          </div>
+                        </div>
+                      </div>
+     <!--*************************************************************-->
+                       <!-- Accordion card -->
+
+                      <!-- Accordion card -->
+                      <div class="card">
+
+                          <!-- Card header -->
+                          <div class="card-header" role="tab" id="headingTwo">
+                           
+                             
+                              <a class="list-group-item list-group-item-action " data-toggle="collapse"href="#" data-target="#collapse3">
+                                  Project 3
+                                  <span class="badge badge-default badge-pill">14</span>
+                                  <!--# of applied student-->
+                                </a>
+                          </div>
+  
+                          <!-- Card body -->
+                          <div id="collapse3" class="collapsed" role="tabpanel" aria-labelledby="headingOne"
+                            data-parent="#accordionEx">
+                            <div class="card-body">
+                                
+                                <h5>candidate Students: </h5>
+                                <ul >
+                                   
+                                    <li><a href="#">Std 1</a></li>
+                                    <li><a href="#">Std 2</a></li>
+                                    
+                                  </ul>
+                
+                            </div>
+                          </div>
+                        </div>
+
+                    <!--/.Accordion wrapper-->
+                  </div>
 
 
-                </div>
-
+                   <!--Form-->
+                </div> 
+              
                 
 
               </form>
