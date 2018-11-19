@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
 const {
-    schema
+    Schema
 } = mongoose;
 
 userSchema=new Schema({
     userName: String,
+    email: String,
     password: String
 })
 

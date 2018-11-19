@@ -1,0 +1,94 @@
+include ./layouts/_student_header.jade
+    .container
+      .row.mt-sm-4.mt-md-5.mb-md-5
+        .col-sm-12.border.rounded.p-5.bg-light
+          h3 Profile Overview
+          p.text-muted
+            | Your profile have been successfully submitted. Below is an overview of your submitted profile. You can now check your matched projects under the "Projects" section.
+          form.needs-validation(novalidate='')
+            fieldset(disabled='')
+              .form-group.mt-4
+                h5 Personal information
+                hr.mt-1
+                .row
+                  .col-sm-6.col-lg-4.mb-3
+                    label(for='firstName') First name *
+                    input#firstName.form-control(type='text', name='firstName', placeholder='John', required='')
+                    .invalid-feedback First name is required.
+                  .col-sm-6.col-lg-4.mb-3
+                    label(for='lastName') Last name *
+                    input#lastName.form-control(type='text', name='lastName', placeholder='Appleseed', required='')
+                    .invalid-feedback Last name is required.
+              .form-group.mt-4
+                h5 Education
+                hr.mt-1
+                .row
+                  .col-sm-4.col-lg-2.mb-3
+                    label(for='program') Program *
+                    select#program.form-control(name='program', required='')
+                      option(value='') Choose...
+                      option(value='phd') PhD
+                      option(value='master') Master
+                    .invalid-feedback Please choose your current program.
+                  .col-sm-8.col-lg-3.mb-3
+                    label(for='program') Department *
+                    select#department.form-control(name='department', required='')
+                      option(value='') Choose...
+                      option(value='business') Business
+                      option(value='computer') Computer Science
+                      option(value='engineering') Engineering
+                      option(value='medical') Medical
+                      option(value='science') Science
+                    .invalid-feedback Please choose your department.
+                  .col-sm-6.col-lg-3.mb-3
+                    label(for='program') Major *
+                    select#major.form-control(name='major', required='')
+                      option(value='') Choose...
+                      option(value='ai') Artificial Intelligence
+                      option(value='bioinfo') Bioinformatics
+                      option(value='compArch') Computer Architecture
+                      option(value='os') Operating Systems
+                    .invalid-feedback Please choose your major.
+                  .col-sm-6.col-lg-4.mb-3
+                    label(for='program') Research Interest *
+                    select#research.form-control(required='')
+                      option(value='') Choose...
+                      option(value='gameAI') Game AI
+                      option(value='nLP') Natural Language Processing
+                      option(value='cV') Computer Vision
+                    .invalid-feedback Please choose your research interest.
+              .form-group.mt-4
+                .row
+                  .col.mb-3
+                    h5 Work Experience
+                    hr.mt-1
+                    label(for='workExp')
+                      | Please give a brief description about your past work experience. (no longer than 1000 characters)
+                    textarea#workExp.form-control(name='workExp', rows='5')
+              .form-group.mt-4
+                h5 Start Date
+                hr.mt-1
+                .row
+                  .col-xs-9.col-md-7.col-lg-5.mb-3
+                    label(for='startDate') Please indicate your intended start date. *
+                    input#startDate.form-control(type='date', name='startDate', min='2018-11-01', max='2020-12-31', required='')
+                    .invalid-feedback Please choose your intended start date.
+              .form-group.mt-4
+                h5 Research Funds
+                hr.mt-1
+                .row
+                  .col-xs-9.col-md-7.col-lg-5.mb-4
+                    label(for='funds') Please indicate your needed funds range. *
+                    select#funds.form-control(name='funds')
+                      option(value='0') Not needed
+                      option(value='1') $0 ~ $1,000 per semaster
+                      option(value='2') $1,000 ~ $2,000 per semaster
+                      option(value='3') $2,000 ~ $3,000 per semaster
+            button.btn.btn-outline-primary.btn-lg(type='button') See Matched Projects
+include ./layouts/_footer.jade
+    // Optional JavaScript
+    // jQuery first, then Popper.js, then Bootstrap JS
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49', crossorigin='anonymous')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy', crossorigin='anonymous')
+    script(src='../../js/validateForm.js')

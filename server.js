@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const keys = require('./configure/keys.js');
 var bodyParser = require('body-parser');
 
+
+
 require('./models/Project');
 require('./models/Student');
 require('./models/User');
@@ -16,24 +18,72 @@ mongoose.connect(keys.mongoURI);
 
 
 app.use(express.static(__dirname + '/'));
-app.use(bodyParser());
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.set('views', 'views');
+app.set('view engine', 'jade');
 
 const Project = mongoose.model('projects');
 const Student = mongoose.model('students');
-// respond with "hello world" when a GET request is made to the homepage
-app.get('/', function (req, res) {
+const User = mongoose.model('users');
+//
+app.post('/', function (req, res) {
+  User.findOne({
+    'userName': req.query.userName,
+    'passWord': req.query.passWord
+  }, function (err, user) {
+    if (err) return
+    if (user) {
+      res.render('student/profile');
 
-  res.sendFile(path.join(__dirname + '/views/student-profile.html'));
-  new Project({
-    title: 'Project 1'
+    } else {
+      console.log('Not exist');
+    }
 
-  }).save();
- Project.find(function(err,projects){
-   console.log(projects);
- })
+  });
 })
 
+// respond with "hello world" when a GET request is made to the homepage
+app.get('/index', function (req, res) {
+
+  res.render('index')
+  /* new Project({
+     title: 'Project 1'
+
+   }).save();
+  Project.find(function(err,projects){
+    console.log(projects);
+  })*/
+})
+
+app.post('/login', function (req, res) {
+  var Email = req.body.email;
+  var Pass = req.body.pass;
+  var role= req.body.account_type;
+  console.log(req.body);
+  console.log('Email:', Email);
+  console.log('Password:', Pass);
+  console.log('Login as:',role);
+
+  //check with DB
+
+
+})
+
+app.get('/student',function(req,res){
+  res.sendFile(path.join(__dirname + '/views/xiaolong/student-profile.html'));
+})
+
+app.get('/pm',function(req,res){
+  res.sendFile(path.join(__dirname + '/views/xiaolong/create-project.html'));
+})
+
+app.get('/home',function(req,res){
+
+  res.sendFile(path.join(__dirname + '/views/login.html'));
+})
 
 //perform submit from stu
 app.post('/submitstud', function (req, res) {
@@ -62,7 +112,7 @@ app.post('/savepro', function (req, res) {
 app.post('/createpro', function (req, res) {
 
   var item = {
-    
+
   }
 
 });
