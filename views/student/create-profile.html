@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="../../css/custom.css" rel="stylesheet" type="text/css">
+
+    <title>Create Profile</title>
+</head>
+
+<body class="bg-bodybg">
+    <nav class="navbar navbar-expand-md navbar-light bg-light rounded">
+        <a class="navbar-brand" href="#">
+            <img src="../../images/favicon.png" height="30" class="d-inline-block align-top" alt="munLogo">
+            GradRec
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#gradNavbar" aria-controls="gradNavbar"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="gradNavbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="create-profile.html">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="view-matched-projects.html">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Message</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-md-0">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log Out</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row mt-sm-4 mt-md-5 mb-md-5">
+            <div class="col-sm-12 border rounded p-5 bg-light">
+                <h3>Create Profile</h3>
+                <p class="text-muted">Our records show you haven't submitted your profile. Please complete the following form. All matched projects will be displayed under the "Projects" section after your submission.</p>
+
+                <form class="needs-validation" novalidate>
+
+                    <div class="form-group mt-4">
+                        <h5>Personal information</h5>
+                        <hr class="mt-1">
+                        <div class="row">
+                            <div class="col-sm-6 col-lg-4 mb-3">
+                                <label for="firstName">First Name *</label>
+                                <input class="form-control" type="text" name="firstName" id="firstName" placeholder="John"
+                                    required>
+                                <div class="invalid-feedback">First name is required.</div>
+                            </div>
+                            <div class="col-sm-6 col-lg-4 mb-3">
+                                <label for="lastName">Last Name *</label>
+                                <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Appleseed"
+                                    required>
+                                <div class="invalid-feedback">Last name is required.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4">
+                        <h5>Education</h5>
+                        <hr class="mt-1">
+                        <div class="row">
+                            <div class="col-sm-4 col-lg-2 mb-3">
+                                <label for="program">Program *</label>
+                                <select class="form-control" name="program" id="program" required>
+                                    <option value="">Choose...</option>
+                                    <option value="phd">PhD</option>
+                                    <option value="master">Master</option>
+                                </select>
+                                <div class="invalid-feedback">Please choose your current program.</div>
+                            </div>
+                            <div class="col-sm-8 col-lg-3 mb-3">
+                                <label for="program">Department *</label>
+                                <select class="form-control" name="department" id="department" required>
+                                    <option value="">Choose...</option>
+                                    <option value="business">Business</option>
+                                    <option value="computer">Computer Science</option>
+                                    <option value="engineering">Engineering</option>
+                                    <option value="medical">Medical</option>
+                                    <option value="science">Science</option>
+                                </select>
+                                <div class="invalid-feedback">Please choose your department.</div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3 mb-3">
+                                <label for="program">Major *</label>
+                                <select class="form-control" name="major" id="major" required>
+                                    <option value="">Choose...</option>
+                                    <option value="ai">Artificial Intelligence</option>
+                                    <option value="bioinfo">Bioinformatics</option>
+                                    <option value="compArch">Computer Architecture</option>
+                                    <option value="os">Operating Systems</option>
+                                </select>
+                                <div class="invalid-feedback">Please choose your major.</div>
+                            </div>
+                            <div class="col-sm-6 col-lg-4 mb-3">
+                                <label for="program">Research Interest *</label>
+                                <select class="form-control" id="research" required>
+                                    <option value="">Choose...</option>
+                                    <option value="gameAI">Game AI</option>
+                                    <option value="nLP">Natural Language Processing</option>
+                                    <option value="cV">Computer Vision</option>
+                                </select>
+                                <div class="invalid-feedback">Please choose your research interest.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4">
+                        <div class="row">
+                            <div class="col mb-3">
+                                <h5>Work Experience</h5>
+                                <hr class="mt-1">
+                                <label for="workExp">Please give a brief description about your past work experience. (no longer than 1000 characters)</label>
+                                <textarea class="form-control" name="workExp" id="workExp" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4">
+                        <h5>Start Date</h5>
+                        <hr class="mt-1">
+                        <div class="row">
+                            <div class="col-xs-9 col-md-7 col-lg-5 mb-3">
+                                <label for="startDate">Please indicate your intended start date. *</label>
+                                <input class="form-control" type="date" name="startDate" id="startDate" min="2018-11-01" max="2020-12-31" required>
+                                <div class="invalid-feedback">Please choose your intended start date.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4">
+                        <h5>Research Funds</h5>
+                        <hr class="mt-1">
+                        <div class="row">
+                            <div class="col-xs-9 col-md-7 col-lg-5 mb-4">
+                                <label for="funds">Please indicate your needed funds range. *</label>
+                                <select class="form-control" name="funds" id="funds">
+                                    <option value="0">Not needed</option>
+                                    <option value="1">$0 ~ $1,000 per semaster</option>
+                                    <option value="2">$1,000 ~ $2,000 per semaster</option>
+                                    <option value="3">$2,000 ~ $3,000 per semaster</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-toolbar mt-auto" role="toolbar">
+                        <div class="btn-group mr-5" role="group">
+                            <button type="button" class="btn btn-outline-primary btn-lg">Save Profile</button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-primary btn-lg">Submit Profile</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <script src="../../js/validateForm.js"></script>
+</body>
+
+</html>
