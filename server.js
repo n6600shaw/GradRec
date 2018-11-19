@@ -34,9 +34,10 @@ app.post('/', function (req, res) {
     'userName': req.query.userName,
     'passWord': req.query.passWord
   }, function (err, user) {
-    if (err) return
+     if (err) {console.log("error");return;}
     if (user) {
-      res.render('student/profile');
+      res.render('/views/xiaolong/student-profile.html');
+
 
     } else {
       console.log('Not exist');
