@@ -1,4 +1,4 @@
-include ./layouts/_student_header.jade
+include ../layouts/_student_header.jade
     .container
       .row.mt-sm-4.mt-md-5.mb-md-5
         .col-sm-12.border.rounded.p-5.bg-light
@@ -12,7 +12,7 @@ include ./layouts/_student_header.jade
               .row
                 .col-sm-6.col-lg-4.mb-3
                   label(for='firstName') First Name *
-                  input#firstName.form-control(type='text', name='firstName', placeholder='John', required='')
+                  input#firstName.form-control(type='text', name='firstName', placeholder='#{email}', required='')
                   .invalid-feedback First name is required.
                 .col-sm-6.col-lg-4.mb-3
                   label(for='lastName') Last Name *
@@ -88,7 +88,7 @@ include ./layouts/_student_header.jade
                 button.btn.btn-outline-primary.btn-lg(type='button') Save Profile
               .btn-group(role='group')
                 button.btn.btn-primary.btn-lg(type='submit', formaction='/login') Submit Profile
-include ./layouts/_footer.jade
+include ../layouts/_footer.jade
     // Optional JavaScript
     // jQuery first, then Popper.js, then Bootstrap JS
     script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')

@@ -5,8 +5,8 @@ const path = require('path');
 const mongoose = require('mongoose');
 const keys = require('./configure/keys.js');
 var bodyParser = require('body-parser');
-
-
+var session = require('express-session');
+var sess
 require('./vendor/jquery/jquery-3.2.1.min.js')
 require('./js/main.js');
 
@@ -19,7 +19,7 @@ mongoose.connect(keys.mongoURI);
 
 
 
-
+app.use(session({secret:'gradrec'}));
 app.use(express.static(__dirname + '/'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -36,7 +36,21 @@ const User = mongoose.model('users');
 //home page, login page
 app.get('/', function (req, res) {
 
-  res.render('index')
+  sess = req.session;
+  
+  if(sess.email){
+    var user = User.find({'email':sess.email});
+    if(user.role==='student'){ 
+      res.render('student/profile');
+    } else {
+
+      res.render('pm/create-project');
+    }
+    
+  } else{
+  res.render('index');
+
+  }
   /* new Project({
      title: 'Project 1'
 
@@ -46,34 +60,6 @@ app.get('/', function (req, res) {
   })*/
 })
 
-//signup
-
-
-
-
-app.post('/', function (req, res) {
-  User.findOne({
-    'userName': req.query.userName,
-    'passWord': req.query.passWord
-  }, function (err, user) {
-    if (err) {
-      console.log("error");
-      return;
-    }
-    if (user) {
-      res.render('/views/xiaolong/student-profile.html');
-
-
-    } else {
-      console.log('Not exist');
-    }
-
-  });
-})
-
-
-
-
 app.post('/login', function (req, res) {
   var Email = req.body.email;
   var Pass = req.body.pass;
@@ -82,12 +68,29 @@ app.post('/login', function (req, res) {
   console.log('Email:', Email);
   console.log('Password:', Pass);
   console.log('Login as:', role);
-
+  sess = req.session
   //check with DB
+  User.findOne({
+    'email': req.query.email,
+    'passWord': req.query.pass,
+  }, function (err, user) {
+    if (err) {
+      console.log("error");
+      return;
+    }
+    if (user) {
+      sess.email = req.body.email;
+      res.redirect('/show');
 
+
+    } else {
+      console.log('Not exist');
+    }
+  });
 
 })
 
+//Sign up
 app.get('/signup',function(req,res){
 
   res.render('signup');
@@ -97,15 +100,43 @@ app.get('/signup',function(req,res){
 
 app.post('/signup',function(req,res){
 
-  new User({
+  var newUser=new User({
     fistName:req.body.fname,
     lastName:req.body.lname,
     userName:req.body.username,
     email:req.body.email,
-    password:req.body.password
-  }).save();
+    password:req.body.password,
+    firstTime: true,
+    role: 'student'
+  })
+  newUser.save();
+  res.redirect('/');
 
-  
+})
+
+//logout
+app.get('/logout',function(req,res){
+
+  req.session.destroy(function(err){
+
+    if(err){
+
+      console.log(err);
+    } else {
+      res.redirect('/');
+    }
+
+
+  })
+ 
+});
+
+//show
+app.get('/show',function(req,res){
+
+    sess = req.session;
+    res.render('test',{email:sess.email});
+
 
 
 })
@@ -147,4 +178,4 @@ app.post('/createpro', function (req, res) {
 
 });
 
-app.listen(port, () => console.log('GradRec is listening on port ${port}!'))
+app.listen(port, () => console.log('GradRec is listening on port ${port}!'));
