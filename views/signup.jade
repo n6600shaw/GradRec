@@ -33,10 +33,14 @@ html(lang='en')
       .container-login100
         .login100-more(style="background-image: url('../images/munbackground6.jpg');")
         .wrap-login100.p-l-50.p-r-50.p-t-72.p-b-50
-          form.login100-form.validate-form
-            .wrap-input100.validate-input(data-validate='Name is required')
-              span.label-input100 Full Name
-              input.input100(type='text', name='name', placeholder='Name...')
+          form.login100-form.validate-form(action="/signup", method="post")
+            .wrap-input100.validate-input(data-validate='Firts name is required')
+              span.label-input100 Fist Name
+              input.input100(type='text', name='fname', placeholder='Fist Name...')
+              span.focus-input100
+            .wrap-input100.validate-input(data-validate='Last name is required')
+              span.label-input100 Last Name
+              input.input100(type='text', name='lname', placeholder='Last Name...')
               span.focus-input100
             .wrap-input100.validate-input(data-validate='Valid email is required: ex@abc.xyz')
               span.label-input100 Email
@@ -65,7 +69,7 @@ html(lang='en')
             .container-login100-form-btn
               .wrap-login100-form-btn
                 .login100-form-bgbtn
-                button.login100-form-btn(class='type=', submit"='', onclick='return checkPass();')
+                button.login100-form-btn(class='' type='submit')
                   | Sign Up
               a.dis-block.txt3.hov1.p-r-30.p-t-10.p-b-10.p-l-30(href='index.html')
                 | Sign in
