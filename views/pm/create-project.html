@@ -24,9 +24,6 @@
 
         <div class="collapse navbar-collapse" id="gradNavbar">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="manage-projects.html">Manage Projects</a>
                 </li>
@@ -37,9 +34,7 @@
                     <a class="nav-link" href="#">About</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-md-0">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log Out</button>
-            </form>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="button">Log Out</button>
         </div>
     </nav>
 
@@ -76,12 +71,12 @@
                         </div>
                         
                         <div class="row">
-                            <div class="col-sm-8 col-lg-6 mb-3">
+                            <div class="col-lg-8 mb-3">
                                 <label for="participants">
                                     Project Participants
                                     <span class="text-muted">(seperated by comma)</span>
                                 </label>
-                                <input class="form-control" type="text" name="participants" id="participants" placeholder="Prof. John Appleseed">
+                                <input class="form-control" type="text" name="participants" id="participants" placeholder="Prof. Sophia Jones, Prof. Carl Simpson">
                             </div>
                         </div>
                         <label for="description">Project Description *</label>
@@ -104,41 +99,13 @@
                             </div>
                         </div>
 
-                        <div class="form-group mb-4">
-                            <h6>Required Skills</h6>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="java" value="java">
-                                <label class="form-check-label" for="phd">Java</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="c" value="c">
-                                <label class="form-check-label" for="c">C/C++</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="python" value="python">
-                                <label class="form-check-label" for="python">Python</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="ruby" value="ruby">
-                                <label class="form-check-label" for="ruby">Ruby</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="r" value="r">
-                                <label class="form-check-label" for="r">R</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="html" value="html">
-                                <label class="form-check-label" for="html">JavaScript</label>
-                            </div>
-                        </div>
-
                         <div class="row">
-                            <div class="col-sm-10 col-lg-8 mb-3">
-                                <label for="backgrounds">
-                                    Work Background
-                                    <span class="text-muted">(background keywords are seperated by comma)</span>
+                            <div class="col-lg-8 mb-3">
+                                <label for="skills">
+                                    Required Skills
+                                    <span class="text-muted">(skill keywords are seperated by comma and case insensitive)</span>
                                 </label>
-                                <input class="form-control" type="text" name="backgrounds" id="backgrounds" placeholder="node.js, angular, maven, etc.">
+                                <input class="form-control" type="text" name="skills" id="skills" placeholder="python, java, node.js, angular, maven, etc.">
                             </div>
                         </div>
                     </div>
@@ -160,21 +127,23 @@
                         <hr class="mt-1">
                         <div class="row">
                             <div class="col-xs-9 col-md-7 col-lg-5 mb-4">
-                                <label for="funds">Please choose the avaiable funds range. *</label>
-                                <select class="form-control" name="funds" id="funds">
+                                <label for="funds">Avaiable funds per student per semaster. *</label>
+                                <select class="form-control" name="funds" id="funds" required>
+                                    <option value="">Choose...</option>
                                     <option value="0">Not needed</option>
                                     <option value="1">$0 ~ $1,000 per semaster</option>
                                     <option value="2">$1,000 ~ $2,000 per semaster</option>
                                     <option value="3">$2,000 ~ $3,000 per semaster</option>
                                 </select>
+                                <div class="invalid-feedback">Please choose your intended start date.</div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="btn-toolbar mt-auto">
-                        <button class="btn btn-outline-success btn-lg mr-4" type="button">Save Project</button>
-                        <button class="btn btn-outline-danger btn-lg mr-5" type="button">Discard Changes</button>
-                        <button class="btn btn-primary btn-lg" type="submit">Publish Project</button>
+                    <div class="btn-toolbar">
+                        <button class="btn btn-outline-success btn-lg mr-4 mt-3" type="button">Save Project</button>
+                        <button class="btn btn-outline-danger btn-lg mr-5 mt-3" type="button">Discard Changes</button>
+                        <button class="btn btn-primary btn-lg mt-3" type="submit">Publish Project</button>
                     </div>
 
                 </form>

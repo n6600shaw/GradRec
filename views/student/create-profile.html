@@ -24,9 +24,6 @@
 
         <div class="collapse navbar-collapse" id="gradNavbar">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="create-profile.html">Profile</a>
                 </li>
@@ -40,9 +37,7 @@
                     <a class="nav-link" href="#">About</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-md-0">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log Out</button>
-            </form>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="button">Log Out</button>
         </div>
     </nav>
 
@@ -77,17 +72,17 @@
                         <h5>Education</h5>
                         <hr class="mt-1">
                         <div class="row">
-                            <div class="col-sm-4 col-lg-2 mb-3">
-                                <label for="program">Program *</label>
+                            <div class="col-sm-5 col-md-3 mb-3">
+                                <label for="program">Current Program *</label>
                                 <select class="form-control" name="program" id="program" required>
                                     <option value="">Choose...</option>
-                                    <option value="phd">PhD</option>
                                     <option value="master">Master</option>
+                                    <option value="phd">PhD</option>
                                 </select>
                                 <div class="invalid-feedback">Please choose your current program.</div>
                             </div>
-                            <div class="col-sm-8 col-lg-3 mb-3">
-                                <label for="program">Department *</label>
+                            <div class="col-sm-7 col-md-4 mb-3">
+                                <label for="program">Current Department *</label>
                                 <select class="form-control" name="department" id="department" required>
                                     <option value="">Choose...</option>
                                     <option value="business">Business</option>
@@ -96,26 +91,16 @@
                                     <option value="medical">Medical</option>
                                     <option value="science">Science</option>
                                 </select>
-                                <div class="invalid-feedback">Please choose your department.</div>
+                                <div class="invalid-feedback">Please choose your current department.</div>
                             </div>
-                            <div class="col-sm-6 col-lg-3 mb-3">
-                                <label for="program">Major *</label>
-                                <select class="form-control" name="major" id="major" required>
+                            <div class="col-sm-12 col-md-5 mb-3">
+                                <label for="program">Research Interest *</label>
+                                <select class="form-control" id="research" required>
                                     <option value="">Choose...</option>
                                     <option value="ai">Artificial Intelligence</option>
                                     <option value="bioinfo">Bioinformatics</option>
                                     <option value="compArch">Computer Architecture</option>
                                     <option value="os">Operating Systems</option>
-                                </select>
-                                <div class="invalid-feedback">Please choose your major.</div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4 mb-3">
-                                <label for="program">Research Interest *</label>
-                                <select class="form-control" id="research" required>
-                                    <option value="">Choose...</option>
-                                    <option value="gameAI">Game AI</option>
-                                    <option value="nLP">Natural Language Processing</option>
-                                    <option value="cV">Computer Vision</option>
                                 </select>
                                 <div class="invalid-feedback">Please choose your research interest.</div>
                             </div>
@@ -127,7 +112,10 @@
                             <div class="col mb-3">
                                 <h5>Work Experience</h5>
                                 <hr class="mt-1">
-                                <label for="workExp">Please give a brief description about your past work experience. (no longer than 1000 characters)</label>
+                                <label for="workExp">
+                                    Please give a brief description about your past work experience. 
+                                    <span class="text-muted">(no longer than 1000 characters)</span>
+                                </label>
                                 <textarea class="form-control" name="workExp" id="workExp" rows="5"></textarea>
                             </div>
                         </div>
@@ -151,20 +139,21 @@
                         <div class="row">
                             <div class="col-xs-9 col-md-7 col-lg-5 mb-4">
                                 <label for="funds">Please indicate your needed funds range. *</label>
-                                <select class="form-control" name="funds" id="funds">
+                                <select class="form-control" name="funds" id="funds" required>
+                                    <option value="">Choose...</option>
                                     <option value="0">Not needed</option>
                                     <option value="1">$0 ~ $1,000 per semaster</option>
                                     <option value="2">$1,000 ~ $2,000 per semaster</option>
                                     <option value="3">$2,000 ~ $3,000 per semaster</option>
                                 </select>
+                                <div class="invalid-feedback">Please choose your needed funds range.</div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="btn-toolbar mt-auto">
-                        <button class="btn btn-outline-success btn-lg mr-4" type="button">Save Profile</button>
-                        <button class="btn btn-outline-danger btn-lg mr-5" type="button">Discard Changes</button>
-                        <button class="btn btn-primary btn-lg" type="submit">Submit Profile</button>
+                    <div class="btn-toolbar">
+                        <button class="btn btn-outline-success btn-lg mr-5 mt-3" type="button">Save Profile</button>
+                        <button class="btn btn-primary btn-lg mt-3" type="submit">Submit Profile</button>
                     </div>
 
                 </form>
