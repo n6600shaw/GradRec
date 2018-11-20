@@ -7,6 +7,8 @@ const keys = require('./configure/keys.js');
 var bodyParser = require('body-parser');
 
 
+require('./vendor/jquery/jquery-3.2.1.min.js')
+require('./js/main.js');
 
 require('./models/Project');
 require('./models/Student');
@@ -14,6 +16,7 @@ require('./models/User');
 require('./models/Message');
 
 mongoose.connect(keys.mongoURI);
+
 
 
 
@@ -28,26 +31,10 @@ app.set('view engine', 'jade');
 const Project = mongoose.model('projects');
 const Student = mongoose.model('students');
 const User = mongoose.model('users');
-//
-app.post('/', function (req, res) {
-  User.findOne({
-    'userName': req.query.userName,
-    'passWord': req.query.passWord
-  }, function (err, user) {
-     if (err) {console.log("error");return;}
-    if (user) {
-      res.render('/views/xiaolong/student-profile.html');
 
 
-    } else {
-      console.log('Not exist');
-    }
-
-  });
-})
-
-// respond with "hello world" when a GET request is made to the homepage
-app.get('/index', function (req, res) {
+//home page, login page
+app.get('/', function (req, res) {
 
   res.render('index')
   /* new Project({
@@ -59,32 +46,74 @@ app.get('/index', function (req, res) {
   })*/
 })
 
+//signup
+
+
+
+
+app.post('/', function (req, res) {
+  User.findOne({
+    'userName': req.query.userName,
+    'passWord': req.query.passWord
+  }, function (err, user) {
+    if (err) {
+      console.log("error");
+      return;
+    }
+    if (user) {
+      res.render('/views/xiaolong/student-profile.html');
+
+
+    } else {
+      console.log('Not exist');
+    }
+
+  });
+})
+
+
+
+
 app.post('/login', function (req, res) {
   var Email = req.body.email;
   var Pass = req.body.pass;
-  var role= req.body.account_type;
+  var role = req.body.account_type;
   console.log(req.body);
   console.log('Email:', Email);
   console.log('Password:', Pass);
-  console.log('Login as:',role);
+  console.log('Login as:', role);
 
   //check with DB
 
 
 })
 
-app.get('/student',function(req,res){
-  res.sendFile(path.join(__dirname + '/views/xiaolong/student-profile.html'));
+app.get('/signup',function(req,res){
+
+  res.render('signup');
+
 })
 
-app.get('/pm',function(req,res){
-  res.sendFile(path.join(__dirname + '/views/xiaolong/create-project.html'));
+
+app.post('/signup',function(req,res){
+
+  new User({
+    fistName:req.body.fname,
+    lastName:req.body.lname,
+    userName:req.body.username,
+    email:req.body.email,
+    password:req.body.password
+  }).save();
+
+  
+
+
 })
 
-app.get('/home',function(req,res){
 
-  res.sendFile(path.join(__dirname + '/views/login.html'));
-})
+
+
+
 
 //perform submit from stu
 app.post('/submitstud', function (req, res) {
