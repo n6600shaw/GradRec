@@ -93,7 +93,7 @@
                                                             <td>Master</td>
                                                             <td>
                                                                 <div class="btn-group d-flex justify-content-end">
-                                                                    <button class="btn btn-sm btn-outline-secondary" type="button">View Profile</button>
+                                                                    <button class="btn btn-sm btn-outline-secondary" type="button" data-toggle="modal" data-target="#profile">View Profile</button>
                                                                     <button class="btn btn-sm btn-outline-info" type="button">Send Msg</button>
                                                                 </div>
                                                             </td>
@@ -423,9 +423,27 @@
                 </div>
             </div>
         </div>
-
     </div>
 
+    <!-- Modal Conetent -->
+    <div class="modal fade" id="profile" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">John's Profile</h5>
+                </div>
+                <div class="modal-body">
+                    <p>This is John's Profile.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt dolores consectetur voluptates! Dolor esse tenetur sapiente, facere quasi, necessitatibus architecto nihil temporibus optio earum ex.</p>
+                    <p>Repudiandae, dolorum. Placeat, aut, eaque aspernatur deserunt, et quis quo facilis praesentium non laboriosam quae?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
