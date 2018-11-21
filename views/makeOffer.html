@@ -1,202 +1,208 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <title>Make Offer</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="jquery-ui/jquery-ui.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <head>
+    <title>Make Offer</title>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
 
-  <script src="../js/main-script.js"></script>
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-1">
+    <link href="../../css/custom.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="jquery-ui/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="main-script.js"></script>
+  </head>
+
+  <body class="bg-bodybg">
+    <nav class="navbar navbar-expand-md navbar-light bg-light rounded">
+      <a class="navbar-brand" href="#">
+        <img src="../../images/favicon.png" height="30" class="d-inline-block align-top" alt="munLogo">
+        GradRec
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#gradNavbar" aria-controls="gradNavbar"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="gradNavbar">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="manage-projects.html">Manage Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Message</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+        <div class="text-right">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button>
       </div>
-      <div class="col-md-10">
-        <div class="toplog">
-          <div class="logo"><img src="../images/munlogo.png"> </div>
-          <div class="gradrec">
-            <h3>GradRec System</h3>
-          </div>
-        </div>
-        <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                aria-expanded="false"> <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+      </div>
+    </nav>
 
-              </button>
-              <a class="navbar-brand" href="#"> </a>
-            </div>
-            <ul class="nav navbar-nav">
-              <li><a href="xiaolong/create-project.html">Create Project</a></li>
-              <li  class="active"><a href="">Offer</a></li>
-              <li><a href="#">Link2</a></li>
-              <li><a href="#">Link3</a></li>
-            </ul>
-          </div>
-        </nav>
-        <div class="page-header">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-sm-12 border rounded p-5 bg-light">
           <h3>Make Offer</h3>
         </div>
-        <div class="jumbotron">
-          <div class="row">
-            <div class="col-md-4">
-              <form method="post">
-                <div class="form-group">
-                  <legend>List of Applied Projects: </legend>
+      </div>
+      </br>
+      <div class="row">
+        <div class="col-sm-4 border rounded p-5 bg-light">
+          <form method="post">
+            <div class="form-group">
+              <legend>Matched students: </legend>
 
-                 
+              <div class="accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
 
-                  <div class="accordion" id="accordionEx" role="tablist" aria-multiselectable="true"  >
+                <!-- Accordion card -->
+                <div class="card">
 
-                      <!-- Accordion card -->
-                      <div class="card">
-
-                        <!-- Card header -->
-                        <div class="card-header" role="tab" id="headingOne">
-                            <a class="list-group-item list-group-item-action active" data-toggle="collapse"href="#" data-target="#collapse1">
-                                Projectt 1
-                                <span class="badge badge-default badge-pill">14</span>
-                                <!--# of applied student-->
-                              </a>
-                        </div>
-
-                        <!-- Card body -->
-                        <div id="collapse1" class="collapsed" role="tabpanel" aria-labelledby="headingOne"
-                          data-parent="#accordionEx">
-                          <div class="card-body">
-                              
-                                  <h5>candidate Students: </h5>
-                                  <ul >
-                                     
-                                      <li><a href="#">Std 1</a></li>
-                                      <li><a href="#">Std 2</a></li>
-                                      
-                                    </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <!--*************************************************************-->
-                      <!-- Accordion card -->
-
-                      <!-- Accordion card -->
-                      <div class="card">
-
-                        <!-- Card header -->
-                        <div class="card-header" role="tab" id="headingTwo">
-                         
-                           
-                            <a class="list-group-item list-group-item-action " data-toggle="collapse"href="#" data-target="#collapse2">
-                                Project 2
-                                <span class="badge badge-default badge-pill">14</span>
-                                <!--# of applied student-->
-                              </a>
-                        </div>
-
-                        <!-- Card body -->
-                        <div id="collapse2" class="collapsed" role="tabpanel" aria-labelledby="headingOne"
-                          data-parent="#accordionEx">
-                          <div class="card-body">
-                              
-                              <h5>candidate Students: </h5>
-                              <ul >
-                                 
-                                  <li><a href="#">Std 1</a></li>
-                                  <li><a href="#">Std 2</a></li>
-                                  
-                                </ul>
-              
-                          </div>
-                        </div>
-                      </div>
-     <!--*************************************************************-->
-                       <!-- Accordion card -->
-
-                      <!-- Accordion card -->
-                      <div class="card">
-
-                          <!-- Card header -->
-                          <div class="card-header" role="tab" id="headingTwo">
-                           
-                             
-                              <a class="list-group-item list-group-item-action " data-toggle="collapse"href="#" data-target="#collapse3">
-                                  Project 3
-                                  <span class="badge badge-default badge-pill">14</span>
-                                  <!--# of applied student-->
-                                </a>
-                          </div>
-  
-                          <!-- Card body -->
-                          <div id="collapse3" class="collapsed" role="tabpanel" aria-labelledby="headingOne"
-                            data-parent="#accordionEx">
-                            <div class="card-body">
-                                
-                                <h5>candidate Students: </h5>
-                                <ul >
-                                   
-                                    <li><a href="#">Std 1</a></li>
-                                    <li><a href="#">Std 2</a></li>
-                                    
-                                  </ul>
-                
-                            </div>
-                          </div>
-                        </div>
-
-                    <!--/.Accordion wrapper-->
+                  <!-- Card header -->
+                  <div class="card-header" role="tab" id="headingOne">
+                    <a class="list-group-item list-group-item-action active" data-toggle="collapse" href="#"
+                      data-target="#collapse1">
+                      Projectt 1
+                      <span class="badge badge-default badge-pill">14</span>
+                      <!--# of applied student-->
+                    </a>
                   </div>
 
+                  <!-- Card body -->
+                  <div id="collapse1" class="collapsed" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordionEx">
+                    <div class="card-body">
 
-                   <!--Form-->
-                </div> 
-              
-                
+                      <h5>candidate Students: </h5>
+                      <ul>
 
-              </form>
-            </div>
-            <div class="col-md-8">
-              <legend>Edit Offer</legend>
+                        <li><a href="#">Std 1</a></li>
+                        <li><a href="#">Std 2</a></li>
 
-              <div class="row">
-                <div class="col-md-2">
-                  <label for="to_stud">To:</label>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <!--*************************************************************-->
+                <!-- Accordion card -->
+
+                <!-- Accordion card -->
+                <div class="card">
+
+                  <!-- Card header -->
+                  <div class="card-header" role="tab" id="headingTwo">
+
+
+                    <a class="list-group-item list-group-item-action " data-toggle="collapse" href="#" data-target="#collapse2">
+                      Project 2
+                      <span class="badge badge-default badge-pill">14</span>
+                      <!--# of applied student-->
+                    </a>
+                  </div>
+
+                  <!-- Card body -->
+                  <div id="collapse2" class="collapsed" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordionEx">
+                    <div class="card-body">
+
+                      <h5>candidate Students: </h5>
+                      <ul>
+
+                        <li><a href="#">Std 1</a></li>
+                        <li><a href="#">Std 2</a></li>
+
+                      </ul>
+
+                    </div>
+                  </div>
+                </div>
+                <!--*************************************************************-->
+                <!-- Accordion card -->
+
+                <!-- Accordion card -->
+                <div class="card">
+
+                  <!-- Card header -->
+                  <div class="card-header" role="tab" id="headingTwo">
+
+
+                    <a class="list-group-item list-group-item-action " data-toggle="collapse" href="#" data-target="#collapse3">
+                      Project 3
+                      <span class="badge badge-default badge-pill">14</span>
+                      <!--# of applied student-->
+                    </a>
+                  </div>
+
+                  <!-- Card body -->
+                  <div id="collapse3" class="collapsed" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordionEx">
+                    <div class="card-body">
+
+                      <h5>candidate Students: </h5>
+                      <ul>
+
+                        <li><a href="#">Std 1</a></li>
+                        <li><a href="#">Std 2</a></li>
+
+                      </ul>
+
+                    </div>
+                  </div>
                 </div>
 
-                <label for="to_stud"> Retrieved StudName</label>
+                <!--/.Accordion wrapper-->
               </div>
-              <div class="form-group">
 
-                <label for=" Email1msg">Offer tamplete for project 1:</label>
-                <!-- should retreive offers + project name-->
+              <!--Form-->
+            </div>
 
-                <textarea class="form-control" rows="5">
+
+
+          </form>
+        </div>
+        <div class="col-sm-8 border rounded p-5 bg-light">
+          <legend>Edit Offer</legend>
+
+          <div class="row">
+            <div class="col-md-2">
+              <label for="to_stud">To:</label>
+            </div>
+
+            <label for="to_stud"> Retrieved StudName</label>
+          </div>
+          <div class="form-group">
+
+            <label for=" Email1msg">Offer tamplete for project 1:</label>
+            <!-- should retreive offers + project name-->
+
+            <textarea class="form-control" rows="5">
 Thanks for applying to Mun University
 The University Offers 2 years full coverage with 16000$ per year
 The project Supervisor is Prof. Adrian Fiech </textarea>
-              </div>
-              <div class="form-group submit">
-                <button type="submit" class="btn btn-default" formaction="/savepro">Save</button>
-                <button type="submit" class="btn btn-default" id="btn_Send" formaction="/createpro">Send</button>
-              </div>
-
+          </div>
+          <div class="form-group submit">
+            <div class="text-right">
+              <button type="submit" class="btn btn-outline-success btn-lg mr-5 mt-3" formaction="/savepro">Save</button>
+              <button type="submit" class="btn btn-primary btn-lg mt-3" id="btn_Send" formaction="/createpro">Send</button>
             </div>
           </div>
-        </div>
-      </div>
 
-      
+
+        </div>  <!-- ROW--> 
+      </div>
     </div>
-  </div>
-</body>
+
+
+
+
+    </div>
+    
+  </body>

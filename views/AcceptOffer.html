@@ -1,91 +1,101 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<DIV lang="en">
 
 <head>
   <title>Project Offer</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="jquery-ui/jquery-ui.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="../../css/custom.css" rel="stylesheet" type="text/css">
+
 
   <script src="main-script.js"></script>
 </head>
 
-<body>
+<body class="bg-bodybg">
+  <nav class="navbar navbar-expand-md navbar-light bg-light rounded">
+    <a class="navbar-brand" href="#">
+      <img src="../../images/favicon.png" height="30" class="d-inline-block align-top" alt="munLogo">
+      GradRec
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#gradNavbar" aria-controls="gradNavbar"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="gradNavbar">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="create-profile.html">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="view-matched-projects.html">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Message</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button>
+    </div>
+  </nav>
+
   <div class="container">
-    <div class="row">
-      <div class="col-md-1">
-      </div>
-      <div class="col-md-10">
-        <div class="toplog">
-          <div class="logo"><img src="../images/munlogo.png"> </div>
-          <div class="gradrec">
-            <h3>GradRec System</h3>
-          </div>
+    <div class="row mt-sm-4 mt-md-5 mb-md-5">
+      <div class="col-sm-12 border rounded p-5 bg-light">
+        <h3>Accept/Decline Offer</h3>
+     
+     
+        <div class="row">
         </div>
-        <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                aria-expanded="false"> <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+      </br> </br>
 
-              </button>
-              <a class="navbar-brand" href="#"> </a>
-            </div>
-            <ul class="nav navbar-nav">
-              <li><a href="./views/xiaolong/student-profile.html">Personal Profile</a></li>
-              <li class="active"><a href="#">Offer</a></li>
-              <li><a href="#">Link2</a></li>
-              <li><a href="#">Link3</a></li>
-            </ul>
-          </div>
-        </nav>
-        <div class="page-header">
-          <h3>Accept/Decline Offer</h3>
-        </div>
-        <div class="jumbotron">
-          <div class="row">
-            
-             
-            <div class="col-md-12">
-              <legend>Project Offer</legend>
-
-              <div class="row">
-                <div class="col-md-2">
-                  <label for="to_stud">Project Title:</label>
-                </div>
-
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-4">
+                <label for="to_stud">Project Title:</label>
+              </div>
+              <div class="col-md-8">
                 <label for="to_stud"> Retrieved ProejctTitle</label>
               </div>
-              <div class="form-group">
-
-                <label for=" Email1msg">Offer Letter:</label>
-                
-                <textarea disabled class="form-control disabled" rows="5">
-Thanks for applying to Mun University
-The University Offers 2 years full coverage with 16000$ per year
-The project Supervisor is Prof. Adrian Fiech </textarea>
-              </div>
-              
-              <div class="form-group submit">
-                <button type="submit" class="btn btn-default" formaction="/AcceptOfferpro">Accept Offer</button>
-                <button type="submit" class="btn btn-default" id="btn_Send" formaction="/DeclineOfferpro">Decline Offer</button>
-              </div>
-
             </div>
+            <div class="row">
+            <div class="form-group">
+              
+              
+              <div class="card" >
+                  <div class="card-body">
+                    <h5 class="card-title">Offer Letter</h5>
+                    
+                    <p class="card-text">Thanks for applying to MUN University. <br>
+                        The University Offers 2 years full coverage with 16000$ per year
+                        The project Supervisor is Prof. Adrian Fiech </p>
+                    
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+
+            <div class="form-group submit">
+              <div class="text-right">
+              <button type="submit" class="btn btn-danger btn-lg mt-3" id="btn_Send" formaction="/DeclineOfferpro">Decline Offer</button>
+              <button type="submit" class="btn btn-primary btn-lg mt-3" formaction="/AcceptOfferpro">Accept Offer</button>              
+            </div>
+            </div>
+          
           </div>
         </div>
-      </div>
-
-      <div class="col-md-1">
-      </div>
+     
     </div>
+
+    
+ 
+</div>
   </div>
 </body>
