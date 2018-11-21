@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Make Offer</title>
+  <meta charset="utf-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="../../css/custom.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="jquery-ui/jquery-ui.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="main-script.js"></script>
+</head>
+
+<body class="bg-bodybg">
+  <nav class="navbar navbar-expand-md navbar-light bg-light rounded">
+    <a class="navbar-brand" href="#">
+      <img src="../../images/favicon.png" height="30" class="d-inline-block align-top" alt="munLogo">
+      GradRec
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#gradNavbar" aria-controls="gradNavbar"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="gradNavbar">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="manage-projects.html">Manage Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Message</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+      <div class="text-right">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <div class="row">
+      <legend>Edit Offer</legend>
+    </div>
+
+    <div class="row">
+        <br>
+      <div class="col-md-2">
+        <label for="to_stud">To:</label>
+      </div>
+
+      <div class="col-md-2">
+        <label for="to_stud"> Retrieved StudName</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+         <br> <br>
+        <label for=" Email1msg">Offer tamplete for project 1:</label>
+        <!-- should retreive offers + project name-->
+
+        <textarea class="form-control" rows="5" cols="200">
+Thanks for applying to Mun University
+The University Offers 2 years full coverage with 16000$ per year
+The project Supervisor is Prof. Adrian Fiech </textarea>
+      </div>
+    </div>
+
+   
+    <div class="form-group submit">
+      <div class="text-right">
+        <button type="submit" class="btn btn-outline-success btn-lg mr-5 mt-3" formaction="/savepro">Save</button>
+        <button type="submit" class="btn btn-primary btn-lg mt-3" id="btn_Send" formaction="/createpro">Send</button>
+      </div>
+  </div>
+  </div>
+
+
+
+
+
+</body>
