@@ -1,98 +1,88 @@
-include ./layouts/_student_header.jade
-    .container
-      .row.mt-sm-4.mt-md-5
-        .col-sm-3.mr-1
-          h4.mb-4 Matched Projects
-          #projectList.nav.flex-column.nav-pills
-            a#project1.nav-link.active(data-toggle='pill', href='#description1') Project 1
-            a#project2.nav-link(data-toggle='pill', href='#description2') Project 2
-            a#project3.nav-link(data-toggle='pill', href='#description3') Project 3
-            a#project4.nav-link(data-toggle='pill', href='#description4') Project 4
-            a.nav-link.disabled(href='view-matched-projects.html') Go back
-        .col-sm-8.border.rounded.p-5.bg-light
-          #projectContent.tab-content
-            #description1.tab-pane.fade.show.active
-              h3 Project 1
-              p.lead Faculty of Computer Science
-              hr
-              h5.mt-4 Project Description
-              p
-                | Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum, eos vitae cumque perspiciatis possimus consequatur, rem illo et neque ducimus quis laborum delectus necessitatibus in deleniti laboriosam consequuntur architecto
-                | corporis molestias natus quam, temporibus odio voluptatum repudiandae? Illum, nam molestias.
-              p
-                | Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, consectetur quos tenetur, nihil excepturi impedit possimus tempore obcaecati explicabo harum repudiandae error et? Vel et autem commodi voluptates aliquam harum
-                | veritatis voluptate laboriosam voluptatem beatae deleniti ad modi blanditiis accusamus delectus dolor laudantium, eligendi incidunt non, accusantium nobis ea? Cupiditate.
-              h5.mt-4 Cirteria
-              ul
-                li Java
-                li HTML
-                li Python
-              h5.mt-4 Funds
-              p $2,000 per semaster
-              button.btn.btn-outline-success.btn-lg.mt-4(type='button') Modify Project
-            #description2.tab-pane.fade
-              h3 Project 2
-              p.lead Faculty of Computer Science
-              hr
-              h5.mt-4 Project Description
-              p
-                | Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum, eos vitae cumque perspiciatis possimus consequatur, rem illo et neque ducimus quis laborum delectus necessitatibus in deleniti laboriosam consequuntur architecto
-                | corporis molestias natus quam, temporibus odio voluptatum repudiandae? Illum, nam molestias.
-              p
-                | Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, consectetur quos tenetur, nihil excepturi impedit possimus tempore obcaecati explicabo harum repudiandae error et? Vel et autem commodi voluptates aliquam harum
-                | veritatis
-                | voluptate laboriosam voluptatem beatae deleniti ad modi blanditiis accusamus delectus dolor laudantium, eligendi incidunt non, accusantium nobis ea? Cupiditate.
-              h5.mt-4 Cirteria
-              ul
-                li Java
-                li HTML
-                li Python
-              h5.mt-4 Funds
-              p $2,000 per semaster
-              button.btn.btn-outline-success.btn-lg.mt-4(type='button') Modify Project
-            #description3.tab-pane.fade
-              h3 Project 3
-              p.lead Faculty of Computer Science
-              hr
-              h5.mt-4 Project Description
-              p
-                | Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum, eos vitae cumque perspiciatis possimus consequatur, rem illo et neque ducimus quis laborum delectus necessitatibus in deleniti laboriosam consequuntur architecto
-                | corporis molestias natus quam, temporibus odio voluptatum repudiandae? Illum, nam molestias.
-              p
-                | Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, consectetur quos tenetur, nihil excepturi impedit possimus tempore obcaecati explicabo harum repudiandae error et? Vel et autem commodi voluptates aliquam harum
-                | veritatis
-                | voluptate laboriosam voluptatem beatae deleniti ad modi blanditiis accusamus delectus dolor laudantium, eligendi incidunt non, accusantium nobis ea? Cupiditate.
-              h5.mt-4 Cirteria
-              ul
-                li Java
-                li HTML
-                li Python
-              h5.mt-4 Funds
-              p $2,000 per semaster
-              button.btn.btn-outline-success.btn-lg.mt-4(type='button') Modify Project
-            #description4.tab-pane.fade
-              h3 Project 4
-              p.lead Faculty of Computer Science
-              hr
-              h5.mt-4 Project Description
-              p
-                | Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum, eos vitae cumque perspiciatis possimus consequatur, rem illo et neque ducimus quis laborum delectus necessitatibus in deleniti laboriosam consequuntur architecto
-                | corporis molestias natus quam, temporibus odio voluptatum repudiandae? Illum, nam molestias.
-              p
-                | Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, consectetur quos tenetur, nihil excepturi impedit possimus tempore obcaecati explicabo harum repudiandae error et? Vel et autem commodi voluptates aliquam harum
-                | veritatis
-                | voluptate laboriosam voluptatem beatae deleniti ad modi blanditiis accusamus delectus dolor laudantium, eligendi incidunt non, accusantium nobis ea? Cupiditate.
-              h5.mt-4 Cirteria
-              ul
-                li Java
-                li HTML
-                li Python
-              h5.mt-4 Funds
-              p $2,000 per semaster
-              button.btn.btn-outline-success.btn-lg.mt-4(type='button') Modify Project
-include ./layouts/_footer.jade
-    // Optional JavaScript
-    // jQuery first, then Popper.js, then Bootstrap JS
-    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49', crossorigin='anonymous')
-    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy', crossorigin='anonymous')
+include ../layouts/_student_header.jade
+.container
+  h4.pl-3.pl-3.mt-sm-4.mb-4 Matched Projects
+  .row.mb-md-5
+    .col-sm-3.mr-1
+      #projectList.nav.flex-column.nav-pills
+        a#project1.nav-link.active(data-toggle='pill', href='#description1') Project 1
+        a#project2.nav-link(data-toggle='pill', href='#description2') Project 2
+        a#project3.nav-link(data-toggle='pill', href='#description3') Project 3
+        a#project4.nav-link(data-toggle='pill', href='#description4') Project 4
+      a.btn.btn-outline-secondary.btn-block.mt-4(href='view-matched-projects.html') Go Back
+    .col-sm-8.border.rounded.p-5.bg-light
+      #projectContent.tab-content
+        #description1.tab-pane.fade.show.active
+          h3 Project 1
+          p.lead Faculty of Computer Science
+          hr
+          h5.mt-4 Project Description
+          p
+          p
+          h5.mt-4 Cirteria
+          ul
+            li Java
+            li HTML
+            li Python
+          h5.mt-4 Funds
+          p $2,000 per semaster
+          .btn-toolbar
+            button.btn.btn-outline-info.btn-lg.mr-5.mt-4(type='button') Contact Project Manager
+            button.btn.btn-primary.btn-lg.px-5.mt-4(type='button') Apply
+        #description2.tab-pane.fade
+          h3 Project 2
+          p.lead Faculty of Computer Science
+          hr
+          h5.mt-4 Project Description
+          p
+          p
+          h5.mt-4 Cirteria
+          ul
+            li Java
+            li HTML
+            li Python
+          h5.mt-4 Funds
+          p $2,000 per semaster
+          .btn-toolbar
+            button.btn.btn-outline-info.btn-lg.mr-5.mt-4(type='button') Contact Project Manager
+            button.btn.btn-primary.btn-lg.px-5.mt-4(type='button') Apply
+        #description3.tab-pane.fade
+          h3 Project 3
+          p.lead Faculty of Computer Science
+          hr
+          h5.mt-4 Project Description
+          p
+          p
+          h5.mt-4 Cirteria
+          ul
+            li Java
+            li HTML
+            li Python
+          h5.mt-4 Funds
+          p $2,000 per semaster
+          .btn-toolbar
+            button.btn.btn-outline-info.btn-lg.mr-5.mt-4(type='button') Contact Project Manager
+            button.btn.btn-primary.btn-lg.px-5.mt-4(type='button') Apply
+        #description4.tab-pane.fade
+          h3 Project 4
+          p.lead Faculty of Computer Science
+          hr
+          h5.mt-4 Project Description
+          p
+          p
+          h5.mt-4 Cirteria
+          ul
+            li Java
+            li HTML
+            li Python
+          h5.mt-4 Funds
+          p $2,000 per semaster
+          .btn-toolbar
+            button.btn.btn-outline-info.btn-lg.mr-5.mt-4(type='button') Contact Project Manager
+            button.btn.btn-primary.btn-lg.px-5.mt-4(type='button') Apply
+
+include ../layouts/_footer.jade
+// Optional JavaScript
+// jQuery first, then Popper.js, then Bootstrap JS
+script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49', crossorigin='anonymous')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy', crossorigin='anonymous')
