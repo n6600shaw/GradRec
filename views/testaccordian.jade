@@ -1,0 +1,80 @@
+- var trigger_value = "Trigger Headline"
+//- Needs random id number (4 diggits) on every content element
+mixin accordion_mixin(id, index, ...items)
+  section.accordion(data-comp=id, id=id+"-"+index)
+    header.acc__header
+      h1.acc__headline Accordion #{index}
+      p.acc__leading Leading introduction text (opt).
+    each item, i in items
+      section.acc__entry(id="acc__entry-"+index+"-"+(i+1))
+        header.acc__entry-header
+          h1.acc__entry-headline
+            a.acc__entry-trigger(
+              aria-controls="acc__entry-content-"+index+"-"+(i+1),
+              aria-expanded="false",
+              href="#acc__entry-content-"+index+"-"+(i+1)
+            ) #{trigger_value} #{index} - #{i+1}
+        div.acc__entry-content(
+          aria-hidden="true",
+          id="acc__entry-content-"+index+"-"+(i+1)
+        )
+          //- div.acc__entry-content-inner
+          case item
+            when 1
+              p Content #{i+1}
+              ol
+                li Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel vero animi est, vitae consequuntur magnam porro hic ab fugiat repudiandae earum eveniet, voluptatum, ad velit dolores atque. Consequatur, labore, possimus!
+                li Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis aliquam necessitatibus eius sint excepturi dolorem, debitis repellat quos doloremque earum tempora, iste soluta voluptate illum possimus ipsam itaque dignissimos natus?
+                li Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci recusandae blanditiis, aperiam, temporibus officia inventore excepturi fuga. Beatae sunt aspernatur incidunt possimus reiciendis magni tempora. Corporis molestias maiores, laborum accusantium.
+              img(
+                alt="ALT",
+                height="100",
+                src="http://placehold.it/100x100",
+                title="TITLE",
+                width="100"
+              )
+            when 2
+              p Content #{i+1}
+              img(
+                alt="ALT",
+                height="200",
+                src="http://placehold.it/200x200",
+                title="TITLE",
+                width="200"
+              )
+            when 3
+              p Content #{i+1}
+              img(
+                alt="ALT",
+                height="300",
+                src="http://placehold.it/300x300",
+                title="TITLE",
+                width="300"
+              )
+            when 4
+              p Content #{i+1}
+              img(
+                alt="ALT",
+                height="400",
+                src="http://placehold.it/400x400",
+                title="TITLE",
+                width="400"
+              )
+            default
+              p There is no hope!
+          block
+
+.container
+  +accordion_mixin('accordion', '1', 1, 2, 3, 4)
+  +accordion_mixin('accordion', '2', a, b, c)
+  //- +accordion_mixin('accordion', '1', 1, 2, 3, 4)
+  //-   //- block
+  //-   ol
+  //-     li one
+  //-     li two
+  //-     li three
+  
+  
+  //- +accordion_mixin('accordion', '1', 1, 2, 3, 4, 5)
+  //- +accordion_mixin('accordion', '2', a, b, c)
+  //- +accordion_mixin('accordion', '3', x, y, z)

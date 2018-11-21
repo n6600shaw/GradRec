@@ -87,6 +87,8 @@ app.post('/login', function (req, res) {
 
 })
 
+
+
 //Sign up
 app.get('/signup',function(req,res){
 
@@ -190,5 +192,26 @@ app.post('/createpro', function (req, res) {
   }
 
 });
+//==============================offer=======================
+app.get('/acceptoffer',function(req,res){
 
+  console.log("acceptoffer");
+  res.render('acceptoffer');
+
+})
+app.get('/test',function(req,res){
+
+  console.log("test");
+  res.render('testaccordian');
+
+})
+
+app.get('/makeoffer',function(req,res){
+
+  console.log("makeoffer");
+  res.render('makeoffer');
+
+})
+
+//=========================================
 app.listen(port, () => console.log('GradRec is listening on port ${port}!'));

@@ -1,0 +1,56 @@
+doctype html
+html
+  head
+  body.bg-bodybg
+    div(lang='en')
+      title Project Offer
+      meta(charset='utf-8')
+      meta(name='viewport', content='width=device-width, initial-scale=1')
+      link(rel='stylesheet', href='style.css')
+      meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+      link(href='../../css/custom.css', rel='stylesheet', type='text/css')
+      script(src='main-script.js')
+      nav.navbar.navbar-expand-md.navbar-light.bg-light.rounded
+        a.navbar-brand(href='#')
+          img.d-inline-block.align-top(src='../../images/favicon.png', alt='munLogo', height='30')
+          |       GradRec
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#gradNavbar', aria-controls='gradNavbar', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #gradNavbar.collapse.navbar-collapse
+          ul.navbar-nav.mr-auto
+            li.nav-item.active
+              a.nav-link(href='create-profile.html') Profile
+            li.nav-item
+              a.nav-link(href='view-matched-projects.html') Projects
+            li.nav-item
+              a.nav-link(href='#') Message
+            li.nav-item
+              a.nav-link(href='#') About
+          button.btn.btn-outline-success.my-2.my-sm-0(type='button') Logout
+      .container
+        .row.mt-sm-4.mt-md-5.mb-md-5
+          .col-sm-12.border.rounded.p-5.bg-light
+            h3 Accept/Decline Offer
+            .row
+            br
+            br
+            .col-md-12
+              .row
+                .col-md-4
+                  label(for='to_stud') Project Title:
+                .col-md-8
+                  label(for='to_stud')  Retrieved ProejctTitle
+              .row
+                .form-group
+                  .card
+                    .card-body
+                      h5.card-title Offer Letter
+                      p.card-text
+                        | Thanks for applying to MUN University. 
+                        br
+                        |                         The University Offers 2 years full coverage with 16000$ per year
+                        |                         The project Supervisor is Prof. Adrian Fiech
+              .form-group.submit
+                .text-right
+                  button#btn_Send.btn.btn-danger.btn-lg.mt-3(type='submit', formaction='/DeclineOfferpro') Decline Offer
+                  button.btn.btn-primary.btn-lg.mt-3(type='submit', formaction='/AcceptOfferpro') Accept Offer
