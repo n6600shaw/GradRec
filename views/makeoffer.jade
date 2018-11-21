@@ -1,0 +1,98 @@
+doctype html
+html(lang='en')
+	head
+        title "Make Offer"
+	body
+        .container
+            .jumbotron
+                .row
+                    .col-md-4
+                        form(method='post')
+                            .form-group
+                                legend List of Applied Projects: 
+                                #accordionEx.accordion(role='tablist', aria-multiselectable='true')
+                                    // Accordion card
+                                    .card
+                                        // Card header
+                                        #headingOne.card-header(role='tab')
+                                            a.list-group-item.list-group-item-action.active(data-toggle='collapse', href='#', data-target='#collapse1')
+                                                | Projectt 1
+                                                span.badge.badge-default.badge-pill 14
+                                                // # of applied student
+                                                // Card body
+                                            #collapse1.collapsed(role='tabpanel', aria-labelledby='headingOne', data-parent='#accordionEx')
+                                                a.list-group-item.list-group-item-action.active(data-toggle='collapse', href='#', data-target='#collapse1')
+                                                .card-body
+                                                    a.list-group-item.list-group-item-action.active(data-toggle='collapse', href='#', data-target='#collapse1')
+                                                        h5 candidate Students: 
+                                                    ul
+                                                        a.list-group-item.list-group-item-action.active(data-toggle='collapse', href='#', data-target='#collapse1')
+                                                        li
+                                                            a.list-group-item.list-group-item-action.active(data-toggle='collapse', href='#', data-target='#collapse1')
+                                                            a(href='#') Std 1
+                                                        li
+                                                            a(href='#') Std 2
+                                    // *************************************************************
+                                    // Accordion card
+                                    // Accordion card
+                                    .card
+                                        // Card header
+                                        #headingTwo.card-header(role='tab')
+                                            a.list-group-item.list-group-item-action(data-toggle='collapse', href='#', data-target='#collapse2')
+                                                | Project 2
+                                                span.badge.badge-default.badge-pill 14
+                                                // # of applied student
+                                                // Card body
+                                            #collapse2.collapsed(role='tabpanel', aria-labelledby='headingOne', data-parent='#accordionEx')
+                                                a.list-group-item.list-group-item-action(data-toggle='collapse', href='#', data-target='#collapse2')
+                                                .card-body
+                                                    a.list-group-item.list-group-item-action(data-toggle='collapse', href='#', data-target='#collapse2')
+                                                        h5 candidate Students: 
+                                                    ul
+                                                        a.list-group-item.list-group-item-action(data-toggle='collapse', href='#', data-target='#collapse2')
+                                                        li
+                                                            a.list-group-item.list-group-item-action(data-toggle='collapse', href='#', data-target='#collapse2')
+                                                            a(href='#') Std 1
+                                                        li
+                                                            a(href='#') Std 2
+                                    // *************************************************************
+                                    // Accordion card
+                                    // Accordion card
+                                    .card
+                                        // Card header
+                                        #headingTwo.card-header(role='tab')
+                                            a.list-group-item.list-group-item-action(data-toggle='collapse', href='#', data-target='#collapse3')
+                                                | Project 3
+                                                span.badge.badge-default.badge-pill 14
+                                                // # of applied student
+                                                // Card body
+                                            #collapse3.collapsed(role='tabpanel', aria-labelledby='headingOne', data-parent='#accordionEx')
+                                                a.list-group-item.list-group-item-action(data-toggle='collapse', href='#', data-target='#collapse3')
+                                                .card-body
+                                                    a.list-group-item.list-group-item-action(data-toggle='collapse', href='#', data-target='#collapse3')
+                                                        h5 candidate Students: 
+                                                    ul
+                                                        a.list-group-item.list-group-item-action(data-toggle='collapse', href='#', data-target='#collapse3')
+                                                        li
+                                                            a.list-group-item.list-group-item-action(data-toggle='collapse', href='#', data-target='#collapse3')
+                                                            a(href='#') Std 1
+                                                        li
+                                                            a(href='#') Std 2
+                                    // /.Accordion wrapper
+                                    // Form
+                    .col-md-8
+                        legend Edit Offer
+                        .row
+                            .col-md-2
+                                label(for='to_stud') To:
+                            label(for='to_stud')  Retrieved StudName
+                        .form-group
+                            label(for=' Email1msg') Offer tamplete for project 1:
+                            // should retreive offers + project name
+                            textarea.form-control(rows='5')
+                                | Thanks for applying to Mun University
+                                | The University Offers 2 years full coverage with 16000$ per year
+                                | The project Supervisor is Prof. Adrian Fiech
+                        .form-group.submit
+                            button.btn.btn-default(type='submit', formaction='/savepro') Save
+                            button#btn_Send.btn.btn-default(type='submit', formaction='/createpro') Send

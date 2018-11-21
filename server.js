@@ -21,6 +21,7 @@ mongoose.connect(keys.mongoURI);
 
 app.use(session({secret:'gradrec'}));
 app.use(express.static(__dirname + '/'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
@@ -60,6 +61,7 @@ app.get('/', function (req, res) {
   })*/
 })
 
+<<<<<<< HEAD
 app.post('/login', function (req, res) {
   var Email = req.body.email;
   var Pass = req.body.pass;
@@ -70,6 +72,15 @@ app.post('/login', function (req, res) {
   console.log('Login as:', role);
   sess = req.session
   //check with DB
+=======
+//signup
+
+
+
+
+app.post('/', function (req, res) {
+
+>>>>>>> d70ffc80848eb00484ac68b47b3246a96b545d3f
   User.findOne({
     'email': req.query.email,
     'passWord': req.query.pass,
@@ -177,5 +188,16 @@ app.post('/createpro', function (req, res) {
   }
 
 });
+app.get('/makeoffer', function (req, res) {
+
+  res.render('makeoffer')
+  /* new Project({
+     title: 'Project 1'
+
+   }).save();
+  Project.find(function(err,projects){
+    console.log(projects);
+  })*/
+})
 
 app.listen(port, () => console.log('GradRec is listening on port ${port}!'));
