@@ -8,7 +8,10 @@ userSchema=new Schema({
     lastName: String,
     userName: String,
     email: String,
-    password: String
+    password: String,
+    firstTime:Boolean,
+    role: String
+
 })
 
 mongoose.model('users',userSchema);
