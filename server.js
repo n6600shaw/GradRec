@@ -193,10 +193,10 @@ app.post('/createpro', function (req, res) {
 
 });
 //==============================offer=======================
-app.get('/acceptoffer',function(req,res){
+app.get('/EditOffer',function(req,res){
 
-  console.log("acceptoffer");
-  res.render('acceptoffer');
+  console.log("EditOffer");
+  res.render('EditOffer');
 
 })
 app.get('/test',function(req,res){
