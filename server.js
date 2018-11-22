@@ -15,7 +15,7 @@ require('./models/Student');
 require('./models/User');
 require('./models/Message');
 
-mongoose.connect(keys.mongoURI);
+//mongoose.connect(keys.mongoURI);
 
 
 
@@ -28,9 +28,9 @@ app.use(bodyParser.urlencoded({
 app.set('views', 'views');
 app.set('view engine', 'jade');
 
-const Project = mongoose.model('projects');
-const Student = mongoose.model('students');
-const User = mongoose.model('users');
+//const Project = mongoose.model('projects');
+//cnst Student = mongoose.model('students');
+//const User = mongoose.model('users');
 
 
 //home page, login page
@@ -162,7 +162,7 @@ app.get('/show',function(req,res){
 
 
 //perform submit from stu
-app.post('/submitstud', function (req, res) {
+/*app.post('/submitstud', function (req, res) {
 
   var item = {
     firstname: req.body.stuFirstName,
@@ -170,7 +170,7 @@ app.post('/submitstud', function (req, res) {
   }
   console.log(item);
 
-});
+});*/
 
 //perform save from student 
 app.post('/savestud', function (req, res) {
@@ -192,11 +192,38 @@ app.post('/createpro', function (req, res) {
   }
 
 });
-//==============================offer=======================
+//=========================Pm offer views =======================
 app.get('/EditOffer',function(req,res){
 
   console.log("EditOffer");
   res.render('EditOffer');
+
+})
+
+app.get('/PMSubmittedOffer',function(req,res){
+
+  console.log("PMSubmittedOffer");
+  res.render('PMSubmittedOffer');
+
+})
+
+////////////std Offer views ////////////
+app.get('/stdAcceptOffer',function(req,res){
+
+  console.log("stdAcceptOffer");
+  res.render('stdAcceptOffer');
+
+})
+app.get('/StdOfferAppinP',function(req,res){
+
+  console.log("StdOfferAppinP");
+  res.render('StdOfferAppinP');
+
+})
+app.get('/StdOfferW',function(req,res){
+
+  console.log("StdOfferW");
+  res.render('StdOfferW');
 
 })
 app.get('/test',function(req,res){
@@ -206,12 +233,6 @@ app.get('/test',function(req,res){
 
 })
 
-app.get('/makeoffer',function(req,res){
-
-  console.log("makeoffer");
-  res.render('makeoffer');
-
-})
 
 //=========================================
 app.listen(port, () => console.log('GradRec is listening on port ${port}!'));
