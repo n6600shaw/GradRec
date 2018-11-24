@@ -16,7 +16,7 @@ include ../layouts/_student_header.jade
                 .invalid-feedback First name is required.
               .col-sm-6.col-lg-4.mb-3
                 label(for='lastName') Last Name *
-                input#lastName.form-control(type='text', name='lastName', placeholder='Appleseed', required='')
+                input#lastName.form-control(type='text', name='lastName', placeholder='#{user.lastName}', required='')
                 .invalid-feedback Last name is required.
           .form-group.mt-4
             h5 Education
@@ -25,28 +25,24 @@ include ../layouts/_student_header.jade
               .col-sm-5.col-md-3.mb-3
                 label(for='program') Current Program *
                 select#program.form-control(name='program', required='')
-                  option(value='') Choose...
+                  option(value='') #{user.education.degree}
                   option(value='master') Master
                   option(value='phd') PhD
                 .invalid-feedback Please choose your current program.
               .col-sm-7.col-md-4.mb-3
                 label(for='program') Current Department *
                 select#department.form-control(name='department', required='')
-                  option(value='') Choose...
+                  option(value='') #{user.education.department}
                   option(value='business') Business
                   option(value='computer') Computer Science
                   option(value='engineering') Engineering
                   option(value='medical') Medical
                   option(value='science') Science
                 .invalid-feedback Please choose your current department.
-              .col-sm-12.col-md-5.mb-3
+            .row
+              .col-sm-12.col-md-12.mb-12
                 label(for='program') Research Interest *
-                select#research.form-control(required='')
-                  option(value='') Choose...
-                  option(value='ai') Artificial Intelligence
-                  option(value='bioinfo') Bioinformatics
-                  option(value='compArch') Computer Architecture
-                  option(value='os') Operating Systems
+                input#interest.form-control(type='text', name='interest', placeholder='#{user.interest}', required='')
                 .invalid-feedback Please choose your research interest.
           .form-group.mt-4
             .row
@@ -56,13 +52,14 @@ include ../layouts/_student_header.jade
                 label(for='workExp')
                   span.text-muted (no longer than 1000 characters)
                 textarea#workExp.form-control(name='workExp', rows='5')
+                     #{user.experience}
           .form-group.mt-4
             h5 Start Date
             hr.mt-1
             .row
               .col-xs-9.col-md-7.col-lg-5.mb-3
                 label(for='startDate') Please indicate your intended start date. *
-                input#startDate.form-control(type='date', name='startDate', min='2018-11-01', max='2020-12-31', required='')
+                input#startDate.form-control( name='startDate', placeholder='#{user.startDate.toDateString()}', min='2018-11-01', max='2020-12-31', required='')
                 .invalid-feedback Please choose your intended start date.
           .form-group.mt-4
             h5 Research Funds
@@ -71,7 +68,7 @@ include ../layouts/_student_header.jade
               .col-xs-9.col-md-7.col-lg-5.mb-4
                 label(for='funds') Please indicate your needed funds range. *
                 select#funds.form-control(name='funds', required='')
-                  option(value='') Choose...
+                  option(value='') #{user.funds}
                   option(value='0') Not needed
                   option(value='1') $0 ~ $1,000 per semaster
                   option(value='2') $1,000 ~ $2,000 per semaster

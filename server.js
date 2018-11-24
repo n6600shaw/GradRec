@@ -1,4 +1,5 @@
 const express = require('express');
+
 const app = express();
 const port = 3333;
 const path = require('path');
@@ -11,15 +12,16 @@ require('./vendor/jquery/jquery-3.2.1.min.js')
 require('./js/main.js');
 
 require('./models/Project');
-require('./models/Student');
 require('./models/User');
 require('./models/Message');
+require('./models/Offer');
 
 mongoose.connect(keys.mongoURI);
 
 
 
 app.use(session({secret:'gradrec'}));
+
 app.use(express.static(__dirname + '/'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -29,8 +31,8 @@ app.set('views', 'views');
 app.set('view engine', 'jade');
 
 const Project = mongoose.model('projects');
-const Student = mongoose.model('students');
 const User = mongoose.model('users');
+const Offer = mongoose.model('offers');
 
 
 //home page, login page
@@ -48,7 +50,7 @@ app.get('/', function (req, res) {
     }
     
   } else{
-  res.render('index');
+  res.render('login');
 
   }
   /* new Project({
@@ -65,23 +67,37 @@ app.post('/login', function (req, res) {
   sess = req.session
   //check with DB
   User.findOne({
-    'email': req.query.email,
-    'passWord': req.query.pass,
+    'email': req.body.email,
   }, function (err, user) {
     if (err) {
       console.log("error");
       return;
     }
     if (user) {
-      console.log("Login",user);
+      if(user.passWord === req.body.password){
+
       sess.email = req.body.email;
       
-      console.log("login",sess.email);
+      //verify user role
+      if(user.role==='student'){
       res.redirect('/show');
+      } else{
+      res.redirect('/manage-project');
+
+      }
+    } else { 
+      
+      
+      console.log('pass is wrong');
+      res.render('login',{message:'pass is wrong'})
+    }
 
 
     } else {
-      console.log('Not exist');
+      
+      console.log('no user')
+      res.render('login',{message:'no user'})
+      
     }
   });
 
@@ -91,7 +107,7 @@ app.post('/login', function (req, res) {
 
 //Sign up
 app.get('/signup',function(req,res){
-
+ console.log('signup')
   res.render('signup');
 
 })
@@ -122,13 +138,13 @@ app.get('/logout',function(req,res){
 
       console.log(err);
     } else {
-      res.redirect('/');
+      res.render('login');
     }
   })
 
 });
 
-//show
+//show student profile
 app.get('/show',function(req,res){
     
     sess = req.session;
@@ -138,9 +154,10 @@ app.get('/show',function(req,res){
       function(err,user){
          
           if(user.firstTime){
-            console.log(user)
+            
             res.render('student/create-profile',{loginuser:user});
           } else{
+            console.log('my-profile')
             res.render('student/my-profile',{user})
           }
 
@@ -156,42 +173,96 @@ app.get('/show',function(req,res){
 
 })
 
+//create-profile
 
+app.post('/create-profile',function(req,res){
 
+  sess = req.session;
+  var profile=req.body.profile
+  console.log(sess.email)
+ console.log(req.body.profile);
+  if(sess.email){
+     
+     User.updateOne({email:sess.email},{
+       $set:{
+        "firstName": profile.firstName,
+        "lastName": profile.lastName,
+        "education":profile.education,
+        "interest":profile.interest,
+        "skills":profile.skills,
+        "experience":profile.experience,
+        "startDate":profile.startDate,
+        "firstTime":false,
+        "funds":profile.funds
+       }
+     },function (err, user) {
+      if (err) throw error
+      console.log(user)
+      console.log("update user complete");
+      res.redirect('/show');
+    }
+      
 
-
-
-//perform submit from stu
-app.post('/submitstud', function (req, res) {
-
-  var item = {
-    firstname: req.body.stuFirstName,
-    lastname: req.body.stuLastName,
+    )
+     
+  } else {
+    res.redirect('/');
   }
-  console.log(item);
-
-});
-
-//perform save from student 
-app.post('/savestud', function (req, res) {
-
-});
-
-//perform save from project
-app.post('/savepro', function (req, res) {
 
 
-});
 
-//perform create from project
 
-app.post('/createpro', function (req, res) {
 
-  var item = {
+})
 
-  }
+//show manage project
+app.get('/manage-project',function(req,res){
+  
+  console.log('manage project')
+  sess=req.session;
+  
+ 
+  Project.find({},function(err,projects){
 
-});
+    res.render('pm/manage-projects',{projects})
+  
+
+  })
+  
+  
+
+})
+
+app.get('/create-project',function(req,res){
+
+  res.render('pm/create-project');
+  
+})
+
+app.post('/create-project',function(req,res){
+  var project=req.body.project;
+
+  new Project({
+    title:project.title,
+    description:project.description,
+    posMaster:project.posMaster,
+    posPhd:project.posPhd,
+    department:project.department,
+    interests:project.interest,
+    skills:project.skills,
+    startDate:project.startDate,
+    funds:project.funds,
+
+
+
+  }).save();
+  console.log('project created')
+
+
+})
+
+
+
 //==============================offer=======================
 app.get('/acceptoffer',function(req,res){
 

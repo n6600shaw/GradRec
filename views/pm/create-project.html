@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="../../css/custom.css" rel="stylesheet" type="text/css">
+
+    <title>Create Project</title>
+</head>
+
+<body class="bg-bodybg">
+    <nav class="navbar navbar-expand-md navbar-light bg-light rounded">
+        <a class="navbar-brand" href="#">
+            <img src="../../images/favicon.png" height="30" class="d-inline-block align-top" alt="munLogo">
+            GradRec
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#gradNavbar" aria-controls="gradNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="gradNavbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link mr-2" href="manage-projects.html">Manage Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mr-2" href="#">Manage Offers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </ul>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row mt-sm-4 mt-md-5 mb-md-5">
+            <div class="col-sm-12 border rounded p-5 bg-light">
+                <h3>Create Project</h3>
+                <p class="text-muted">To create a research project, please fill out the form below. Required fields are marked with *.</p>
+
+                <form class="needs-validation" novalidate>
+
+                    <div class="form-group mt-4">
+                        <h5>Project Information</h5>
+                        <hr class="mt-1 mb-2">
+                        <div class="row">
+                            <div class="col-lg-7 col-xl-6 mb-3">
+                                <label for="title">Project Title *</label>
+                                <input class="form-control" type="text" name="title" id="title" placeholder="Project 1" required>
+                                <div class="invalid-feedback">Project title is required.</div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label for="description">Project Description *</label>
+                                <textarea class="form-control" name="description" id="description" rows="5" required></textarea>
+                                <div class="invalid-feedback">Project description is required.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4">
+                        <h5>Avaiable Positions</h5>
+                        <hr class="mt-1 mb-2">
+                        <div class="form-group row">
+                            <label for="positionMaster" class="col-sm-5 col-lg-3  col-form-label">For Master Student *</label>
+                            <div class="col-sm-7 col-lg-4">
+                                <input type="number" min="0" max="20" class="form-control" id="positionMaster" placeholder="1 - 20" required>
+                                <div class="invalid-feedback">Number must be between 0 and 20.</div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label for="positionPhd" class="col-sm-5 col-lg-3 col-form-label">For PhD Student *</label>
+                            <div class="col-sm-7 col-lg-4">
+                                <input type="number" min="0" max="20" class="form-control" id="positionPhd" placeholder="1 - 20" required>
+                                <div class="invalid-feedback">Number must be between 0 and 20.</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group p-2 mb-5 border rounded">
+                            <h6>Department</h6>
+                            <div class="row">
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="business" value="business">
+                                        <label class="form-check-label" for="business">Business</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="biology" value="biology">
+                                        <label class="form-check-label" for="biology">Biology</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="chemistry" value="chemistry">
+                                        <label class="form-check-label" for="chemistry">Chemistry</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="computer" value="computer">
+                                        <label class="form-check-label" for="computer">Computer Science</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="engineering" value="engineering">
+                                        <label class="form-check-label" for="engineering">Engineering</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="physics" value="physics">
+                                        <label class="form-check-label" for="physics">Physics</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4">
+                        <h5>Requirements</h5>
+                        <hr class="mt-1 mb-3">
+
+                        <div class="form-group p-2 border rounded">
+                            <h6>Research Interest</h6>
+                            <div class="row">
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="bioinfo" value="bioinfo">
+                                        <label class="form-check-label" for="bioinfo">Bioinformatics</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="cv" value="cv">
+                                        <label class="form-check-label" for="cv">Computer Vision</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="game" value="game">
+                                        <label class="form-check-label" for="game">Game AI</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="geno" value="geno">
+                                        <label class="form-check-label" for="geno">Genome Editing</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="nano" value="nano">
+                                        <label class="form-check-label" for="nano">Nanomaterials</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="navig" value="navig">
+                                        <label class="form-check-label" for="navig">Ocean Navigation</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="robo" value="robo">
+                                        <label class="form-check-label" for="robo">Robotics</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="selfdrive" value="selfdrive">
+                                        <label class="form-check-label" for="selfdrive">Self Driving Cars</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group mb-5 p-2 border rounded">
+                            <h6>Skills</h6>
+                            <div class="row">
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="angular" value="angular">
+                                        <label class="form-check-label" for="angular">Angular</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="c" value="c">
+                                        <label class="form-check-label" for="c">C/C++ </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="html" value="html">
+                                        <label class="form-check-label" for="html">HTML/CSS</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="java" value="java">
+                                        <label class="form-check-label" for="java">Java</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="nodejs" value="nodejs">
+                                        <label class="form-check-label" for="nodejs">Node.js</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="python" value="python">
+                                        <label class="form-check-label" for="python">Python</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="r" value="r">
+                                        <label class="form-check-label" for="r">R</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="scala" value="scala">
+                                        <label class="form-check-label" for="scala">Scala</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4">
+                        <h5>Start Date</h5>
+                        <hr class="mt-1 mb-2">
+                        <div class="row">
+                            <div class="col-xs-9 col-md-7 col-lg-5 mb-3">
+                                <label for="startDate">Please choose the start date of the project. *</label>
+                                <input class="form-control" type="date" name="startDate" id="startDate" min="2018-11-01" max="2020-12-31" required>
+                                <div class="invalid-feedback">Please choose your intended start date.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4">
+                        <h5>Research Funds</h5>
+                        <hr class="mt-1 mb-2">
+                        <div class="row">
+                            <div class="col-xs-9 col-md-7 col-lg-5 mb-4">
+                                <label for="funds">Avaiable funds per student per semaster. *</label>
+                                <select class="form-control" name="funds" id="funds" required>
+                                    <option value="">Choose...</option>
+                                    <option value="0">Not needed</option>
+                                    <option value="1">$0 ~ $1,000 per semaster</option>
+                                    <option value="2">$1,000 ~ $2,000 per semaster</option>
+                                    <option value="3">$2,000 ~ $3,000 per semaster</option>
+                                </select>
+                                <div class="invalid-feedback">Please choose your needed funds range.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-toolbar">
+                        <button class="btn btn-outline-success btn-lg mr-4 mt-3" type="button">Save Project</button>
+                        <button class="btn btn-outline-danger btn-lg mr-5 mt-3" type="button">Discard Changes</button>
+                        <button class="btn btn-primary btn-lg mt-3" type="submit">Publish Project</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script src="../../js/validateForm.js"></script>
+</body>
+
+</html>
