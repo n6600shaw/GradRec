@@ -1,317 +1,469 @@
+<!doctype html>
+<html lang="en">
 
-doctype html
-head
-    // Required meta tags
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
-    link(href='../../css/custom.css', rel='stylesheet', type='text/css')
-    title Manage Projects
-nav.navbar.navbar-expand-md.navbar-light.bg-light.rounded
-    a.navbar-brand(href='#')
-        img.d-inline-block.align-top(src='../../images/favicon.png', height='30', alt='munLogo')
-    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#gradNavbar', aria-controls='gradNavbar', aria-expanded='false', aria-label='Toggle navigation')
-        span.navbar-toggler-icon
-    #gradNavbar.collapse.navbar-collapse
-        ul.navbar-nav.mr-auto
-            li.nav-item.active
-                a.nav-link.mr-2(href='manage-projects.html') Manage Projects
-            li.nav-item
-                a.nav-link.mr-2(href='#') Manage Offers
-            li.nav-item
-                a.nav-link(href='#') About
-        button.btn.btn-outline-success.my-2.my-sm-0(type='button') Logout
-.container
-    h4.pl-3.mt-sm-4.mb-4 Manage Projects
-    nav
-        #selectTab.nav.nav-tabs.mt-sm-4
-            a#publishedTab.nav-item.nav-link.active(data-toggle='tab', href='#published') Published Projects
-            a#savedTab.nav-item.nav-link(data-toggle='tab', href='#saved') Saved Projects
-    #selectTabContent.tab-content
-        #published.tab-pane.fade.show.active
-            .row.mt-3.mb-md-5
-                .col-3.mr-1
-                    #publishedList.nav.flex-column.nav-pills
-                        a#project1.nav-link.active(data-toggle='pill', href='#description1') Project 1
-                        a#project2.nav-link(data-toggle='pill', href='#description2') Project 2
-                        a#project3.nav-link(data-toggle='pill', href='#description3') Project 3
-                        a#project4.nav-link(data-toggle='pill', href='#description4') Project 4
-                    button.btn.btn-outline-success.btn-block.mt-4(type='button') Create project
-                .col-sm-8.border.rounded.p-5.bg-light
-                    #publishedContent.tab-content
-                        #description1.tab-pane.fade.show.active
-                            h3 Project 1
-                            p.lead Faculty of Computer Science
-                            hr
-                            h5.mt-4 Project Description
-                            p
-                            p
-                            h5.mt-4 Cirteria
-                            ul
-                                li Java
-                                li HTML
-                                li Python
-                            h5.mt-4 Funds
-                            p $2,000 per semaster
-                            #studentList.accordion.mt-4
-                                .card
-                                    #headingOne.card-header
-                                        h5.mb-0
-                                            button.btn.btn-link(type='button', data-toggle='collapse', data-target='#matchedStudents')
-                                    #matchedStudents.collapse(data-parent='#studentList')
-                                        .card-body.table-responsive
-                                            table.table.table-hover
-                                                tbody
-                                                    tr
-                                                        td John Snow
-                                                        td Master
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-secondary(type='button', data-toggle='modal', data-target='#profile') View Profile
-                                                                a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-success(type='button') Send Offer
-                                                    tr
-                                                        td Sansa Stark
-                                                        td Master
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-secondary(type='button') View Profile
-                                                                a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-success(type='button') Send Offer
-                                                    tr
-                                                        td Jaime Lannister
-                                                        td PhD
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-secondary(type='button') View Profile
-                                                                a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-success(type='button') Send Offer
-                                .card
-                                    #headingOne.card-header
-                                        h5.mb-0
-                                            button.btn.btn-link(type='button', data-toggle='collapse', data-target='#appliedStudents')
-                                    #appliedStudents.collapse(data-parent='#studentList')
-                                        .card-body.table-responsive
-                                            table.table.table-hover
-                                                tbody
-                                                    tr
-                                                        td Cersei Lannister
-                                                        td PhD
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-secondary(type='button') View Profile
-                                                                a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-danger(type='button') Reject
-                                                                button.btn.btn-sm.btn-outline-success(type='button') Approve
-                                                    tr
-                                                        td Robb Stark
-                                                        td Master
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-secondary(type='button') View Profile
-                                                                a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-danger(type='button') Reject
-                                                                button.btn.btn-sm.btn-outline-success(type='button') Approve
-                                                    tr
-                                                        td Daenerys Targaryen
-                                                        td PhD
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-secondary(type='button') View Profile
-                                                                a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-danger(type='button') Reject
-                                                                button.btn.btn-sm.btn-outline-success(type='button') Approve
-                                .card
-                                    #headingOne.card-header
-                                        h5.mb-0
-                                            button.btn.btn-link(type='button', data-toggle='collapse', data-target='#enrolledStudents')
-                                    #enrolledStudents.collapse(data-parent='#studentList')
-                                        .card-body.table-responsive
-                                            table.table.table-hover
-                                                tbody
-                                                    tr
-                                                        td Ned Stark
-                                                        td Master
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-secondary(type='button') View Profile
-                                                                a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
-                                                    tr
-                                                        td Tywin Lannister
-                                                        td PhD
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-secondary(type='button') View Profile
-                                                                a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
-                                                    tr
-                                                        td Robert Baratheon
-                                                        td PhD
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-secondary(type='button') View Profile
-                                                                a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
-                            .btn-toolbar
-                                button.btn.btn-outline-success.btn-lg.mr-4.mt-5(type='submit') Modify
-                                button.btn.btn-outline-danger.btn-lg.mt-5(type='button') Delete
-                        #description2.tab-pane.fade
-                            h3 Project 2
-                            p.lead Faculty of Computer Science
-                            hr
-                            h5.mt-4 Project Description
-                            p
-                            p
-                            h5.mt-4 Cirteria
-                            ul
-                                li Java
-                                li HTML
-                                li Python
-                            h5.mt-4 Funds
-                            p $2,000 per semaster
-                            .btn-toolbar
-                                button.btn.btn-outline-success.btn-lg.mr-4.mt-3(type='submit') Modify
-                                button.btn.btn-outline-danger.btn-lg.mt-3(type='button') Delete
-                        #description3.tab-pane.fade
-                            h3 Project 3
-                            p.lead Faculty of Computer Science
-                            hr
-                            h5.mt-4 Project Description
-                            p
-                            p
-                            h5.mt-4 Cirteria
-                            ul
-                                li Java
-                                li HTML
-                                li Python
-                            h5.mt-4 Funds
-                            p $2,000 per semaster
-                            .btn-toolbar
-                                button.btn.btn-outline-success.btn-lg.mr-4.mt-3(type='submit') Modify
-                                button.btn.btn-outline-danger.btn-lg.mt-3(type='button') Delete
-                        #description4.tab-pane.fade
-                            h3 Project 4
-                            p.lead Faculty of Computer Science
-                            hr
-                            h5.mt-4 Project Description
-                            p
-                            p
-                            h5.mt-4 Cirteria
-                            ul
-                                li Java
-                                li HTML
-                                li Python
-                            h5.mt-4 Funds
-                            p $2,000 per semaster
-                            .btn-toolbar
-                                button.btn.btn-outline-success.btn-lg.mr-4.mt-3(type='submit') Modify
-                                button.btn.btn-outline-danger.btn-lg.mt-3(type='button') Delete
-        #saved.tab-pane.fade
-            .row.mt-3.mb-md-5
-                .col-3.mr-1
-                    #savedList.nav.flex-column.nav-pills
-                        a#project5.nav-link.active(data-toggle='pill', href='#description5') Project 5
-                        a#project6.nav-link(data-toggle='pill', href='#description6') Project 6
-                        a#project7.nav-link(data-toggle='pill', href='#description7') Project 7
-                        a#project8.nav-link(data-toggle='pill', href='#description8') Project 8
-                    button.btn.btn-outline-success.btn-block.mt-4(type='button') Create project
-                .col-sm-8.border.rounded.p-5.bg-light
-                    #savedContent.tab-content
-                        #description5.tab-pane.fade.show.active
-                            h3 Project 5
-                            p.lead Faculty of Computer Science
-                            hr
-                            h5.mt-4 Project Description
-                            p
-                            p
-                            h5.mt-4 Cirteria
-                            ul
-                                li Java
-                                li HTML
-                                li Python
-                            h5.mt-4 Funds
-                            p $2,000 per semaster
-                            .btn-toolbar
-                                button.btn.btn-outline-success.btn-lg.mr-4.mt-4(type='button') Modify
-                                button.btn.btn-outline-danger.btn-lg.mr-5.mt-4(type='button') Delete
-                                button.btn.btn-primary.btn-lg.mt-4(type='submit') Publish
-                        #description6.tab-pane.fade
-                            h3 Project 6
-                            p.lead Faculty of Computer Science
-                            hr
-                            h5.mt-4 Project Description
-                            p
-                            p
-                            h5.mt-4 Cirteria
-                            ul
-                                li Java
-                                li HTML
-                                li Python
-                            h5.mt-4 Funds
-                            p $2,000 per semaster
-                            .btn-toolbar
-                                button.btn.btn-outline-success.btn-lg.mr-4.mt-4(type='button') Modify
-                                button.btn.btn-outline-danger.btn-lg.mr-5.mt-4(type='button') Delete
-                                button.btn.btn-primary.btn-lg.mt-4(type='submit') Publish
-                        #description7.tab-pane.fade
-                            h3 Project 7
-                            p.lead Faculty of Computer Science
-                            hr
-                            h5.mt-4 Project Description
-                            p
-                            p
-                            h5.mt-4 Cirteria
-                            ul
-                                li Java
-                                li HTML
-                                li Python
-                            h5.mt-4 Funds
-                            p $2,000 per semaster
-                            .btn-toolbar
-                                button.btn.btn-outline-success.btn-lg.mr-4.mt-4(type='button') Modify
-                                button.btn.btn-outline-danger.btn-lg.mr-5.mt-4(type='button') Delete
-                                button.btn.btn-primary.btn-lg.mt-4(type='submit') Publish
-                        #description8.tab-pane.fade
-                            h3 Project 8
-                            p.lead Faculty of Computer Science
-                            hr
-                            h5.mt-4 Project Description
-                            p
-                            p
-                            h5.mt-4 Cirteria
-                            ul
-                                li Java
-                                li HTML
-                                li Python
-                            h5.mt-4 Funds
-                            p $2,000 per semaster
-                            .btn-toolbar
-                                button.btn.btn-outline-success.btn-lg.mr-4.mt-4(type='button') Modify
-                                button.btn.btn-outline-danger.btn-lg.mr-5.mt-4(type='button') Delete
-                                button.btn.btn-primary.btn-lg.mt-4(type='submit') Publish
-// Modal Conetent
-#profile.modal.fade(tabindex='-1')
-    .modal-dialog
-        .modal-content
-            .modal-header
-                h5.modal-title John&apos;s Profile
-            .modal-body
-                p This is John&apos;s Profile.
-                p
-                p
-            .modal-footer
-                button.btn.btn-secondary(type='button', data-dismiss='modal') Close
-// Optional JavaScript
-// jQuery first, then Popper.js, then Bootstrap JS
-script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
-script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49', crossorigin='anonymous')
-script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy', crossorigin='anonymous')
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="../../css/custom.css" rel="stylesheet" type="text/css">
+
+    <title>Manage Projects</title>
+</head>
+
+<body class="bg-bodybg">
+    <nav class="navbar navbar-expand-md navbar-light bg-light rounded">
+        <a class="navbar-brand" href="#">
+            <img src="../../images/favicon.png" height="30" class="d-inline-block align-top" alt="munLogo">
+            GradRec
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#gradNavbar" aria-controls="gradNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="gradNavbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link mr-2" href="manage-projects.html">Manage Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mr-2" href="#">Manage Offers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </ul>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="button">Logout</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h4 class="pl-3 mt-sm-4 mb-4">Manage Projects</h4>
+        <nav>
+            <div class="nav nav-tabs mt-sm-4" id="selectTab">
+                <a class="nav-item nav-link active" id="publishedTab" data-toggle="tab" href="#published">Published Projects</a>
+                <a class="nav-item nav-link" id="savedTab" data-toggle="tab" href="#saved">Saved Projects</a>
+            </div>
+        </nav>
+
+        <div class="tab-content" id="selectTabContent">
+            <div class="tab-pane fade show active" id="published">
+                <div class="row mt-3 mb-md-5">
+                    <div class="col-3 mr-1">
+                        <div class="nav flex-column nav-pills" id="publishedList">
+                            <a class="nav-link active" id="project1" data-toggle="pill" href="#description1">Project 1</a>
+                            <a class="nav-link" id="project2" data-toggle="pill" href="#description2">Project 2</a>
+                            <a class="nav-link" id="project3" data-toggle="pill" href="#description3">Project 3</a>
+                            <a class="nav-link" id="project4" data-toggle="pill" href="#description4">Project 4</a>
+                        </div>
+                        <button type="button" class="btn btn-outline-success btn-block mt-4">Create project</button>
+                    </div>
+                    <div class="col-sm-8 border rounded p-5 bg-light">
+                        <div class="tab-content" id="publishedContent">
+                            <div class="tab-pane fade show active" id="description1">
+                                <h3>Project 1</h3>
+                                <p class="lead">Faculty of Computer Science</p>
+                                <hr>
+                                <h5 class="mt-4">Project Description</h5>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum, eos vitae cumque perspiciatis possimus consequatur, rem illo et neque ducimus quis laborum delectus necessitatibus in deleniti laboriosam consequuntur architecto corporis molestias natus quam, temporibus odio voluptatum repudiandae? Illum, nam molestias.</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, consectetur quos tenetur, nihil excepturi impedit possimus tempore obcaecati explicabo harum repudiandae error et? Vel et autem commodi voluptates aliquam harum veritatis voluptate laboriosam voluptatem beatae deleniti ad modi blanditiis accusamus delectus dolor laudantium, eligendi incidunt non, accusantium nobis ea? Cupiditate.</p>
+                                <h5 class="mt-4">Cirteria</h5>
+                                <ul>
+                                    <li>Java</li>
+                                    <li>HTML</li>
+                                    <li>Python</li>
+                                </ul>
+                                <h5 class="mt-4">Funds</h5>
+                                <p>$2,000 per semaster</p>
+                                <div class="accordion mt-4" id="studentList">
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                            <h5 class="mb-0">
+                                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#matchedStudents">
+                                                    Matched Students
+                                                </button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse" id="matchedStudents" data-parent="#studentList">
+                                            <div class="card-body table-responsive">
+                                                <table class="table table-hover">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>John Snow</td>
+                                                            <td>Master</td>
+                                                            <td>
+                                                                <div class="btn-group d-flex justify-content-end">
+                                                                    <button class="btn btn-sm btn-outline-secondary" type="button" data-toggle="modal" data-target="#profile">View Profile</button>
+                                                                    <a class="btn btn-sm btn-outline-info" href="mailto:username@mun.ca">Send Msg</a>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="btn-group d-flex justify-content-end">
+                                                                    <button class="btn btn-sm btn-outline-success" type="button">Send Offer</button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Sansa Stark</td>
+                                                            <td>Master</td>
+                                                            <td>
+                                                                <div class="btn-group d-flex justify-content-end">
+                                                                    <button class="btn btn-sm btn-outline-secondary" type="button">View Profile</button>
+                                                                    <a class="btn btn-sm btn-outline-info" href="mailto:username@mun.ca">Send Msg</a>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="btn-group d-flex justify-content-end">
+                                                                    <button class="btn btn-sm btn-outline-success" type="button">Send Offer</button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Jaime Lannister</td>
+                                                            <td>PhD</td>
+                                                            <td>
+                                                                <div class="btn-group d-flex justify-content-end">
+                                                                    <button class="btn btn-sm btn-outline-secondary" type="button">View Profile</button>
+                                                                    <a class="btn btn-sm btn-outline-info" href="mailto:username@mun.ca">Send Msg</a>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="btn-group d-flex justify-content-end">
+                                                                    <button class="btn btn-sm btn-outline-success" type="button">Send Offer</button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                            <h5 class="mb-0">
+                                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#appliedStudents">
+                                                    Applied Students
+                                                </button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse" id="appliedStudents" data-parent="#studentList">
+                                            <div class="card-body table-responsive">
+                                                <table class="table table-hover">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Cersei Lannister</td>
+                                                            <td>PhD</td>
+                                                            <td>
+                                                                <div class="btn-group d-flex justify-content-end">
+                                                                    <button class="btn btn-sm btn-outline-secondary" type="button">View Profile</button>
+                                                                    <a class="btn btn-sm btn-outline-info" href="mailto:username@mun.ca">Send Msg</a>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="btn-group d-flex justify-content-end">
+                                                                    <button class="btn btn-sm btn-outline-danger" type="button">Reject</button>
+                                                                    <button class="btn btn-sm btn-outline-success" type="button">Approve</button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Robb Stark</td>
+                                                            <td>Master</td>
+                                                            <td>
+                                                                <div class="btn-group d-flex justify-content-end">
+                                                                    <button class="btn btn-sm btn-outline-secondary" type="button">View Profile</button>
+                                                                    <a class="btn btn-sm btn-outline-info" href="mailto:username@mun.ca">Send Msg</a>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="btn-group d-flex justify-content-end">
+                                                                    <button class="btn btn-sm btn-outline-danger" type="button">Reject</button>
+                                                                    <button class="btn btn-sm btn-outline-success" type="button">Approve</button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Daenerys Targaryen</td>
+                                                            <td>PhD</td>
+                                                            <td>
+                                                                <div class="btn-group d-flex justify-content-end">
+                                                                    <button class="btn btn-sm btn-outline-secondary" type="button">View Profile</button>
+                                                                    <a class="btn btn-sm btn-outline-info" href="mailto:username@mun.ca">Send Msg</a>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="btn-group d-flex justify-content-end">
+                                                                    <button class="btn btn-sm btn-outline-danger" type="button">Reject</button>
+                                                                    <button class="btn btn-sm btn-outline-success" type="button">Approve</button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                            <h5 class="mb-0">
+                                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#enrolledStudents">
+                                                    Enrolled Students
+                                                </button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse" id="enrolledStudents" data-parent="#studentList">
+                                            <div class="card-body table-responsive">
+                                                <table class="table table-hover">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Ned Stark</td>
+                                                            <td>Master</td>
+                                                            <td>
+                                                                <div class="btn-group d-flex justify-content-end">
+                                                                    <button class="btn btn-sm btn-outline-secondary" type="button">View Profile</button>
+                                                                    <a class="btn btn-sm btn-outline-info" href="mailto:username@mun.ca">Send Msg</a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Tywin Lannister</td>
+                                                            <td>PhD</td>
+                                                            <td>
+                                                                <div class="btn-group d-flex justify-content-end">
+                                                                    <button class="btn btn-sm btn-outline-secondary" type="button">View Profile</button>
+                                                                    <a class="btn btn-sm btn-outline-info" href="mailto:username@mun.ca">Send Msg</a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Robert Baratheon</td>
+                                                            <td>PhD</td>
+                                                            <td>
+                                                                <div class="btn-group d-flex justify-content-end">
+                                                                    <button class="btn btn-sm btn-outline-secondary" type="button">View Profile</button>
+                                                                    <a class="btn btn-sm btn-outline-info" href="mailto:username@mun.ca">Send Msg</a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn-toolbar">
+                                    <button class="btn btn-outline-success btn-lg  mr-4 mt-5" type="submit">Modify</button>
+                                    <button class="btn btn-outline-danger btn-lg mt-5" type="button">Delete</button>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="description2">
+                                <h3>Project 2</h3>
+                                <p class="lead">Faculty of Computer Science</p>
+                                <hr>
+                                <h5 class="mt-4">Project Description</h5>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum, eos vitae cumque perspiciatis possimus consequatur, rem illo et neque ducimus quis laborum delectus necessitatibus in deleniti laboriosam consequuntur architecto
+                                    corporis molestias natus quam, temporibus odio voluptatum repudiandae? Illum, nam molestias.</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, consectetur quos tenetur, nihil excepturi impedit possimus tempore obcaecati explicabo harum repudiandae error et? Vel et autem commodi voluptates aliquam harum veritatis
+                                    voluptate laboriosam voluptatem beatae deleniti ad modi blanditiis accusamus delectus dolor laudantium, eligendi incidunt non, accusantium nobis ea? Cupiditate.</p>
+                                <h5 class="mt-4">Cirteria</h5>
+                                <ul>
+                                    <li>Java</li>
+                                    <li>HTML</li>
+                                    <li>Python</li>
+                                </ul>
+                                <h5 class="mt-4">Funds</h5>
+                                <p>$2,000 per semaster</p>
+                                <div class="btn-toolbar">
+                                    <button class="btn btn-outline-success btn-lg  mr-4 mt-3" type="submit">Modify</button>
+                                    <button class="btn btn-outline-danger btn-lg mt-3" type="button">Delete</button>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="description3">
+                                <h3>Project 3</h3>
+                                <p class="lead">Faculty of Computer Science</p>
+                                <hr>
+                                <h5 class="mt-4">Project Description</h5>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum, eos vitae cumque perspiciatis possimus consequatur, rem illo et neque ducimus quis laborum delectus necessitatibus in deleniti laboriosam consequuntur architecto
+                                    corporis molestias natus quam, temporibus odio voluptatum repudiandae? Illum, nam molestias.</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, consectetur quos tenetur, nihil excepturi impedit possimus tempore obcaecati explicabo harum repudiandae error et? Vel et autem commodi voluptates aliquam harum veritatis
+                                    voluptate laboriosam voluptatem beatae deleniti ad modi blanditiis accusamus delectus dolor laudantium, eligendi incidunt non, accusantium nobis ea? Cupiditate.</p>
+                                <h5 class="mt-4">Cirteria</h5>
+                                <ul>
+                                    <li>Java</li>
+                                    <li>HTML</li>
+                                    <li>Python</li>
+                                </ul>
+                                <h5 class="mt-4">Funds</h5>
+                                <p>$2,000 per semaster</p>
+                                <div class="btn-toolbar">
+                                    <button class="btn btn-outline-success btn-lg  mr-4 mt-3" type="submit">Modify</button>
+                                    <button class="btn btn-outline-danger btn-lg mt-3" type="button">Delete</button>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="description4">
+                                <h3>Project 4</h3>
+                                <p class="lead">Faculty of Computer Science</p>
+                                <hr>
+                                <h5 class="mt-4">Project Description</h5>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum, eos vitae cumque perspiciatis possimus consequatur, rem illo et neque ducimus quis laborum delectus necessitatibus in deleniti laboriosam consequuntur architecto
+                                    corporis molestias natus quam, temporibus odio voluptatum repudiandae? Illum, nam molestias.</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, consectetur quos tenetur, nihil excepturi impedit possimus tempore obcaecati explicabo harum repudiandae error et? Vel et autem commodi voluptates aliquam harum veritatis
+                                    voluptate laboriosam voluptatem beatae deleniti ad modi blanditiis accusamus delectus dolor laudantium, eligendi incidunt non, accusantium nobis ea? Cupiditate.</p>
+                                <h5 class="mt-4">Cirteria</h5>
+                                <ul>
+                                    <li>Java</li>
+                                    <li>HTML</li>
+                                    <li>Python</li>
+                                </ul>
+                                <h5 class="mt-4">Funds</h5>
+                                <p>$2,000 per semaster</p>
+                                <div class="btn-toolbar">
+                                    <button class="btn btn-outline-success btn-lg  mr-4 mt-3" type="submit">Modify</button>
+                                    <button class="btn btn-outline-danger btn-lg mt-3" type="button">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="saved">
+                <div class="row mt-3 mb-md-5">
+                    <div class="col-3 mr-1">
+                        <div class="nav flex-column nav-pills" id="savedList">
+                            <a class="nav-link active" id="project5" data-toggle="pill" href="#description5">Project 5</a>
+                            <a class="nav-link" id="project6" data-toggle="pill" href="#description6">Project 6</a>
+                            <a class="nav-link" id="project7" data-toggle="pill" href="#description7">Project 7</a>
+                            <a class="nav-link" id="project8" data-toggle="pill" href="#description8">Project 8</a>
+                        </div>
+                        <button type="button" class="btn btn-outline-success btn-block mt-4">Create project</button>
+                    </div>
+
+                    <div class="col-sm-8 border rounded p-5 bg-light">
+                        <div class="tab-content" id="savedContent">
+                            <div class="tab-pane fade show active" id="description5">
+                                <h3>Project 5</h3>
+                                <p class="lead">Faculty of Computer Science</p>
+                                <hr>
+                                <h5 class="mt-4">Project Description</h5>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum, eos vitae cumque perspiciatis possimus consequatur, rem illo et neque ducimus quis laborum delectus necessitatibus in deleniti laboriosam consequuntur architecto
+                                    corporis molestias natus quam, temporibus odio voluptatum repudiandae? Illum, nam molestias.</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, consectetur quos tenetur, nihil excepturi impedit possimus tempore obcaecati explicabo harum repudiandae error et? Vel et autem commodi voluptates aliquam harum veritatis
+                                    voluptate laboriosam voluptatem beatae deleniti ad modi blanditiis accusamus delectus dolor laudantium, eligendi incidunt non, accusantium nobis ea? Cupiditate.</p>
+                                <h5 class="mt-4">Cirteria</h5>
+                                <ul>
+                                    <li>Java</li>
+                                    <li>HTML</li>
+                                    <li>Python</li>
+                                </ul>
+                                <h5 class="mt-4">Funds</h5>
+                                <p>$2,000 per semaster</p>
+                                <div class="btn-toolbar">
+                                    <button class="btn btn-outline-success btn-lg mr-4 mt-4" type="button">Modify</button>
+                                    <button class="btn btn-outline-danger btn-lg mr-5 mt-4" type="button">Delete</button>
+                                    <button class="btn btn-primary btn-lg mt-4" type="submit">Publish</button>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="description6">
+                                <h3>Project 6</h3>
+                                <p class="lead">Faculty of Computer Science</p>
+                                <hr>
+                                <h5 class="mt-4">Project Description</h5>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum, eos vitae cumque perspiciatis possimus consequatur, rem illo et neque ducimus quis laborum delectus necessitatibus in deleniti laboriosam consequuntur architecto
+                                    corporis molestias natus quam, temporibus odio voluptatum repudiandae? Illum, nam molestias.</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, consectetur quos tenetur, nihil excepturi impedit possimus tempore obcaecati explicabo harum repudiandae error et? Vel et autem commodi voluptates aliquam harum veritatis
+                                    voluptate laboriosam voluptatem beatae deleniti ad modi blanditiis accusamus delectus dolor laudantium, eligendi incidunt non, accusantium nobis ea? Cupiditate.</p>
+                                <h5 class="mt-4">Cirteria</h5>
+                                <ul>
+                                    <li>Java</li>
+                                    <li>HTML</li>
+                                    <li>Python</li>
+                                </ul>
+                                <h5 class="mt-4">Funds</h5>
+                                <p>$2,000 per semaster</p>
+                                <div class="btn-toolbar">
+                                    <button class="btn btn-outline-success btn-lg mr-4 mt-4" type="button">Modify</button>
+                                    <button class="btn btn-outline-danger btn-lg mr-5 mt-4" type="button">Delete</button>
+                                    <button class="btn btn-primary btn-lg mt-4" type="submit">Publish</button>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="description7">
+                                <h3>Project 7</h3>
+                                <p class="lead">Faculty of Computer Science</p>
+                                <hr>
+                                <h5 class="mt-4">Project Description</h5>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum, eos vitae cumque perspiciatis possimus consequatur, rem illo et neque ducimus quis laborum delectus necessitatibus in deleniti laboriosam consequuntur architecto
+                                    corporis molestias natus quam, temporibus odio voluptatum repudiandae? Illum, nam molestias.</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, consectetur quos tenetur, nihil excepturi impedit possimus tempore obcaecati explicabo harum repudiandae error et? Vel et autem commodi voluptates aliquam harum veritatis
+                                    voluptate laboriosam voluptatem beatae deleniti ad modi blanditiis accusamus delectus dolor laudantium, eligendi incidunt non, accusantium nobis ea? Cupiditate.</p>
+                                <h5 class="mt-4">Cirteria</h5>
+                                <ul>
+                                    <li>Java</li>
+                                    <li>HTML</li>
+                                    <li>Python</li>
+                                </ul>
+                                <h5 class="mt-4">Funds</h5>
+                                <p>$2,000 per semaster</p>
+                                <div class="btn-toolbar">
+                                    <button class="btn btn-outline-success btn-lg mr-4 mt-4" type="button">Modify</button>
+                                    <button class="btn btn-outline-danger btn-lg mr-5 mt-4" type="button">Delete</button>
+                                    <button class="btn btn-primary btn-lg mt-4" type="submit">Publish</button>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="description8">
+                                <h3>Project 8</h3>
+                                <p class="lead">Faculty of Computer Science</p>
+                                <hr>
+                                <h5 class="mt-4">Project Description</h5>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum, eos vitae cumque perspiciatis possimus consequatur, rem illo et neque ducimus quis laborum delectus necessitatibus in deleniti laboriosam consequuntur architecto
+                                    corporis molestias natus quam, temporibus odio voluptatum repudiandae? Illum, nam molestias.</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, consectetur quos tenetur, nihil excepturi impedit possimus tempore obcaecati explicabo harum repudiandae error et? Vel et autem commodi voluptates aliquam harum veritatis
+                                    voluptate laboriosam voluptatem beatae deleniti ad modi blanditiis accusamus delectus dolor laudantium, eligendi incidunt non, accusantium nobis ea? Cupiditate.</p>
+                                <h5 class="mt-4">Cirteria</h5>
+                                <ul>
+                                    <li>Java</li>
+                                    <li>HTML</li>
+                                    <li>Python</li>
+                                </ul>
+                                <h5 class="mt-4">Funds</h5>
+                                <p>$2,000 per semaster</p>
+                                <div class="btn-toolbar">
+                                    <button class="btn btn-outline-success btn-lg mr-4 mt-4" type="button">Modify</button>
+                                    <button class="btn btn-outline-danger btn-lg mr-5 mt-4" type="button">Delete</button>
+                                    <button class="btn btn-primary btn-lg mt-4" type="submit">Publish</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Conetent -->
+    <div class="modal fade" id="profile" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">John's Profile</h5>
+                </div>
+                <div class="modal-body">
+                    <p>This is John's Profile.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt dolores consectetur voluptates! Dolor esse tenetur sapiente, facere quasi, necessitatibus architecto nihil temporibus optio earum ex.</p>
+                    <p>Repudiandae, dolorum. Placeat, aut, eaque aspernatur deserunt, et quis quo facilis praesentium non laboriosam quae?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+
+</html>

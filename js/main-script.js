@@ -57,6 +57,16 @@
 
     $.post('/create-project',{project:project})
    }
+
+   function currentProject(index){
+
+    console.log(currentIndex)
+
+       
+
+
+
+   }
   
 
    

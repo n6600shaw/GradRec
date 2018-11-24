@@ -223,15 +223,24 @@ app.get('/manage-project',function(req,res){
   
  
   Project.find({},function(err,projects){
-
-    res.render('pm/manage-projects',{projects})
+    
+    res.render('pm/manage-projects',{projects:projects,currentProject:0})
   
 
   })
   
+})
+app.get('/get/project',function(req,res){
+  console.log(req.query.id)
+  Project.find({},function(err,projects){
+    
+    res.render('pm/manage-projects',{projects:projects,currentProject:req.query.id})
   
 
+  })
+
 })
+
 
 app.get('/create-project',function(req,res){
 
