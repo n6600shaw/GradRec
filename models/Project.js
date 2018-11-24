@@ -13,10 +13,10 @@ interest:[String],
 skills:[String],
 startDate:Date,
 funds:String,
-matched:[{type:Schema.Types.ObjectId, ref:'User'}],
-applied:[{type:Schema.Types.ObjectId, ref:'User'}],
-enrolled:[{type:Schema.Types.ObjectId, ref:'User'}],
-offers:[{type:Schema.Types.ObjectId,ref:'User'}],
+matched:[{type:Schema.Types.ObjectId, ref:'users'}],
+applied:[{type:Schema.Types.ObjectId, ref:'users'}],
+enrolled:[{type:Schema.Types.ObjectId, ref:'users'}],
+offers:[{type:Schema.Types.ObjectId,ref:'users'}],
 
 
 

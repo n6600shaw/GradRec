@@ -1,107 +1,36 @@
-
-doctype html
-head
-    // Required meta tags
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
-    link(href='../../css/custom.css', rel='stylesheet', type='text/css')
-    title Project Details
-nav.navbar.navbar-expand-md.navbar-light.bg-light.rounded
-    a.navbar-brand(href='#')
-        img.d-inline-block.align-top(src='../../images/favicon.png', height='30', alt='munLogo')
-    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#gradNavbar', aria-controls='gradNavbar', aria-expanded='false', aria-label='Toggle navigation')
-        span.navbar-toggler-icon
-    #gradNavbar.collapse.navbar-collapse
-        ul.navbar-nav.mr-auto
-            li.nav-item
-                a.nav-link(href='create-profile.html') Profile
-            li.nav-item.active
-                a.nav-link(href='view-matched-projects.html') Projects
-            li.nav-item
-                a.nav-link(href='#') Offer
-            li.nav-item
-                a.nav-link(href='#') About
-        button.btn.btn-outline-success.my-2.my-sm-0(type='button') Logout
+include ../layouts/_student_header.jade
 .container
     h4.pl-3.pl-3.mt-sm-4.mb-4 Matched Projects
     .row.mb-md-5
         .col-sm-3.mr-1
             #projectList.nav.flex-column.nav-pills
-                a#project1.nav-link.active(data-toggle='pill', href='#description1') Project 1
-                a#project2.nav-link(data-toggle='pill', href='#description2') Project 2
-                a#project3.nav-link(data-toggle='pill', href='#description3') Project 3
-                a#project4.nav-link(data-toggle='pill', href='#description4') Project 4
-            a.btn.btn-outline-secondary.btn-block.mt-4(href='view-matched-projects.html') Go Back
+                 -for (var i=0;i<projects.length;i++){
+                             
+                    a.nav-link(id='project+#{i+1}', href='/get/matched-project?id=#{i}') Project #{i+1}
+                 -}
+            a.btn.btn-outline-secondary.btn-block.mt-4(href='/matched-project') Go Back
         .col-sm-8.border.rounded.p-5.bg-light
             #projectContent.tab-content
                 #description1.tab-pane.fade.show.active
-                    h3 Project 1
-                    p.lead Faculty of Computer Science
-                    hr
-                    h5.mt-4 Project Description
-                    p
-                    p
-                    h5.mt-4 Cirteria
-                    ul
-                        li Java
-                        li HTML
-                        li Python
-                    h5.mt-4 Funds
-                    p $2,000 per semaster
+                  -var i=currentProject
+                        .tab-pane.fade.show.active(id='#description#{i+1}') 
+                            h3 #{projects[i].title} 
+                            p.lead #{projects[i].department}
+                            hr
+                            h5.mt-4 Project Description
+                            p #{projects[i].desprition}
+                            h5.mt-4 Criteria
+                            ul
+                                each item in projects[i].interest
+                                    li #{item}
+                                each item in projects[i].skills
+                                    li #{item}
+                            h5.mt-4 Funds
+                            p #{projects[i].funds}
                     .btn-toolbar
                         a.btn.btn-outline-info.btn-lg.mr-5.mt-4(href='mailto:admin@gradrec.ca?subject=Project1') Contact Project Manager
                         button.btn.btn-primary.btn-lg.px-5.mt-4(type='button') Apply
-                #description2.tab-pane.fade
-                    h3 Project 2
-                    p.lead Faculty of Computer Science
-                    hr
-                    h5.mt-4 Project Description
-                    p
-                    p
-                    h5.mt-4 Cirteria
-                    ul
-                        li Java
-                        li HTML
-                        li Python
-                    h5.mt-4 Funds
-                    p $2,000 per semaster
-                    .btn-toolbar
-                        a.btn.btn-outline-info.btn-lg.mr-5.mt-4(href='mailto:admin@gradrec.ca?subject=Project2') Contact Project Manager
-                        button.btn.btn-primary.btn-lg.px-5.mt-4(type='button') Apply
-                #description3.tab-pane.fade
-                    h3 Project 3
-                    p.lead Faculty of Computer Science
-                    hr
-                    h5.mt-4 Project Description
-                    p
-                    p
-                    h5.mt-4 Cirteria
-                    ul
-                        li Java
-                        li HTML
-                        li Python
-                    h5.mt-4 Funds
-                    p $2,000 per semaster
-                    .btn-toolbar
-                        a.btn.btn-outline-info.btn-lg.mr-5.mt-4(href='mailto:admin@gradrec.ca?subject=Project3') Contact Project Manager
-                        button.btn.btn-primary.btn-lg.px-5.mt-4(type='button') Apply
-                #description4.tab-pane.fade
-                    h3 Project 4
-                    p.lead Faculty of Computer Science
-                    hr
-                    h5.mt-4 Project Description
-                    p
-                    p
-                    h5.mt-4 Cirteria
-                    ul
-                        li Java
-                        li HTML
-                        li Python
-                    h5.mt-4 Funds
-                    p $2,000 per semaster
-                    .btn-toolbar
-                        a.btn.btn-outline-info.btn-lg.mr-5.mt-4(href='mailto:admin@gradrec.ca?subject=Project4') Contact Project Manager
-                        button.btn.btn-primary.btn-lg.px-5.mt-4(type='button') Apply
+               
 // Optional JavaScript
 // jQuery first, then Popper.js, then Bootstrap JS
 script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')

@@ -44,9 +44,11 @@ app.get('/', function (req, res) {
     var user = User.find({'email':sess.email});
     if(user.role==='student'){ 
       res.render('student/profile');
-    } else {
+    } else if (user.role==='pm') {
 
       res.render('pm/create-project');
+    } else{
+      res.render('login')
     }
     
   } else{
@@ -204,15 +206,96 @@ app.post('/create-profile',function(req,res){
       
 
     )
+
+    //match projects
+    User.findOne({email:sess.email},function(err,user){
+
+      Project.find({},function(err,projects){
+        var matched=[]; 
+       
+        for(var i=0;i<projects.length;i++){
+          var findOne = function (pro,stu) {
+            console.log('matching')
+            return stu.some(function (v) {
+                return pro.indexOf(v) >= 0;
+            });
+          };
+          //filter the projects according to interest
+           console.log("Projects",projects[i].skills)
+           console.log("Student",user.skills)
+           console.log('Interest matching result:',findOne(projects[i].skills,user.skills))
+          
+           if (findOne(projects[i].interest,user.interest) && findOne(projects[i].skills,user.skills))
+          {
+            matched.push(projects[i]);
+            projects[i].matched.push(user);
+            projects[i].save();
+          }
+  
+  
+  
+         }
+         console.log("Matched",matched)
+         User.updateOne({email:sess.email},{
+          $set:{
+           "matched": matched,
+          }
+        },function (err, user) {
+         if (err) throw error
+     
+         console.log("update user complete");
+  
+       });
+         res.render('student/matched-projects',{user})     
+  
+      });
+  
+    })
      
   } else {
     res.redirect('/');
   }
 
+})
 
+//student match  projects
+app.get('/matched-project',function(req,res){
+ 
+  var sess=req.session;
+  console.log(sess.email)
+  User.findOne({email:sess.email}).populate('matched').exec(function(err,user){
+   if(err){
+     console.log(err)
+   }
+   console.log(user)
+    res.render('student/matched-projects',{user:user,matched:user.matched});
 
+  });
+  
+})
+app.get('/get/matched-project',function(req,res){
+  console.log(req.query.id)
+  Project.find({},function(err,projects){
+    
+    res.render('student/project-details',{projects:projects,currentProject:req.query.id})
+  
 
+  })
 
+})
+
+//show student matched projects
+app.get('/show-project',function(req,res){
+  var sess=req.session;
+  console.log(sess.email)
+  User.findOne({email:sess.email}).populate('matched').exec(function(err,user){
+   if(err){
+     console.log(err)
+   }
+   console.log(user)
+    res.render('student/project-details',{user:user,projects:user.matched,currentProject:0});
+
+  });
 })
 
 //show manage project
@@ -242,6 +325,7 @@ app.get('/get/project',function(req,res){
 })
 
 
+//create-projects
 app.get('/create-project',function(req,res){
 
   res.render('pm/create-project');

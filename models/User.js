@@ -17,10 +17,10 @@ userSchema=new Schema({
     experience:String,
     startDate:Date,
     funds:String,
-    matched:[{type:Schema.Types.ObjectId,ref:'Project'}],
-    applied:[{type:Schema.Types.ObjectId,ref:'Project'}],
-    enrolled:{type:Schema.Types.ObjectId,ref:'Project'},
-    offers:[{type:Schema.Types.ObjectId, ref:'Offer'}]
+    matched:[{type:Schema.Types.ObjectId,ref:'projects'}],
+    applied:[{type:Schema.Types.ObjectId,ref:'projects'}],
+    enrolled:{type:Schema.Types.ObjectId,ref:'projects'},
+    offers:[{type:Schema.Types.ObjectId, ref:'Offers'}]
 
 })
 
