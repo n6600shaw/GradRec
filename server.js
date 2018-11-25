@@ -16,7 +16,7 @@ require('./models/User');
 require('./models/Message');
 require('./models/Offer');
 
-//mongoose.connect(keys.mongoURI);
+mongoose.connect(keys.mongoURI);
 
 
 
@@ -33,7 +33,6 @@ app.set('view engine', 'jade');
 const Project = mongoose.model('projects');
 const User = mongoose.model('users');
 const Offer = mongoose.model('offers');
-
 
 
 //home page, login page
@@ -211,7 +210,6 @@ app.post('/create-profile',function(req,res){
     //when ever new student profile added, do a mathching for this new student
       User.findOne({email:sess.email},function(err,user){
 
-
         Project.find({},function(err,projects){
           var matched=[]; 
          
@@ -254,16 +252,13 @@ app.post('/create-profile',function(req,res){
     
       })
 
-
    
      
   } else {
     res.redirect('/');
   }
 
-
 })
-
 
 //student match  projects
 app.get('/matched-project',function(req,res){
@@ -433,43 +428,29 @@ app.post('/create-project',function(req,res){
 
 })
 
+//delete project
+app.get('/delete',function(req,res){
+
+   var title=req.query.title;
+   console.log(title)
+   Project.deleteOne({title:title}, function(err){
+     console.log("project deleted")
+    res.redirect('/manage-project')
 
 
-
-//=========================Pm offer views =======================
-app.get('/EditOffer',function(req,res){
+   } )
 
 
-
-  console.log("EditOffer");
-  res.render('EditOffer');
 
 })
 
-app.get('/PMSubmittedOffer',function(req,res){
 
-  console.log("PMSubmittedOffer");
-  res.render('PMSubmittedOffer');
 
-})
+//==============================offer=======================
+app.get('/acceptoffer',function(req,res){
 
-////////////std Offer views ////////////
-app.get('/stdAcceptOffer',function(req,res){
-
-  console.log("stdAcceptOffer");
-  res.render('stdAcceptOffer');
-
-})
-app.get('/StdOfferAppinP',function(req,res){
-
-  console.log("StdOfferAppinP");
-  res.render('StdOfferAppinP');
-
-})
-app.get('/StdOfferW',function(req,res){
-
-  console.log("StdOfferW");
-  res.render('StdOfferW');
+  console.log("acceptoffer");
+  res.render('acceptoffer');
 
 })
 app.get('/test',function(req,res){
@@ -479,6 +460,12 @@ app.get('/test',function(req,res){
 
 })
 
+app.get('/makeoffer',function(req,res){
+
+  console.log("makeoffer");
+  res.render('makeoffer');
+
+})
 
 //=========================================
 app.listen(port, () => console.log('GradRec is listening on port ${port}!'));
