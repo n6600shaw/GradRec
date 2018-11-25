@@ -1,92 +1,41 @@
+
 doctype html
-html(lang='en')
-  head
-    title Sign Up
-    meta(charset='UTF-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    // ===============================================================================================
-    link(rel='icon', type='image/png', href='images/icons/favicon.ico')
-    // ===============================================================================================
-    link(rel='stylesheet', type='text/css', href='vendor/bootstrap/css/bootstrap.min.css')
-    // ===============================================================================================
-    link(rel='stylesheet', type='text/css', href='fonts/font-awesome-4.7.0/css/font-awesome.min.css')
-    // ===============================================================================================
-    link(rel='stylesheet', type='text/css', href='fonts/Linearicons-Free-v1.0.0/icon-font.min.css')
-    // ===============================================================================================
-    link(rel='stylesheet', type='text/css', href='fonts/iconic/css/material-design-iconic-font.min.css')
-    // ===============================================================================================
-    link(rel='stylesheet', type='text/css', href='vendor/animate/animate.css')
-    // ===============================================================================================
-    link(rel='stylesheet', type='text/css', href='vendor/css-hamburgers/hamburgers.min.css')
-    // ===============================================================================================
-    link(rel='stylesheet', type='text/css', href='vendor/animsition/css/animsition.min.css')
-    // ===============================================================================================
-    link(rel='stylesheet', type='text/css', href='vendor/select2/select2.min.css')
-    // ===============================================================================================
-    link(rel='stylesheet', type='text/css', href='vendor/daterangepicker/daterangepicker.css')
-    // ===============================================================================================
-    link(rel='stylesheet', type='text/css', href='css/util2.css')
-    link(rel='stylesheet', type='text/css', href='css/main2.css')
-    // ===============================================================================================
-  body(style='background-color: #999999;')
-    .limiter
-      .container-login100
-        .login100-more(style="background-image: url('../images/munbackground6.jpg');")
-        .wrap-login100.p-l-50.p-r-50.p-t-72.p-b-50
-          form.login100-form.validate-form(action="/signup", method="post")
-            .wrap-input100.validate-input(data-validate='Firts name is required')
-              span.label-input100 Fist Name
-              input.input100(type='text', name='fname', placeholder='Fist Name...')
-              span.focus-input100
-            .wrap-input100.validate-input(data-validate='Last name is required')
-              span.label-input100 Last Name
-              input.input100(type='text', name='lname', placeholder='Last Name...')
-              span.focus-input100
-            .wrap-input100.validate-input(data-validate='Valid email is required: ex@abc.xyz')
-              span.label-input100 Email
-              input.input100(type='text', name='email', placeholder='Email addess...')
-              span.focus-input100
-            .wrap-input100.validate-input(data-validate='Username is required')
-              span.label-input100 Username
-              input.input100(type='text', name='username', placeholder='Username...')
-              span.focus-input100
-            .wrap-input100.validate-input(data-validate='Password is required')
-              span.label-input100 Password
-              input#password.input100(type='password', name='password', placeholder='*************')
-              span.focus-input100
-            .wrap-input100.validate-input(data-validate='Repeat Password is required')
-              span.label-input100 Repeat Password
-              input#rpassword.input100(type='password', name='rpassword', placeholder='*************')
-              span.focus-input100
-            .flex-m.w-full.p-b-33
-              .contact100-form-checkbox
-                input#ckb1.input-checkbox100(type='checkbox', name='remember-me', checked='', required='')
-                label.label-checkbox100(for='ckb1')
-                  span.txt1
-                    | I agree to the
-                    a.txt2.hov1(href='#')
-                      | Terms of User
-            .container-login100-form-btn
-              .wrap-login100-form-btn
-                .login100-form-bgbtn
-                button.login100-form-btn(class='' type='submit')
-                  | Sign Up
-              a.dis-block.txt3.hov1.p-r-30.p-t-10.p-b-10.p-l-30(href='index.html')
-                | Sign in
-                i.fa.fa-long-arrow-right.m-l-5
-    // ===============================================================================================
-    script(src='vendor/jquery/jquery-3.2.1.min.js')
-    // ===============================================================================================
-    script(src='vendor/animsition/js/animsition.min.js')
-    // ===============================================================================================
-    script(src='vendor/bootstrap/js/popper.js')
-    script(src='vendor/bootstrap/js/bootstrap.min.js')
-    // ===============================================================================================
-    script(src='vendor/select2/select2.min.js')
-    // ===============================================================================================
-    script(src='vendor/daterangepicker/moment.min.js')
-    script(src='vendor/daterangepicker/daterangepicker.js')
-    // ===============================================================================================
-    script(src='vendor/countdowntime/countdowntime.js')
-    // ===============================================================================================
-    script(src='js/main.js')
+head
+    // Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    link(href='../css/custom.css', rel='stylesheet', type='text/css')
+    link(href='../css/login.css', rel='stylesheet', type='text/css')
+    title GradRec Login
+.modal-dialog.modal-dialog-centered
+    .col-sm-10.login-dialog
+        .modal-content
+            .col-12.login-logo.text-center
+                img(src='../images/login-logo.png')
+            form.col-12
+                h1.h3.mb-5.font-weight-normal.text-center GradRec System
+                .form-group
+                    label(for='email') Email Address
+                    input#email.form-control(type='email', name='email', placeholder='yourname@mun.ca')
+                    small#emailHelp.form-text.text-muted We&apos;ll never share your email with anyone else.
+                .form-group
+                    label(for='password') Password
+                    input#password.form-control(type='password', name='password', placeholder='Enter password')
+                .form-group
+                    label(for='rpassword') Re-enter Password
+                    input#password.form-control(type='password', name='rpassword', placeholder='Re-enter password')
+                .form-group
+                    label(for='accountType') Account Type
+                    select#accountType.form-control(name='accountType')
+                        option(value='student') Student
+                        option(value='pm') Project Manager
+                .d-flex.justify-content-center.mt-4
+                    button.btn.btn-lg.btn-primary.px-5(type='submit',href='/singup') Signup
+                .d-flex.justify-content-center.mt-5
+                    p.text-muted
+                        a(href='/') Login
+// Optional JavaScript
+// jQuery first, then Popper.js, then Bootstrap JS
+script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49', crossorigin='anonymous')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy', crossorigin='anonymous')

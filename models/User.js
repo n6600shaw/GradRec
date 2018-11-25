@@ -8,9 +8,19 @@ userSchema=new Schema({
     lastName: String,
     userName: String,
     email: String,
-    password: String,
+    passWord: String,
     firstTime:Boolean,
-    role: String
+    role: String,
+    education:{degree:String,department:String},
+    interest:[String],
+    skills:[String],
+    experience:String,
+    startDate:Date,
+    funds:String,
+    matched:[{type:Schema.Types.ObjectId,ref:'projects'}],
+    applied:[{type:Schema.Types.ObjectId,ref:'projects'}],
+    enrolled:{type:Schema.Types.ObjectId,ref:'projects'},
+    offers:[{type:Schema.Types.ObjectId, ref:'Offers'}]
 
 })
 
