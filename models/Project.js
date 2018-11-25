@@ -16,7 +16,7 @@ funds:String,
 matched:[{type:Schema.Types.ObjectId, ref:'users'}],
 applied:[{type:Schema.Types.ObjectId, ref:'users'}],
 enrolled:[{type:Schema.Types.ObjectId, ref:'users'}],
-offers:[{type:Schema.Types.ObjectId,ref:'users'}],
+offers:[{type:Schema.Types.ObjectId,ref:'offers'}],
 
 
 

@@ -372,7 +372,7 @@ app.get('/manage-project',function(req,res){
 app.get('/get/project',function(req,res){
   console.log(req.query.id)
   console.log(req.query.title)
-  
+
   Project.findOne({title:req.query.title}).populate('matched').exec(function(err,project){
     
     Project.find({},function(err,projects){
