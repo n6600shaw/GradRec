@@ -428,6 +428,22 @@ app.post('/create-project',function(req,res){
 
 })
 
+//delete project
+app.get('/delete',function(req,res){
+
+   var title=req.query.title;
+   console.log(title)
+   Project.deleteOne({title:title}, function(err){
+     console.log("project deleted")
+    res.redirect('/manage-project')
+
+
+   } )
+
+
+
+})
+
 
 
 //==============================offer=======================

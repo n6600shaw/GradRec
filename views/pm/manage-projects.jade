@@ -51,7 +51,7 @@ include ../layouts/_pm_header.jade
                                                         td #{matched[j].education.degree}
                                                         td
                                                             .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-secondary(type='button', data-toggle='modal', data-target='#profile') View Profile
+                                                                button.btn.btn-sm.btn-outline-secondary(type='button', data-toggle='modal', data-target='#profile#{j}') View Profile
                                                                 a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
                                                         td
                                                             .btn-group.d-flex.justify-content-end
@@ -130,7 +130,8 @@ include ../layouts/_pm_header.jade
                                                                 a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
                             .btn-toolbar
                                 button.btn.btn-outline-success.btn-lg.mr-4.mt-5(type='submit') Modify
-                                button.btn.btn-outline-danger.btn-lg.mt-5(type='button') Delete
+                                a(href='/delete?title=#{projects[i].title}')
+                                  button.btn.btn-outline-danger.btn-lg.mt-5(type='button') Delete
                          
                        
         #saved.tab-pane.fade
@@ -217,17 +218,22 @@ include ../layouts/_pm_header.jade
                                 button.btn.btn-outline-danger.btn-lg.mr-5.mt-4(type='button') Delete
                                 button.btn.btn-primary.btn-lg.mt-4(type='submit') Publish
 // Modal Conetent
-#profile.modal.fade(tabindex='-1')
+- for(var j=0;j<matched.length;j++){
+.modal.fade(tabindex='-1', id="profile#{j}")
     .modal-dialog
         .modal-content
             .modal-header
-                h5.modal-title John&apos;s Profile
+                h5.modal-title #{matched[j].firstName} #{matched[j].lastName} &apos;s Profile
             .modal-body
-                p This is John&apos;s Profile.
-                p
-                p
+                P #[strong Education:] #{matched[j].education.degree} Degree, from #{matched[j].education.department}
+                p #[strong Work Experience:] #{matched[j].experience}
+                P #[strong Skills:] #{matched[j].skills}
+                p #[strong Research interest:] #{matched[j].interest}
+                P #[strong Funds needs:] #{matched[j].funds}
+                P #[strong Start date:] #{new Date(matched[j].startDate).toDateString()}                  
             .modal-footer
                 button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+-}
 // Optional JavaScript
 // jQuery first, then Popper.js, then Bootstrap JS
 script(src='https://code.jquery.com/jquery-3.3.1.min.js')

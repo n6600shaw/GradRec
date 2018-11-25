@@ -1,0 +1,14 @@
+  modal.fade(tabindex='-1' id="profile#{j}")
+                                                        .modal-dialog
+                                                            .modal-content
+                                                                .modal-header
+                                                                    h5.modal-title #{mathced[j].firstName} #{mathced[j].lastName} &apos;s Profile
+                                                                .modal-body
+                                                                    p Education: #{matched[j].education.degree} Degree, from #{matched[j].education.department}
+                                                                    p Work Experience: #{matched[j].experience}
+                                                                    P Skills: #{matched[j].skills}
+                                                                    p Research interest: #{matched[j].interest}
+                                                                    P Funds needs: #{matched[j].funds}
+                                                                    P
+                                                                .modal-footer
+                                                                    button.btn.btn-secondary(type='button', data-dismiss='modal') Close
