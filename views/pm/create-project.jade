@@ -1,101 +1,165 @@
-include ./layouts/_pm_header.jade
-    .container
-      .row.mt-sm-4.mt-md-5.mb-md-5
+include ../layouts/_pm_header.jade
+.container
+    .row.mt-sm-4.mt-md-5.mb-md-5
         .col-sm-12.border.rounded.p-5.bg-light
-          h3 Create Project
-          p.text-muted
-            | To create a research project, please fill out the form below. Required fields are marked with *.
-          form.needs-validation(novalidate='')
-            .form-group.mt-4
-              h5 Project Information
-              hr.mt-1
-              .row
-                .col-sm-6.col-lg-4.mb-3
-                  label(for='title') Project Title *
-                  input#title.form-control(type='text', name='title', placeholder='Project 1', required='')
-                  .invalid-feedback Project title is required.
-                .col-sm-6.col-lg-4.mb-3
-                  label(for='department') Department *
-                  select#department.form-control(name='department', required='')
-                    option(value='') Choose...
-                    option(value='business') Business
-                    option(value='computer') Computer Science
-                    option(value='engineering') Engineering
-                    option(value='medical') Medical
-                    option(value='science') Science
-                  .invalid-feedback Please choose a department.
-              .row
-                .col-sm-8.col-lg-6.mb-3
-                  label(for='participants')
-                    | Project Participants
-                    span.text-muted (seperated by comma)
-                  input#participants.form-control(type='text', name='participants', placeholder='Prof. John Appleseed')
-              label(for='description') Project Description *
-              textarea#description.form-control(name='description', rows='5', required='')
-            .form-group.mt-4
-              h5 Requirements
-              hr.mt-1
-              .form-group.mb-4
-                h6 Degree
-                .form-check.form-check-inline
-                  input#phd.form-check-input(type='checkbox', value='phd')
-                  label.form-check-label(for='phd') PhD
-                .form-check.form-check-inline
-                  input#master.form-check-input(type='checkbox', value='master')
-                  label.form-check-label(for='master') Master
-              .form-group.mb-4
-                h6 Required Skills
-                .form-check.form-check-inline
-                  input#java.form-check-input(type='checkbox', value='java')
-                  label.form-check-label(for='phd') Java
-                .form-check.form-check-inline
-                  input#c.form-check-input(type='checkbox', value='c')
-                  label.form-check-label(for='c') C/C++
-                .form-check.form-check-inline
-                  input#python.form-check-input(type='checkbox', value='python')
-                  label.form-check-label(for='python') Python
-                .form-check.form-check-inline
-                  input#ruby.form-check-input(type='checkbox', value='ruby')
-                  label.form-check-label(for='ruby') Ruby
-                .form-check.form-check-inline
-                  input#r.form-check-input(type='checkbox', value='r')
-                  label.form-check-label(for='r') R
-                .form-check.form-check-inline
-                  input#html.form-check-input(type='checkbox', value='html')
-                  label.form-check-label(for='html') JavaScript
-              .row
-                .col-sm-10.col-lg-8.mb-3
-                  label(for='backgrounds')
-                    | Work Background
-                    span.text-muted (background keywords are seperated by comma)
-                  input#backgrounds.form-control(type='text', name='backgrounds', placeholder='node.js, angular, maven, etc.')
-            .form-group.mt-4
-              h5 Start Date
-              hr.mt-1
-              .row
-                .col-xs-9.col-md-7.col-lg-5.mb-3
-                  label(for='startDate') Please choose the start date of the project. *
-                  input#startDate.form-control(type='date', name='startDate', min='2018-11-01', max='2020-12-31', required='')
-                  .invalid-feedback Please choose your intended start date.
-            .form-group.mt-4
-              h5 Research Funds
-              hr.mt-1
-              .row
-                .col-xs-9.col-md-7.col-lg-5.mb-4
-                  label(for='funds') Please choose the avaiable funds range. *
-                  select#funds.form-control(name='funds')
-                    option(value='0') Not needed
-                    option(value='1') $0 ~ $1,000 per semaster
-                    option(value='2') $1,000 ~ $2,000 per semaster
-                    option(value='3') $2,000 ~ $3,000 per semaster
-            .btn-toolbar.mt-auto(role='toolbar')
-              .btn-group.mr-5(role='group')
-                button.btn.btn-outline-primary.btn-lg(type='button') Save Project
-              .btn-group(role='group')
-                button.btn.btn-primary.btn-lg(type='submit') Publish Project
-    // Optional JavaScript
-    // jQuery first, then Popper.js, then Bootstrap JS
-    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49', crossorigin='anonymous')
-    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy', crossorigin='anonymous')
-    script(src='../../js/validateForm.js')
+            h3 Create Project
+            p.text-muted
+            form.needs-validation(novalidate='', action='javascript:publishProject();')
+                .form-group.mt-4
+                    h5 Project Information
+                    hr.mt-1.mb-2
+                    .row
+                        .col-lg-7.col-xl-6.mb-3
+                            label(for='title') Project Title *
+                            input#title.form-control(type='text', name='title', placeholder='Project 1', required='')
+                            .invalid-feedback Project title is required.
+                    .row
+                        .col.mb-3
+                            label(for='description') Project Description *
+                            textarea#description.form-control(name='description', rows='5', required='')
+                            .invalid-feedback Project description is required.
+                .form-group.mt-4
+                    h5 Avaiable Positions
+                    hr.mt-1.mb-2
+                    .form-group.row
+                        label.col-sm-5.col-lg-3.col-form-label(for='positionMaster') For Master Student *
+                        .col-sm-7.col-lg-4
+                            input#positionMaster.form-control(name='posMaster', type='number', min='0', max='20', placeholder='1 - 20', required='')
+                            .invalid-feedback Number must be between 0 and 20.
+                    .form-group.row.mb-4
+                        label.col-sm-5.col-lg-3.col-form-label(for='positionPhd') For PhD Student *
+                        .col-sm-7.col-lg-4
+                            input#positionPhd.form-control(name='posPhd',type='number', min='0', max='20', placeholder='1 - 20', required='')
+                            .invalid-feedback Number must be between 0 and 20.
+                    .form-group.p-2.mb-5.border.rounded
+                        h6 Department
+                        .row
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#business.form-check-input(type='checkbox', value='Business')
+                                    label.form-check-label(for='business') Business
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#biology.form-check-input(type='checkbox', value='Biology')
+                                    label.form-check-label(for='biology') Biology
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#chemistry.form-check-input(type='checkbox', value='Chemistry')
+                                    label.form-check-label(for='chemistry') Chemistry
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#computer.form-check-input(type='checkbox', value='Computer Science')
+                                    label.form-check-label(for='computer') Computer Science
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#engineering.form-check-input(type='checkbox', value='Engineering')
+                                    label.form-check-label(for='engineering') Engineering
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#physics.form-check-input(type='checkbox', value='Physics')
+                                    label.form-check-label(for='physics') Physics
+                .form-group.mt-4
+                    h5 Requirements
+                    hr.mt-1.mb-3
+                    #interest.form-group.p-2.border.rounded
+                        h6 Research Interest
+                        .row
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#bioinfo.form-check-input(type='checkbox', value='Bioinformatics')
+                                    label.form-check-label(for='bioinfo') Bioinformatics
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#cv.form-check-input(type='checkbox', value='Computer Vision')
+                                    label.form-check-label(for='cv') Computer Vision
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#game.form-check-input(type='checkbox', value='Game AI')
+                                    label.form-check-label(for='game') Game AI
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#geno.form-check-input(type='checkbox', value='Genome Editing')
+                                    label.form-check-label(for='geno') Genome Editing
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#nano.form-check-input(type='checkbox', value='Nanomaterials')
+                                    label.form-check-label(for='nano') Nanomaterials
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#navig.form-check-input(type='checkbox', value='Ocean Navigation')
+                                    label.form-check-label(for='navig') Ocean Navigation
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#robo.form-check-input(type='checkbox', value='Robotics')
+                                    label.form-check-label(for='robo') Robotics
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#selfdrive.form-check-input(type='checkbox', value='Self Driving Cars')
+                                    label.form-check-label(for='selfdrive') Self Driving Cars
+                    #skills.form-group.mb-5.p-2.border.rounded
+                        h6 Skills
+                        .row
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#angular.form-check-input(type='checkbox', value='Angular')
+                                    label.form-check-label(for='angular') Angular
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#c.form-check-input(type='checkbox', value='C/C++')
+                                    label.form-check-label(for='c') C/C++ 
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#html.form-check-input(type='checkbox', value='HTML/CSS')
+                                    label.form-check-label(for='html') HTML/CSS
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#java.form-check-input(type='checkbox', value='Java')
+                                    label.form-check-label(for='java') Java
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#nodejs.form-check-input(type='checkbox', value='Node.js')
+                                    label.form-check-label(for='nodejs') Node.js
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#python.form-check-input(type='checkbox', value='Python')
+                                    label.form-check-label(for='python') Python
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#r.form-check-input(type='checkbox', value='R')
+                                    label.form-check-label(for='r') R
+                            .col-sm-6.col-md-4.col-lg-3
+                                .form-check.form-check-inline
+                                    input#scala.form-check-input(type='checkbox', value='Scala')
+                                    label.form-check-label(for='scala') Scala
+                .form-group.mt-4
+                    h5 Start Date
+                    hr.mt-1.mb-2
+                    .row
+                        .col-xs-9.col-md-7.col-lg-5.mb-3
+                            label(for='startDate') Please choose the start date of the project. *
+                            input#startDate.form-control(type='date', name='startDate', min='2018-11-01', max='2020-12-31', required='')
+                            .invalid-feedback Please choose your intended start date.
+                .form-group.mt-4
+                    h5 Research Funds
+                    hr.mt-1.mb-2
+                    .row
+                        .col-xs-9.col-md-7.col-lg-5.mb-4
+                            label(for='funds') Avaiable funds per student per semaster. *
+                            select#funds.form-control(name='funds', required='')
+                                option(value='') Choose...
+                                option(value='Not needed') Not needed
+                                option(value='$0 ~ $1,000 per semaster') $0 ~ $1,000 per semaster
+                                option(value='$1,000 ~ $2,000 per semaster') $1,000 ~ $2,000 per semaster
+                                option(value='$2,000 ~ $3,000 per semaster') $2,000 ~ $3,000 per semaster
+                            .invalid-feedback Please choose your needed funds range.
+                .btn-toolbar
+                    button.btn.btn-outline-success.btn-lg.mr-4.mt-3(type='button') Save Project
+                    button.btn.btn-outline-danger.btn-lg.mr-5.mt-3(type='button') Discard Changes
+                    button.btn.btn-primary.btn-lg.mt-3(type='submit') Publish Project
+// Optional JavaScript
+// jQuery first, then Popper.js, then Bootstrap JS
+script(src='https://code.jquery.com/jquery-3.3.1.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49', crossorigin='anonymous')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy', crossorigin='anonymous')
+script(src='../../js/validateForm.js')
+script(src='../../js/main-script.js')
