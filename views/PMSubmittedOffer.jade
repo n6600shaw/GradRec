@@ -1,0 +1,131 @@
+﻿doctype html
+html
+  head
+  body.bg-bodybg
+    br(lang='en')
+    title Make Offer
+    meta(charset='utf-8')
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='style.css')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    link(href='../../css/custom.css', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet', href='jquery-ui/jquery-ui.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    script(src='jquery-ui/jquery-ui.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    script(src='main-script.js')
+    nav.navbar.navbar-expand-md.navbar-light.bg-light.rounded
+      a.navbar-brand(href='#')
+        img.d-inline-block.align-top(src='../../images/favicon.png', alt='munLogo', height='30')
+        |         GradRec
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#gradNavbar', aria-controls='gradNavbar', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #gradNavbar.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link(href='manage-projects.html') Manage Projects
+          li.nav-item
+            a.nav-link(href='#') Manage Offers
+          li.nav-item
+            a.nav-link(href='#') About
+        .text-right
+          button.btn.btn-outline-success.my-2.my-sm-0(type='button') Logout
+    .container
+      .row
+        .col-sm-12.border.rounded.p-5.bg-light
+          h3 Submitted Offers
+      br
+      .row
+        .col-sm-4.border.rounded.p-5.bg-light
+          form(method='post')
+            .form-group
+              legend Matched students: 
+              #studentList.accordion
+                .card
+                  #headingOne.card-header
+                    h5.mb-0
+                      button.btn.btn-link(type='button', data-toggle='collapse', data-target='#matchedStudents')
+                        | Project 1
+                        span.badge.badge-default.badge-pill 3
+                  #matchedStudents.collapse(data-parent='#studentList')
+                    .card-body.table-responsive
+                      table.table.table-hover
+                        tbody
+                          tr
+                            td
+                              a.btn.btn-default John Snow
+                            td
+                              .btn-group.d-flex.justify-content-end
+                                button.btn.btn-sm.btn-outline-secondary(type='button', data-toggle='modal', data-target='#profile') View Profile
+                          tr
+                            td
+                              a.btn.btn-default John Snow
+                            td
+                              .btn-group.d-flex.justify-content-end
+                                button.btn.btn-sm.btn-outline-secondary(type='button', data-toggle='modal', data-target='#profile') View Profile
+                          tr
+                            td
+                              a.btn.btn-default John Snow
+                            td
+                              .btn-group.d-flex.justify-content-end
+                                button.btn.btn-sm.btn-outline-secondary(type='button', data-toggle='modal', data-target='#profile') View Profile
+                .card
+                  #headingOne.card-header
+                    h5.mb-0
+                      button.btn.btn-link(type='button', data-toggle='collapse', data-target='#appliedStudents')
+                        | Project 2
+                        span.badge.badge-default.badge-pill 2
+                  #appliedStudents.collapse(data-parent='#studentList')
+                    .card-body.table-responsive
+                      table.table.table-hover
+                        tbody
+                          tr
+                            td
+                              a.btn.btn-default John Snow
+                            td
+                              .btn-group.d-flex.justify-content-end
+                                button.btn.btn-sm.btn-outline-secondary(type='button', data-toggle='modal', data-target='#profile') View Profile
+                          tr
+                            td
+                              a.btn.btn-default John Snow
+                            td
+                              .btn-group.d-flex.justify-content-end
+                                button.btn.btn-sm.btn-outline-secondary(type='button', data-toggle='modal', data-target='#profile') View Profile
+                .card
+                  #headingOne.card-header
+                    h5.mb-0
+                      button.btn.btn-link(type='button', data-toggle='collapse', data-target='#enrolledStudents')
+                        | Project 3
+                        span.badge.badge-default.badge-pill 1 
+                  #enrolledStudents.collapse(data-parent='#studentList')
+                    .card-body.table-responsive
+                      table.table.table-hover
+                        tbody
+                          tr
+                          tr
+                            td
+                              a.btn.btn-default John Snow
+                            td
+                              .btn-group.d-flex.justify-content-end
+                                button.btn.btn-sm.btn-outline-secondary(type='button', data-toggle='modal', data-target='#profile') View Profile
+        .col-sm-8.border.rounded.p-5.bg-light
+          legend Submitted Offer
+          .row
+            .col-md-2
+              label(for='to_stud') To:
+            label(for='to_stud')  Retrieved StudName
+          .form-group
+          .card(style='width: auto;')
+            h4
+              b Project name
+            .container
+              h4
+                b John Doe
+              |                 Thanks for applying to Mun University 
+              br
+              |                     The University Offers 2 years full coverage with 16000$ per year 
+              br
+              |                     The project Supervisor is Prof. Adrian Fiech
+        // ROW
