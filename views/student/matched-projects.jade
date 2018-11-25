@@ -13,12 +13,13 @@ include ../layouts/_student_header.jade
     .row(mx-2='')
        
     -for (var i=0;i<user.matched.length;i++){
+    
         .col-sm-6.col-md-4.col-lg-3.mb-4
             .card.bg-light
                 .card-header Project #{i+1}
                 .card-body
                     p.card-text #{user.matched[i].title}.
-                    a.btn.btn-primary(href='/show-project?projects=#{user.matched}&user=#{user}') View details
+                    a.btn.btn-primary(href='/show-project?user=#{user}') View details
     -}
         
        

@@ -147,10 +147,10 @@ include ../layouts/_pm_header.jade
                             label(for='funds') Avaiable funds per student per semaster. *
                             select#funds.form-control(name='funds', required='')
                                 option(value='') Choose...
-                                option(value='0') Not needed
-                                option(value='1') $0 ~ $1,000 per semaster
-                                option(value='2') $1,000 ~ $2,000 per semaster
-                                option(value='3') $2,000 ~ $3,000 per semaster
+                                option(value='Not needed') Not needed
+                                option(value='$0 ~ $1,000 per semaster') $0 ~ $1,000 per semaster
+                                option(value='$1,000 ~ $2,000 per semaster') $1,000 ~ $2,000 per semaster
+                                option(value='$2,000 ~ $3,000 per semaster') $2,000 ~ $3,000 per semaster
                             .invalid-feedback Please choose your needed funds range.
                 .btn-toolbar
                     button.btn.btn-outline-success.btn-lg.mr-4.mt-3(type='button') Save Project

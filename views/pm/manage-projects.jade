@@ -14,7 +14,7 @@ include ../layouts/_pm_header.jade
                          
                          -for (var i=0;i<projects.length;i++){
                              
-                            a.nav-link(id='project+#{i+1}', href='/get/project?id=#{i}') Project #{i+1}
+                            a.nav-link(id='project+#{i+1}', href='/get/project?id=#{i}&title=#{projects[i].title}&projects=#{projects}') Project #{i+1}
                          -}
                     a(href='/create-project')    
                       button.btn.btn-outline-success.btn-block.mt-4(type='button') Create project
@@ -27,7 +27,7 @@ include ../layouts/_pm_header.jade
                             p.lead #{projects[i].department}
                             hr
                             h5.mt-4 Project Description
-                            p #{projects[i].desprition}
+                            p #{projects[i].description}
                             h5.mt-4 Criteria
                             ul
                                 each item in projects[i].interest
@@ -45,9 +45,10 @@ include ../layouts/_pm_header.jade
                                         .card-body.table-responsive
                                             table.table.table-hover
                                                 tbody
+                                                    - for(var j=0;j<matched.length;j++){
                                                     tr
-                                                        td John Snow
-                                                        td Master
+                                                        td #{matched[j].firstName} #{matched[j].lastName}
+                                                        td #{matched[j].education.degree}
                                                         td
                                                             .btn-group.d-flex.justify-content-end
                                                                 button.btn.btn-sm.btn-outline-secondary(type='button', data-toggle='modal', data-target='#profile') View Profile
@@ -55,26 +56,8 @@ include ../layouts/_pm_header.jade
                                                         td
                                                             .btn-group.d-flex.justify-content-end
                                                                 button.btn.btn-sm.btn-outline-success(type='button') Send Offer
-                                                    tr
-                                                        td Sansa Stark
-                                                        td Master
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-secondary(type='button') View Profile
-                                                                a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-success(type='button') Send Offer
-                                                    tr
-                                                        td Jaime Lannister
-                                                        td PhD
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-secondary(type='button') View Profile
-                                                                a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-success(type='button') Send Offer
+                                                                -}
+                                                    
                                 .card
                                     #headingOne.card-header
                                         h5.mb-0

@@ -79,7 +79,7 @@ app.post('/login', function (req, res) {
       if(user.passWord === req.body.password){
 
       sess.email = req.body.email;
-      
+
       //verify user role
       if(user.role==='student'){
       res.redirect('/show');
@@ -207,50 +207,52 @@ app.post('/create-profile',function(req,res){
 
     )
 
-    //match projects
-    User.findOne({email:sess.email},function(err,user){
+    //when ever new student profile added, do a mathching for this new student
+      User.findOne({email:sess.email},function(err,user){
 
-      Project.find({},function(err,projects){
-        var matched=[]; 
+        Project.find({},function(err,projects){
+          var matched=[]; 
+         
+          for(var i=0;i<projects.length;i++){
+            var findOne = function (pro,stu) {
+              console.log('matching')
+              return stu.some(function (v) {
+                  return pro.indexOf(v) >= 0;
+              });
+            };
+            //filter the projects according to interest
+             console.log("Projects",projects[i].skills)
+             console.log("Student",user.skills)
+             console.log('Interest matching result:',findOne(projects[i].skills,user.skills))
+            
+             if (findOne(projects[i].interest,user.interest) && findOne(projects[i].skills,user.skills))
+            {
+              matched.push(projects[i]);
+              projects[i].matched.push(user);
+              projects[i].save();
+            }
+    
+    
+    
+           }
+           console.log("Matched",matched)
+           User.updateOne({email:sess.email},{
+            $set:{
+             "matched": matched,
+            }
+          },function (err, user) {
+           if (err) throw error
        
-        for(var i=0;i<projects.length;i++){
-          var findOne = function (pro,stu) {
-            console.log('matching')
-            return stu.some(function (v) {
-                return pro.indexOf(v) >= 0;
-            });
-          };
-          //filter the projects according to interest
-           console.log("Projects",projects[i].skills)
-           console.log("Student",user.skills)
-           console.log('Interest matching result:',findOne(projects[i].skills,user.skills))
-          
-           if (findOne(projects[i].interest,user.interest) && findOne(projects[i].skills,user.skills))
-          {
-            matched.push(projects[i]);
-            projects[i].matched.push(user);
-            projects[i].save();
-          }
-  
-  
-  
-         }
-         console.log("Matched",matched)
-         User.updateOne({email:sess.email},{
-          $set:{
-           "matched": matched,
-          }
-        },function (err, user) {
-         if (err) throw error
-     
-         console.log("update user complete");
-  
-       });
-         res.render('student/matched-projects',{user})     
-  
-      });
-  
-    })
+           console.log("update user complete");
+    
+         });
+           res.render('student/matched-projects',{user})     
+    
+        });
+    
+      })
+
+   
      
   } else {
     res.redirect('/');
@@ -298,29 +300,95 @@ app.get('/show-project',function(req,res){
   });
 })
 
+//Project manager logic
 //show manage project
 app.get('/manage-project',function(req,res){
   
   console.log('manage project')
   sess=req.session;
   
- 
-  Project.find({},function(err,projects){
-    
-    res.render('pm/manage-projects',{projects:projects,currentProject:0})
+  //if there is new project created, do mathcing
+  console.log('Query project title',req.query.newProjectTitle)
+  if(req.query.newProjectTitle){
+    var title=req.query.newProjectTitle;
+    Project.findOne({title:title},function(err, project){
+      
+      console.log(project)
+      User.find({},function(err,users){
+        var matched=[]; 
+       
+        for(var i=0;i<users.length;i++){
+          var findOne = function (pro,stu) {
+            console.log('matching')
+            return stu.some(function (v) {
+                return pro.indexOf(v) >= 0;
+            });
+          };
+          //filter the projects according to interest
+          console.log("Project interest:",project.interest)
+          console.log("Student interest:",users[i].interest)
+          console.log("interest mathcing:",findOne(project.interest,users[i].interest))
+          console.log("skills mathcing:",findOne(project.skills,users[i].skills))
+           if (findOne(project.interest,users[i].interest) && findOne(project.skills,users[i].skills))
+          {
+            matched.push(users[i]);
+            users[i].matched.push(project);
+            users[i].save();
+          }
   
+  
+  
+         }
+         console.log("Matched",matched)
+         Project.updateOne({title:project.title},{
+          $set:{
+           "matched": matched,
+          }
+        },function (err, project) {
+         if (err) throw error
+     
 
-  })
+       });
+         
+  
+      });
+  
+    })
+  }
+  Project.findOne().sort({created_at: 1}).populate('matched').exec(function(err,project){
+    
+    Project.find({},function(err,projects){
+      var matched=project.matched
+      console.log(matched)
+      res.render('pm/manage-projects',{projects:projects,currentProject:0,matched:matched})
+  
+      })
+    
+
+   });
   
 })
+
 app.get('/get/project',function(req,res){
   console.log(req.query.id)
-  Project.find({},function(err,projects){
-    
-    res.render('pm/manage-projects',{projects:projects,currentProject:req.query.id})
+  console.log(req.query.title)
   
+  Project.findOne({title:req.query.title}).populate('matched').exec(function(err,project){
+    
+    Project.find({},function(err,projects){
+      var matched=project.matched
+      console.log(matched)
+      res.render('pm/manage-projects',{projects:projects,currentProject:req.query.id,matched:matched})
+    
+  
+  
+      })
+    
+ 
+   });
+     
 
-  })
+
 
 })
 
@@ -334,22 +402,28 @@ app.get('/create-project',function(req,res){
 
 app.post('/create-project',function(req,res){
   var project=req.body.project;
-
+  console.log("Project variable interest:",project.interest)
+  
   new Project({
     title:project.title,
     description:project.description,
     posMaster:project.posMaster,
     posPhd:project.posPhd,
     department:project.department,
-    interests:project.interest,
+    interest:project.interest,
     skills:project.skills,
     startDate:project.startDate,
     funds:project.funds,
 
-
-
   }).save();
+
+  //whenever a new project created, do a matching
+  
+   
   console.log('project created')
+  res.redirect('/manage-project?newProjectTitle='+project.title)
+
+  
 
 
 })
