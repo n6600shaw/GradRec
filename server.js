@@ -40,7 +40,7 @@ const Offer = mongoose.model('offers');
 app.get('/', function (req, res) {
 
   sess = req.session;
-  
+
   if(sess.email){
     var user = User.find({'email':sess.email});
     if(user.role==='student'){ 
@@ -54,7 +54,7 @@ app.get('/', function (req, res) {
     
   } else{
   res.render('login');
-
+  
   }
   /* new Project({
      title: 'Project 1'
@@ -68,6 +68,7 @@ app.get('/', function (req, res) {
 app.post('/login', function (req, res) {
 
   sess = req.session
+
   //check with DB
   User.findOne({
     'email': req.body.email,
@@ -77,6 +78,7 @@ app.post('/login', function (req, res) {
       return;
     }
     if (user) {
+
       if(user.passWord === req.body.password){
 
       sess.email = req.body.email;
@@ -309,11 +311,15 @@ app.get('/show-project',function(req,res){
 //show manage project
 app.get('/manage-project',function(req,res){
   
-  console.log('manage project')
+  console.log('manage project');
+  // for test////////////
+  
   sess=req.session;
   
   //if there is new project created, do mathcing
   console.log('Query project title',req.query.newProjectTitle)
+
+
   if(req.query.newProjectTitle){
     var title=req.query.newProjectTitle;
     Project.findOne({title:title},function(err, project){
@@ -454,22 +460,65 @@ app.get('/PMSubmittedOffer',function(req,res){
 })
 
 ////////////std Offer views ////////////
-app.get('/stdAcceptOffer',function(req,res){
+app.get('/stdAcceptOffer',function(req,res)
+{
 
-  console.log("stdAcceptOffer");
-  res.render('stdAcceptOffer');
+  console.log("logic of stdAcceptOffer");
+  //res.render('student/stdAcceptOffer');
 
+
+ /* sess = req.session;
+  var profile=req.body.profile
+  console.log(sess.email)
+ console.log(req.body.profile);
+ */
+//sess.email
+email = "dsibrahim@mun.ca";
+if(email)
+{
+  console.log("here");
+    User.findOne({
+      'email': email,
+    }, function (err, user) {
+      if (err) {
+        console.log("error");
+        return;
+      }
+      if (user) {
+        console.log("here2");
+        console.log('user.skills= '+user.skills);
+        console.log(user.education);
+        if(user.skills != [] && user.education !=[]){
+  
+          console.log("StdOfferW");
+        
+        res.redirect('student/StdOfferW');
+        
+        } else if (user.offers!=[]) {
+          console.log("StdOfferAppinP");
+          res.redirect("student/StdOfferAppinP")
+  
+        } else {
+          res.redirect('student/stdAcceptOffer')
+  
+        }
+      } 
+    else{
+      console.log("empty user");
+    }
+    })
+  }
 })
 app.get('/StdOfferAppinP',function(req,res){
 
   console.log("StdOfferAppinP");
-  res.render('StdOfferAppinP');
+  res.render("student/StdOfferAppinP");
 
 })
 app.get('/StdOfferW',function(req,res){
 
   console.log("StdOfferW");
-  res.render('StdOfferW');
+  res.render('student/StdOfferW');
 
 })
 app.get('/test',function(req,res){
