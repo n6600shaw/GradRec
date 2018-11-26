@@ -4,9 +4,11 @@ const {
 } = mongoose;
 
 const offerSchema = new Schema({
-
-    proj:{ type: Schema.Types.ObjectId, ref: 'projects' },
-    std:{ type: Schema.Types.ObjectId, ref: 'users' },
+    
+    project:{ type: Schema.Types.ObjectId, ref: 'projects' },
+    student:{ type: Schema.Types.ObjectId, ref: 'users' },
+    title:String,
+    email:String,
     content:String,
     isaccept:Boolean,
     isactive:Boolean,
