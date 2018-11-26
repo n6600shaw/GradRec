@@ -18,8 +18,8 @@ applied:[{type:Schema.Types.ObjectId, ref:'users'}],
 enrolled:[{type:Schema.Types.ObjectId, ref:'users'}],
 offers:[{type:Schema.Types.ObjectId,ref:'offers'}],
 
-
-
+// should has offer templete 
+offerTemplates:[String],
 
 });
 

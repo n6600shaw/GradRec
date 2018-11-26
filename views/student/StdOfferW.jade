@@ -1,4 +1,4 @@
-doctype html
+﻿doctype html
 html
   head
   body.bg-bodybg
@@ -23,34 +23,17 @@ html
             li.nav-item
               a.nav-link(href='view-matched-projects.html') Projects
             li.nav-item
-              a.nav-link(href='#') Message
+              a.nav-link(href='/stdAcceptOffer') Offer
             li.nav-item
               a.nav-link(href='#') About
           button.btn.btn-outline-success.my-2.my-sm-0(type='button') Logout
       .container
         .row.mt-sm-4.mt-md-5.mb-md-5
           .col-sm-12.border.rounded.p-5.bg-light
-            h3 Accept/Decline Offer
-            .row
-            br
-            br
-            .col-md-12
-              .row
-                .col-md-4
-                  label(for='to_stud') Project Title:
-                .col-md-8
-                  label(for='to_stud')  Retrieved ProejctTitle
-              .row
-                .form-group
-                  .card
-                    .card-body
-                      h5.card-title Offer Letter
-                      p.card-text
-                        | Thanks for applying to MUN University. 
-                        br
-                        |                         The University Offers 2 years full coverage with 16000$ per year
-                        |                         The project Supervisor is Prof. Adrian Fiech
-              .form-group.submit
-                .text-right
-                  button#btn_Send.btn.btn-danger.btn-lg.mt-3(type='submit', formaction='/DeclineOfferpro') Decline Offer
-                  button.btn.btn-primary.btn-lg.mt-3(type='submit', formaction='/AcceptOfferpro') Accept Offer
+            table.noBorder
+              tbody
+                tr
+                  td
+                    img.img-circle(src='../images/warning-icon.png', alt='Cinque Terre', width='100', height='100')
+                  td
+                    h5  You haven't yet apply for any projects !! 

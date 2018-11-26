@@ -51,7 +51,11 @@ include ../layouts/_pm_header.jade
                                                         td #{matched[j].education.degree}
                                                         td
                                                             .btn-group.d-flex.justify-content-end
+<<<<<<< HEAD
                                                                 button.btn.btn-sm.btn-outline-secondary(type='button', data-toggle='modal', data-target='#matchedProfile#{j}') View Profile
+=======
+                                                                button.btn.btn-sm.btn-outline-secondary(type='button', data-toggle='modal', data-target='#profile#{j}') View Profile
+>>>>>>> 298ff1309dee0d079515d4e044caa2604a549dcd
                                                                 a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
                                                         td
                                                             .btn-group.d-flex.justify-content-end
@@ -188,6 +192,7 @@ include ../layouts/_pm_header.jade
                                 button.btn.btn-primary.btn-lg.mt-4(type='submit') Publish
 // Modal Conetent
 - for(var j=0;j<matched.length;j++){
+<<<<<<< HEAD
 .modal.fade(tabindex='-1', id="matchedProfile#{j}")
     .modal-dialog
         .modal-content
@@ -251,6 +256,23 @@ include ../layouts/_pm_header.jade
 -}
 
 
+=======
+.modal.fade(tabindex='-1', id="profile#{j}")
+    .modal-dialog
+        .modal-content
+            .modal-header
+                h5.modal-title #{matched[j].firstName} #{matched[j].lastName} &apos;s Profile
+            .modal-body
+                P #[strong Education:] #{matched[j].education.degree} Degree, from #{matched[j].education.department}
+                p #[strong Work Experience:] #{matched[j].experience}
+                P #[strong Skills:] #{matched[j].skills}
+                p #[strong Research interest:] #{matched[j].interest}
+                P #[strong Funds needs:] #{matched[j].funds}
+                P #[strong Start date:] #{new Date(matched[j].startDate).toDateString()}                  
+            .modal-footer
+                button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+-}
+>>>>>>> 298ff1309dee0d079515d4e044caa2604a549dcd
 // Optional JavaScript
 // jQuery first, then Popper.js, then Bootstrap JS
 script(src='https://code.jquery.com/jquery-3.3.1.min.js')
