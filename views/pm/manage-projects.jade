@@ -14,7 +14,7 @@ include ../layouts/_pm_header.jade
                          
                          -for (var i=0;i<projects.length;i++){
                              
-                            a.nav-link(id='project+#{i+1}', href='/get/project?id=#{i}&title=#{projects[i].title}&projects=#{projects}') Project #{i+1}
+                            a.nav-link(id='project+#{i+1}', href='/get/project?id=#{i}&title=#{projects[i].title}&projects=#{projects}') #{projects[i].title}
                          -}
                     a(href='/create-project')    
                       button.btn.btn-outline-success.btn-block.mt-4(type='button') Create project
@@ -51,7 +51,7 @@ include ../layouts/_pm_header.jade
                                                         td #{matched[j].education.degree}
                                                         td
                                                             .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-secondary(type='button', data-toggle='modal', data-target='#profile#{j}') View Profile
+                                                                button.btn.btn-sm.btn-outline-secondary(type='button', data-toggle='modal', data-target='#matchedProfile#{j}') View Profile
                                                                 a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
                                                         td
                                                             .btn-group.d-flex.justify-content-end
@@ -66,39 +66,20 @@ include ../layouts/_pm_header.jade
                                         .card-body.table-responsive
                                             table.table.table-hover
                                                 tbody
+                                                    - for(var j=0;j<applied.length;j++){
                                                     tr
-                                                        td Cersei Lannister
-                                                        td PhD
+                                                        td #{applied[j].firstName} #{applied[j].lastName}
+                                                        td #{applied[j].education.degree}
                                                         td
                                                             .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-secondary(type='button') View Profile
+                                                                button.btn.btn-sm.btn-outline-secondary(type='button', data-toggle='modal', data-target='#appliedProfile#{j}') View Profile
                                                                 a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
                                                         td
                                                             .btn-group.d-flex.justify-content-end
                                                                 button.btn.btn-sm.btn-outline-danger(type='button') Reject
-                                                                button.btn.btn-sm.btn-outline-success(type='button') Approve
-                                                    tr
-                                                        td Robb Stark
-                                                        td Master
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-secondary(type='button') View Profile
-                                                                a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-danger(type='button') Reject
-                                                                button.btn.btn-sm.btn-outline-success(type='button') Approve
-                                                    tr
-                                                        td Daenerys Targaryen
-                                                        td PhD
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-secondary(type='button') View Profile
-                                                                a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-danger(type='button') Reject
-                                                                button.btn.btn-sm.btn-outline-success(type='button') Approve
+                                                                button.btn.btn-sm.btn-outline-success(type='button', data-toggle='modal', data-target='#editOffer#{j}') Approve
+                                                        -}
+
                                 .card
                                     #headingOne.card-header
                                         h5.mb-0
@@ -107,27 +88,15 @@ include ../layouts/_pm_header.jade
                                         .card-body.table-responsive
                                             table.table.table-hover
                                                 tbody
+                                                    - for(var j=0;j<enrolled.length;j++){
                                                     tr
-                                                        td Ned Stark
-                                                        td Master
+                                                        td #{enrolled[j].firstName} #{enrolled[j].lastName}
+                                                        td #{enrolled[j].education.degree}
                                                         td
                                                             .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-secondary(type='button') View Profile
+                                                                button.btn.btn-sm.btn-outline-secondary(type='button', data-toggle='modal', data-target='#enrolledProfile#{j}') View Profile
                                                                 a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
-                                                    tr
-                                                        td Tywin Lannister
-                                                        td PhD
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-secondary(type='button') View Profile
-                                                                a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
-                                                    tr
-                                                        td Robert Baratheon
-                                                        td PhD
-                                                        td
-                                                            .btn-group.d-flex.justify-content-end
-                                                                button.btn.btn-sm.btn-outline-secondary(type='button') View Profile
-                                                                a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
+                                                     -}
                             .btn-toolbar
                                 button.btn.btn-outline-success.btn-lg.mr-4.mt-5(type='submit') Modify
                                 a(href='/delete?title=#{projects[i].title}')
@@ -219,7 +188,7 @@ include ../layouts/_pm_header.jade
                                 button.btn.btn-primary.btn-lg.mt-4(type='submit') Publish
 // Modal Conetent
 - for(var j=0;j<matched.length;j++){
-.modal.fade(tabindex='-1', id="profile#{j}")
+.modal.fade(tabindex='-1', id="matchedProfile#{j}")
     .modal-dialog
         .modal-content
             .modal-header
@@ -234,6 +203,54 @@ include ../layouts/_pm_header.jade
             .modal-footer
                 button.btn.btn-secondary(type='button', data-dismiss='modal') Close
 -}
+- for(var j=0;j<applied.length;j++){
+.modal.fade(tabindex='-1', id="appliedProfile#{j}")
+    .modal-dialog
+        .modal-content
+            .modal-header
+                h5.modal-title #{applied[j].firstName} #{applied[j].lastName} &apos;s Profile
+            .modal-body
+                P #[strong Education:] #{applied[j].education.degree} Degree, from #{applied[j].education.department}
+                p #[strong Work Experience:] #{applied[j].experience}
+                P #[strong Skills:] #{applied[j].skills}
+                p #[strong Research interest:] #{applied[j].interest}
+                P #[strong Funds needs:] #{applied[j].funds}
+                P #[strong Start date:] #{new Date(applied[j].startDate).toDateString()}                  
+            .modal-footer
+                button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+                .modal.fade(tabindex='-1', id="editOffer")
+.modal.fade(tabindex='-1', id="editOffer#{j}")
+    .modal-dialog
+        .modal-content
+            .modal-header
+                h5.modal-title #{applied[j].firstName} #{applied[j].lastName} &apos;s Offer
+            .modal-body
+                P #[strong Project:] #{projects[i].title}
+                label(for='offerContent')
+                                span.text-muted (no longer than 1000 characters)
+                            textarea#workExp.form-control(name='offerContent', rows='5')                
+            .modal-footer
+                button.btn.btn-secondary(type='button', data-dismiss='modal') Send
+                button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+-}
+- for(var j=0;j<enrolled.length;j++){
+.modal.fade(tabindex='-1', id="enrolledProfile#{j}")
+    .modal-dialog
+        .modal-content
+            .modal-header
+                h5.modal-title #{enrolled[j].firstName} #{enrolled[j].lastName} &apos;s Profile
+            .modal-body
+                P #[strong Education:] #{enrolled[j].education.degree} Degree, from #{enrolled[j].education.department}
+                p #[strong Work Experience:] #{enrolled[j].experience}
+                P #[strong Skills:] #{enrolled[j].skills}
+                p #[strong Research interest:] #{enrolled[j].interest}
+                P #[strong Funds needs:] #{enrolled[j].funds}
+                P #[strong Start date:] #{new Date(enrolled[j].startDate).toDateString()}                  
+            .modal-footer
+                button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+-}
+
+
 // Optional JavaScript
 // jQuery first, then Popper.js, then Bootstrap JS
 script(src='https://code.jquery.com/jquery-3.3.1.min.js')

@@ -54,6 +54,7 @@ app.get('/', function (req, res) {
   } else{
   res.render('login');
 
+
   }
   /* new Project({
      title: 'Project 1'
@@ -109,25 +110,35 @@ app.post('/login', function (req, res) {
 
 //Sign up
 app.get('/signup',function(req,res){
- console.log('signup')
-  res.render('signup');
+ 
+  res.render('signup',{message:req.query.message});
 
 })
 
 
 app.post('/signup',function(req,res){
+  console.log('signingup') 
+  User.findOne({email:req.body.email},function(err,user){
+    if(user){
+        res.redirect('/signup?message="This email has been used, please use another one"');
+    } else{
 
-  var newUser=new User({
-    fistName:req.body.fname,
-    lastName:req.body.lname,
-    userName:req.body.username,
-    email:req.body.email,
-    password:req.body.password,
-    firstTime: true,
-    role: 'student'
+      var newUser=new User({
+        fistName:req.body.fname,
+        lastName:req.body.lname,
+        userName:req.body.username,
+        email:req.body.email,
+        passWord:req.body.password,
+        firstTime: true,
+        role: 'student'
+      })
+      newUser.save();
+      res.redirect('/?message="Welcome to GradRec! Please login!"');
+    }
+
+
   })
-  newUser.save();
-  res.redirect('/');
+  
 
 })
 
@@ -276,13 +287,16 @@ app.get('/matched-project',function(req,res){
   
 })
 app.get('/get/matched-project',function(req,res){
-  console.log(req.query.id)
-  Project.find({},function(err,projects){
-    
-    res.render('student/project-details',{projects:projects,currentProject:req.query.id})
-  
 
-  })
+  sess=req.session
+  User.findOne({email:sess.email}).populate('matched').exec(function(err,user){
+    if(err){
+      console.log(err)
+    }
+    console.log(user)
+     res.render('student/project-details',{projects:user.matched,user:user,matched:user.matched,currentProject:req.query.id,message:req.query.message});
+ 
+   });
 
 })
 
@@ -298,6 +312,39 @@ app.get('/show-project',function(req,res){
     res.render('student/project-details',{user:user,projects:user.matched,currentProject:0});
 
   });
+})
+
+//apply for a project
+app.get('/apply',function(req,res){
+
+
+  var sess=req.session;
+  console.log(sess.email)
+  console.log("apply id",req.query.id)
+  User.findOne({email:sess.email},function(err,user){
+        
+    var title=req.query.title;
+    
+    Project.findOne({title:title},function(err,project){
+      var id=req.query.id;
+      if(err) console.log("Err:",err);
+      console.log("Pusing:",project)
+      project.applied.push(user);
+      project.save();
+      User.updateOne({email:sess.email},{applied:project},function(err){});
+      
+      res.redirect('/get/matched-project?id='+id+'&message="You have applied this project"');
+
+    })
+
+
+
+
+  })
+
+
+
+
 })
 
 //Project manager logic
@@ -355,13 +402,16 @@ app.get('/manage-project',function(req,res){
   
     })
   }
-  Project.findOne().sort({created_at: 1}).populate('matched').exec(function(err,project){
+  Project.findOne().sort({created_at: 1}).populate('matched').populate('applied').populate('enrolled').exec(function(err,project){
     
     Project.find({},function(err,projects){
       var matched=project.matched
+      var applied=project.applied
+      var enrolled=project.enrolled
       console.log(matched)
-      res.render('pm/manage-projects',{projects:projects,currentProject:0,matched:matched})
+      res.render('pm/manage-projects',{projects:projects,currentProject:0,matched:matched,applied:applied,enrolled:enrolled})
   
+
       })
     
 
@@ -373,24 +423,19 @@ app.get('/get/project',function(req,res){
   console.log(req.query.id)
   console.log(req.query.title)
 
-  Project.findOne({title:req.query.title}).populate('matched').exec(function(err,project){
+  Project.findOne({title:req.query.title}).populate('matched').populate('applied').populate('enrolled').exec(function(err,project){
     
     Project.find({},function(err,projects){
       var matched=project.matched
+      var applied=project.applied
+      var enrolled=project.enrolled
       console.log(matched)
-      res.render('pm/manage-projects',{projects:projects,currentProject:req.query.id,matched:matched})
-    
-  
-  
+      res.render('pm/manage-projects',{projects:projects,currentProject:req.query.id,matched:matched,applied:applied,enrolled:enrolled})
       })
-    
- 
    });
-     
-
-
-
 })
+
+
 
 
 //create-projects
@@ -440,9 +485,35 @@ app.get('/delete',function(req,res){
 
    } )
 
-
-
 })
+
+//approve an application
+app.get('approve',function(req,res){
+
+  var title=req.query.title;
+  var email=req.query.email;
+
+  /*
+  Project.findOne({title:title},function(err,project){
+
+    User.updateOne({email:email},{enrolled:project},function(err){});
+      project.enrolled.push(user);
+      project.save();
+
+
+      
+
+
+    })*/
+    
+
+
+
+
+
+  })
+
+
 
 
 

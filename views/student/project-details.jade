@@ -6,11 +6,13 @@ include ../layouts/_student_header.jade
             #projectList.nav.flex-column.nav-pills
                  -for (var i=0;i<projects.length;i++){
                              
-                    a.nav-link(id='project+#{i+1}', href='/get/matched-project?id=#{i}') Project #{i+1}
+                    a.nav-link(id='project+#{i+1}', href='/get/matched-project?id=#{i}') #{projects[i].title}
                  -}
             a.btn.btn-outline-secondary.btn-block.mt-4(href='/matched-project') Go Back
         .col-sm-8.border.rounded.p-5.bg-light
             #projectContent.tab-content
+               if message
+                  include ../layouts/_message.jade 
                 #description1.tab-pane.fade.show.active
                   -var i=currentProject
                         .tab-pane.fade.show.active(id='#description#{i+1}') 
@@ -29,7 +31,13 @@ include ../layouts/_student_header.jade
                             p #{projects[i].funds}
                     .btn-toolbar
                         a.btn.btn-outline-info.btn-lg.mr-5.mt-4(href='mailto:admin@gradrec.ca?subject=Project1') Contact Project Manager
-                        button.btn.btn-primary.btn-lg.px-5.mt-4(type='button') Apply
+                        a(href='/apply?title=#{projects[i].title}&id=#{i}')
+                           -if(user.applied){
+                              
+                              button.btn.btn-primary.btn-lg.px-5.mt-4.disabled(type='button',value='Apply') Apply
+                              -}
+                            -else
+                              button.btn.btn-primary.btn-lg.px-5.mt-4(type='button', value='Apply') Apply
                
 // Optional JavaScript
 // jQuery first, then Popper.js, then Bootstrap JS

@@ -12,9 +12,12 @@ head
         .modal-content
             .col-12.login-logo.text-center
                 img(src='../images/login-logo.png')
-            form.col-12
+            form.col-12(action='/signup',method='post')
                 h1.h3.mb-5.font-weight-normal.text-center GradRec System
+                if message
+                    include ./layouts/_message.jade
                 .form-group
+                    
                     label(for='email') Email Address
                     input#email.form-control(type='email', name='email', placeholder='yourname@mun.ca')
                     small#emailHelp.form-text.text-muted We&apos;ll never share your email with anyone else.
@@ -30,7 +33,7 @@ head
                         option(value='student') Student
                         option(value='pm') Project Manager
                 .d-flex.justify-content-center.mt-4
-                    button.btn.btn-lg.btn-primary.px-5(type='submit',href='/singup') Signup
+                    button.btn.btn-lg.btn-primary.px-5(type='submit') Signup
                 .d-flex.justify-content-center.mt-5
                     p.text-muted
                         a(href='/') Login

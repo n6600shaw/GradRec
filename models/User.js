@@ -18,7 +18,7 @@ userSchema=new Schema({
     startDate:Date,
     funds:String,
     matched:[{type:Schema.Types.ObjectId,ref:'projects'}],
-    applied:[{type:Schema.Types.ObjectId,ref:'projects'}],
+    applied:{type:Schema.Types.ObjectId,ref:'projects'},
     enrolled:{type:Schema.Types.ObjectId,ref:'projects'},
     offers:[{type:Schema.Types.ObjectId, ref:'offers'}]
 

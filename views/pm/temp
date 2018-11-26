@@ -12,3 +12,5 @@
                                                                     P
                                                                 .modal-footer
                                                                     button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+
+                                                                    href='/approve?email=#{applied[j].email}&title=#{projects[i].title}'
