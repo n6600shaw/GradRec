@@ -222,7 +222,7 @@ include ../layouts/_pm_header.jade
 .modal.fade(tabindex='-1', id="editOffer#{j}")
     .modal-dialog
         .modal-content
-          form(action='/approve?email=#{applied[j].email}&title=#{projects[i].title}',method='post')
+          form(action='/approve?email=#{applied[j].email}&title=#{projects[i].title}&id=#{i}',method='post')
             .modal-header
                 h5.modal-title #{applied[j].firstName} #{applied[j].lastName} &apos;s Offer
             .modal-body

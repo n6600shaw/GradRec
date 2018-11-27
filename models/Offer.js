@@ -4,7 +4,7 @@ const {
 } = mongoose;
 
 const offerSchema = new Schema({
-    
+    name:String,
     project:{ type: Schema.Types.ObjectId, ref: 'projects' },
     student:{ type: Schema.Types.ObjectId, ref: 'users' },
     title:String,
@@ -12,6 +12,7 @@ const offerSchema = new Schema({
     content:String,
     isaccept:Boolean,
     isactive:Boolean,
+    
 
 
 });

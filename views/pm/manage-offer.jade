@@ -1,0 +1,49 @@
+﻿include ../layouts/_pm_header.jade
+.container
+    h4.pl-3.mt-sm-4.mb-4 Manage Offer
+    nav
+        #selectTab.nav.nav-tabs.mt-sm-4
+            a#publishedTab.nav-item.nav-link.active(data-toggle='tab', href='#published') Project List
+    #selectTabContent.tab-content
+        #published.tab-pane.fade.show.active
+            .row.mt-3.mb-md-5
+                .col-3.mr-1
+                    #publishedList.nav.flex-column.nav-pills
+                         
+                         
+                         -for (var i=0;i<projects.length;i++){
+                             
+                            a.nav-link(id='project+#{i+1}', href='/get/offer?id=#{i}&title=#{projects[i].title}&projects=#{projects}') #{projects[i].title}
+                         -}
+                .col-sm-8.border.rounded.p-5.bg-light
+                    #publishedContent.tab-content
+                      table.table.table-hover
+                            tbody
+                                -if (offers.length==0){
+                                .alert.alert-info
+                                       strong No offers sent
+                               -} else {
+                                - for(var j=0;j<offers.length;j++){
+                                tr
+                                    td #{offers[j].name}
+                                    td
+                                        .btn-group.d-flex.justify-content-end
+                                            button.btn.btn-sm.btn-outline-secondary(type='button', data-toggle='modal', data-target='#offerContent#{j}') View Content
+                                            a.btn.btn-sm.btn-outline-info(href='mailto:username@mun.ca') Send Msg
+                                            -}
+                                            -}
+- for(var j=0;j<offers.length;j++){
+.modal.fade(tabindex='-1', id="offerContent#{j}")
+    .modal-dialog
+        .modal-content
+            .modal-header
+                h5.modal-title #{offers[j].name} &apos;s Offer
+            .modal-body
+                P #[strong Offer:] #{offers[j].content}
+            .modal-footer
+                if (offers[j].isaccept)
+                P #[strong Status:] Accepted
+                if (offers[j].isactive)
+                P #[strong Status:] Pending
+-}
+include ../layouts/_footer.jade

@@ -36,6 +36,25 @@ const Project = mongoose.model('projects');
 const User = mongoose.model('users');
 const Offer = mongoose.model('offers');
 
+//about
+app.get('/about',function(req,res){
+
+  var role=req.query.role;
+  var sess=req.session;
+  if(sess.email){
+  User.findOne({email:sess.email},function(err,user){
+
+    res.render('about',{role:role,user:user})
+  })
+} else {
+
+  res.redirect('/?message="Please login again"');
+}
+  
+
+
+})
+
 
 //home page, login page
 app.get('/', function (req, res) {
@@ -190,7 +209,7 @@ app.get('/show', function (req, res) {
         } else {
           console.log('my-profile')
           res.render('student/my-profile', {
-            user
+            user:user
           })
         }
 
@@ -283,7 +302,7 @@ app.post('/create-profile', function (req, res) {
 
         });
         res.render('student/matched-projects', {
-          user
+          user:user
         })
 
       });
@@ -293,7 +312,7 @@ app.post('/create-profile', function (req, res) {
 
 
   } else {
-    res.redirect('/');
+    res.redirect('/?message="Please login again');
   }
 
 })
@@ -303,6 +322,7 @@ app.get('/matched-project', function (req, res) {
 
   var sess = req.session;
   console.log(sess.email)
+if(sess.email){
   User.findOne({
     email: sess.email
   }).populate('matched').exec(function (err, user) {
@@ -316,11 +336,16 @@ app.get('/matched-project', function (req, res) {
     });
 
   });
+} else{
+  res.redirect('/?message="Please login again');
+}
 
 })
+
 app.get('/get/matched-project', function (req, res) {
 
   sess = req.session
+if(sess.email){
   User.findOne({
     email: sess.email
   }).populate('matched').exec(function (err, user) {
@@ -337,6 +362,9 @@ app.get('/get/matched-project', function (req, res) {
     });
 
   });
+} else{
+  res.redirect('/?message="Please login again');
+}
 
 })
 
@@ -344,6 +372,7 @@ app.get('/get/matched-project', function (req, res) {
 app.get('/show-project', function (req, res) {
   var sess = req.session;
   console.log(sess.email)
+if (sess.email){
   User.findOne({
     email: sess.email
   }).populate('matched').exec(function (err, user) {
@@ -358,6 +387,9 @@ app.get('/show-project', function (req, res) {
     });
 
   });
+} else{
+  res.redirect('/?message="Please login again');
+}
 })
 
 //apply for a project
@@ -365,6 +397,7 @@ app.get('/apply', function (req, res) {
 
 
   var sess = req.session;
+if(sess.email){
   console.log(sess.email)
   console.log("apply id", req.query.id)
   User.findOne({
@@ -395,6 +428,37 @@ app.get('/apply', function (req, res) {
 
 
   })
+} else{
+  res.redirect('/?message="Please login again');
+}
+
+
+
+
+})
+
+app.get('/offer',function(req,res){
+
+
+  var sess=req.session
+ console.log(sess.email)
+ if(sess.email){
+  User.findOne({email:sess.email}).populate('offers').exec(function(err,user){
+
+     console.log("user:",user)
+     
+    res.render('student/offer',{offer:user.offers,user:user});
+
+  
+
+
+
+
+  })
+} else{
+  res.redirect('/?message="Please login again');
+}
+
 
 
 
@@ -477,7 +541,8 @@ app.get('/manage-project', function (req, res) {
         currentProject: 0,
         matched: matched,
         applied: applied,
-        enrolled: enrolled
+        enrolled: enrolled,
+        message:req.query.message
       })
 
 
@@ -587,6 +652,7 @@ app.post('/approve', function (req, res) {
       email: email
     }, function (err, user) {
       new Offer({
+        name: user.firstName+' '+user.lastName,
         title: title,
         email: email,
         project: project,
@@ -604,10 +670,9 @@ app.post('/approve', function (req, res) {
           project.offers.push(offer);
           project.save()
 
-          user.offers.push(offer);
-          user.save();
-          if (err) console.log('ERRORL', err)
-          console.log(offer)
+           User.updateOne({email:email},{offers:offer},function(err){})
+
+          res.redirect('/get/project?id='+req.query.id+'&title='+title+'&message="Offer sent"')
 
         })
 
@@ -633,17 +698,57 @@ app.get('/test', function (req, res) {
 
   })
 
-
-
-
-
-
 })
 
 
 
+//mange offers
+
+app.get('/manage-offer',function(req,res){
+
+  Project.findOne().sort({
+    created_at: 1
+  }).populate('offers').exec(function (err, project) {
+
+    Project.find({}, function (err, projects) {
+      var offers = project.offers
+
+      console.log(offers)
+      res.render('pm/manage-offer', {
+        projects: projects,
+        currentProject: 0,
+        offers: offers,
+      })
 
 
-////////////std Offer views ////////////
+    })
+
+
+  });
+   
+})
+
+app.get('/get/offer', function (req, res) {
+  console.log(req.query.id)
+  console.log(req.query.title)
+
+  Project.findOne({
+    title: req.query.title
+  }).populate('offers').exec(function (err, project) {
+
+    Project.find({}, function (err, projects) {
+      var offers= project.offers
+
+      
+      res.render('pm/manage-offer', {
+        projects: projects,
+        currentProject: req.query.id,
+        offers:offers
+      })
+    })
+  });
+})
+
+
 
 app.listen(port, () => console.log('GradRec is listening on port ${port}!'));

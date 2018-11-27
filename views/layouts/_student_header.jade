@@ -13,13 +13,15 @@ nav.navbar.navbar-expand-md.navbar-light.bg-light.rounded
         span.navbar-toggler-icon
     #gradNavbar.collapse.navbar-collapse
         ul.navbar-nav.mr-auto
-            li.nav-item.active
+            li.nav-item
                 a.nav-link(href='/show') Profile
             li.nav-item
                 a.nav-link(href='/matched-project') Projects
             li.nav-item
-                a.nav-link(href='/stdAcceptOffer') Offer
+                a.nav-link(href='/offer') Offer
             li.nav-item
-                a.nav-link(href='#') About
+                a.nav-link(href='/about?role="student"') About
+        a(href='/show')
+            button.btn.btn-light(type='button') Hi, #{user.firstName}
         a(href='/logout')
             button.btn.btn-outline-success.my-2.my-sm-0(type='button') Logout
