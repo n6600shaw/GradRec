@@ -41,20 +41,25 @@ const Offer = mongoose.model('offers');
 //
 
 //about
-app.get('/about',function(req,res){
+app.get('/about', function (req, res) {
 
-  var role=req.query.role;
-  var sess=req.session;
-  if(sess.email){
-  User.findOne({email:sess.email},function(err,user){
+  var role = req.query.role;
+  var sess = req.session;
+  if (sess.email) {
+    User.findOne({
+      email: sess.email
+    }, function (err, user) {
 
-    res.render('about',{role:role,user:user})
-  })
-} else {
+      res.render('about', {
+        role: role,
+        user: user
+      })
+    })
+  } else {
 
-  res.redirect('/?message="Please login again"');
-}
-  
+    res.redirect('/?message="Please login again"');
+  }
+
 
 
 })
@@ -213,7 +218,7 @@ app.get('/show', function (req, res) {
         } else {
           console.log('my-profile')
           res.render('student/my-profile', {
-            user:user
+            user: user
           })
         }
 
@@ -306,7 +311,7 @@ app.post('/create-profile', function (req, res) {
 
         });
         res.render('student/matched-projects', {
-          user:user
+          user: user
         })
 
       });
@@ -326,49 +331,49 @@ app.get('/matched-project', function (req, res) {
 
   var sess = req.session;
   console.log(sess.email)
-if(sess.email){
-  User.findOne({
-    email: sess.email
-  }).populate('matched').exec(function (err, user) {
-    if (err) {
-      console.log(err)
-    }
-    console.log(user)
-    res.render('student/matched-projects', {
-      user: user,
-      matched: user.matched
-    });
+  if (sess.email) {
+    User.findOne({
+      email: sess.email
+    }).populate('matched').exec(function (err, user) {
+      if (err) {
+        console.log(err)
+      }
+      console.log(user)
+      res.render('student/matched-projects', {
+        user: user,
+        matched: user.matched
+      });
 
-  });
-} else{
-  res.redirect('/?message="Please login again');
-}
+    });
+  } else {
+    res.redirect('/?message="Please login again');
+  }
 
 })
 
 app.get('/get/matched-project', function (req, res) {
 
   sess = req.session
-if(sess.email){
-  User.findOne({
-    email: sess.email
-  }).populate('matched').exec(function (err, user) {
-    if (err) {
-      console.log(err)
-    }
-    console.log(user)
-    res.render('student/project-details', {
-      projects: user.matched,
-      user: user,
-      matched: user.matched,
-      currentProject: req.query.id,
-      message: req.query.message
-    });
+  if (sess.email) {
+    User.findOne({
+      email: sess.email
+    }).populate('matched').exec(function (err, user) {
+      if (err) {
+        console.log(err)
+      }
+      console.log(user)
+      res.render('student/project-details', {
+        projects: user.matched,
+        user: user,
+        matched: user.matched,
+        currentProject: req.query.id,
+        message: req.query.message
+      });
 
-  });
-} else{
-  res.redirect('/?message="Please login again');
-}
+    });
+  } else {
+    res.redirect('/?message="Please login again');
+  }
 
 })
 
@@ -376,24 +381,24 @@ if(sess.email){
 app.get('/show-project', function (req, res) {
   var sess = req.session;
   console.log(sess.email)
-if (sess.email){
-  User.findOne({
-    email: sess.email
-  }).populate('matched').exec(function (err, user) {
-    if (err) {
-      console.log(err)
-    }
-    console.log(user)
-    res.render('student/project-details', {
-      user: user,
-      projects: user.matched,
-      currentProject: 0
-    });
+  if (sess.email) {
+    User.findOne({
+      email: sess.email
+    }).populate('matched').exec(function (err, user) {
+      if (err) {
+        console.log(err)
+      }
+      console.log(user)
+      res.render('student/project-details', {
+        user: user,
+        projects: user.matched,
+        currentProject: 0
+      });
 
-  });
-} else{
-  res.redirect('/?message="Please login again');
-}
+    });
+  } else {
+    res.redirect('/?message="Please login again');
+  }
 })
 
 //apply for a project
@@ -401,137 +406,168 @@ app.get('/apply', function (req, res) {
 
 
   var sess = req.session;
-if(sess.email){
+  if (sess.email) {
+    console.log(sess.email)
+    console.log("apply id", req.query.id)
+    User.findOne({
+      email: sess.email
+    }, function (err, user) {
+
+      var title = req.query.title;
+
+      Project.findOne({
+        title: title
+      }, function (err, project) {
+        var id = req.query.id;
+        if (err) console.log("Err:", err);
+        console.log("Pusing:", project)
+        project.applied.push(user);
+        project.save();
+        User.updateOne({
+          email: sess.email
+        }, {
+          applied: project
+        }, function (err) {});
+
+        res.redirect('/get/matched-project?id=' + id + '&message="You have applied this project"');
+
+      })
+
+
+
+
+    })
+  } else {
+    res.redirect('/?message="Please login again');
+  }
+
+
+
+
+})
+
+app.get('/offer', function (req, res) {
+
+
+  var sess = req.session
   console.log(sess.email)
-  console.log("apply id", req.query.id)
-  User.findOne({
-    email: sess.email
-  }, function (err, user) {
+  if (sess.email) {
+    User.findOne({
+      email: sess.email
+    }).populate({
+      path: 'offers',
+      select: "title email content isaccept isactive"
+    }).exec(function (err, user) {
 
-    var title = req.query.title;
+      console.log(user)
+      if (user.offers) {
+        Project.findOne({
+          title: user.offers.title
+        }, function (err, project) {
 
-    Project.findOne({
-      title: title
-    }, function (err, project) {
-      var id = req.query.id;
-      if (err) console.log("Err:", err);
-      console.log("Pusing:", project)
-      project.applied.push(user);
-      project.save();
-      User.updateOne({
-        email: sess.email
-      }, {
-        applied: project
-      }, function (err) {});
 
-      res.redirect('/get/matched-project?id=' + id + '&message="You have applied this project"');
+          console.log(project)
+          res.render('student/offer', {
+            offer: user.offers,
+            user: user,
+            project: project
+          });
+
+
+
+        })
+      } else {
+        res.render('student/offer', {
+          user: user
+        });
+      }
+
+
+
+
+
+
 
     })
-
-
-
-
-  })
-} else{
-  res.redirect('/?message="Please login again');
-}
-
-
+  } else {
+    res.redirect('/?message="Please login again');
+  }
 
 
 })
 
-app.get('/offer',function(req,res){
+app.get('/declineOffer', function (req, res) {
 
 
-  var sess=req.session
- console.log(sess.email)
- if(sess.email){
-  User.findOne({email:sess.email}).populate({path:'offers',select:"title email content isaccept isactive"}).exec(function(err,user){
+  var email = req.query.email;
+  var title = req.query.title;
 
-     console.log(user)
-    Project.findOne({title:user.offers.title},function(err,project){
-
-
-       console.log(project)
-        res.render('student/offer',{offer:user.offers,user:user,project:project});
-   
-
-
-    })
-    
-
-  
-
-
-
-
-  })
-} else{
-  res.redirect('/?message="Please login again');
-}
-
-
-})
-
-app.get('/declineOffer',function(req,res){
-
-  
-  var email=req.query.email;
-  var title=req.query.title;
- 
-  Offer.updateOne({title:title,email:email},{
+  Offer.updateOne({
+    title: title,
+    email: email
+  }, {
     $set: {
       "isaccept": false,
       "isactive": false
     }
-  },function(err,offer){
-    
+  }, function (err, offer) {
+
   })
 
-  User.updateOne({email:email},{
+  User.updateOne({
+    email: email
+  }, {
     $unset: {
-      "offers":'',
+      "offers": '',
     }
-  },function(err,user){})
+  }, function (err, user) {})
 
-  Offer.findOne({title:title,email:email},function(err,offer){
+  Offer.findOne({
+    title: title,
+    email: email
+  }, function (err, offer) {
 
 
-    User.findOne({email:email}).populate('applied').exec(function(err,user){
+    User.findOne({
+      email: email
+    }).populate('applied').exec(function (err, user) {
 
-      if (err){
+      if (err) {
         console.log(err)
       }
 
-      if(user.applied.title===offer.title){
-        console.log("id:",user._id)
-        Project.updateOne({title:title},{
+      if (user.applied.title === offer.title) {
+        console.log("id:", user._id)
+        Project.updateOne({
+          title: title
+        }, {
 
-          $pull:{
+          $pull: {
 
-            "applied":user._id
+            "applied": user._id
           }
-        },function(err,project){
-          User.updateOne({email:email},{
-            $unset:{
-              "applied":'',
+        }, function (err, project) {
+          User.updateOne({
+            email: email
+          }, {
+            $unset: {
+              "applied": '',
             }
-          },function(err,user){
-              
-              
-              res.redirect('/offer');
+          }, function (err, user) {
+
+
+            res.redirect('/offer');
           })
 
         })
 
       }
-  
+
     })
   })
 
 
-  
+
 
 
 
@@ -545,53 +581,64 @@ app.get('/declineOffer',function(req,res){
 
 
 //accept offer
-app.get('/acceptOffer',function(req,res){
+app.get('/acceptOffer', function (req, res) {
 
-  
-  var email=req.query.email;
-  var title=req.query.title;
- 
+
+  var email = req.query.email;
+  var title = req.query.title;
+
   //update offer status
-  Offer.updateOne({title:title,email:email},{
+  Offer.updateOne({
+    title: title,
+    email: email
+  }, {
     $set: {
       "isaccept": true,
       "isactive": false
     }
-  },function(err,offer){
-    
+  }, function (err, offer) {
+
   })
 
-console.log(email)
-User.findOne({email:email},function(err,user){
+  console.log(email)
+  User.findOne({
+    email: email
+  }, function (err, user) {
 
-  Project.findOne({title:title},function(err,theproject){
+    Project.findOne({
+      title: title
+    }, function (err, theproject) {
 
-    
-    //add student to enrolled
-    Project.updateOne({title:title},{
 
-      $push:{
-        "enrolled":user._id
-      }
-    },function(err,project){
-      
-      User.updateOne({email:email},{
-        $set:{
-          "enrolled":theproject._id,
+      //add student to enrolled
+      Project.updateOne({
+        title: title
+      }, {
+
+        $push: {
+          "enrolled": user._id
         }
-      },function(err,user){
+      }, function (err, project) {
+
+        User.updateOne({
+          email: email
+        }, {
+          $set: {
+            "enrolled": theproject._id,
+          }
+        }, function (err, user) {
 
           res.redirect('/offer');
+        })
+
       })
+
+
 
     })
 
 
-
-})
-
-
-})
+  })
 
 
 
@@ -666,22 +713,24 @@ app.get('/manage-project', function (req, res) {
   }).populate('matched').populate('applied').populate('enrolled').exec(function (err, project) {
 
     Project.find({}, function (err, projects) {
-      if(project){
-      var matched = project.matched
-      var applied = project.applied
-      var enrolled = project.enrolled
-      console.log(matched)
-     
-      res.render('pm/manage-projects', {
-        projects: projects,
-        currentProject: 0,
-        matched: matched,
-        applied: applied,
-        enrolled: enrolled,
-        message:req.query.message
-      })
+      if (project) {
+        var matched = project.matched
+        var applied = project.applied
+        var enrolled = project.enrolled
+        console.log(matched)
 
-    } else{ res.render('pm/manage-projects')}
+        res.render('pm/manage-projects', {
+          projects: projects,
+          currentProject: 0,
+          matched: matched,
+          applied: applied,
+          enrolled: enrolled,
+          message: req.query.message
+        })
+
+      } else {
+        res.render('pm/manage-projects')
+      }
     })
 
 
@@ -700,10 +749,10 @@ app.get('/get/project', function (req, res) {
     Project.find({}, function (err, projects) {
       var matched = project.matched
       var applied = project.applied
-      
+
       var enrolled = project.enrolled
-      console.log("enrolled:",enrolled)
-      console.log("id:",project._id)
+      console.log("enrolled:", enrolled)
+      console.log("id:", project._id)
       res.render('pm/manage-projects', {
         projects: projects,
         currentProject: req.query.id,
@@ -759,8 +808,10 @@ app.get('/delete', function (req, res) {
   var title = req.query.title;
   console.log(title)
 
- 
-  Project.remove({title:title},function(err){
+
+  Project.remove({
+    title: title
+  }, function (err) {
     console.log("project deleted")
     res.redirect('/manage-project')
 
@@ -790,7 +841,7 @@ app.post('/approve', function (req, res) {
       email: email
     }, function (err, user) {
       new Offer({
-        name: user.firstName+' '+user.lastName,
+        name: user.firstName + ' ' + user.lastName,
         title: title,
         email: email,
         project: project,
@@ -808,9 +859,13 @@ app.post('/approve', function (req, res) {
           project.offers.push(offer);
           project.save()
 
-           User.updateOne({email:email},{offers:offer},function(err){})
+          User.updateOne({
+            email: email
+          }, {
+            offers: offer
+          }, function (err) {})
 
-          res.redirect('/get/project?id='+req.query.id+'&title='+title+'&message="Offer sent"')
+          res.redirect('/get/project?id=' + req.query.id + '&title=' + title + '&message="Offer sent"')
 
         })
 
@@ -842,30 +897,32 @@ app.get('/test', function (req, res) {
 
 //mange offers
 
-app.get('/manage-offer',function(req,res){
+app.get('/manage-offer', function (req, res) {
 
   Project.findOne().sort({
     created_at: 1
   }).populate('offers').exec(function (err, project) {
 
     Project.find({}, function (err, projects) {
-      if(project){
-      var offers = project.offers
-      
-      console.log(offers)
-      res.render('pm/manage-offer', {
-        projects: projects,
-        currentProject: 0,
-        offers: offers,
-      })
-    } else{res.render('pm/manage-offer')}
+      if (project) {
+        var offers = project.offers
+
+        console.log(offers)
+        res.render('pm/manage-offer', {
+          projects: projects,
+          currentProject: 0,
+          offers: offers,
+        })
+      } else {
+        res.render('pm/manage-offer')
+      }
 
 
     })
 
 
   });
-   
+
 })
 
 app.get('/get/offer', function (req, res) {
@@ -877,13 +934,13 @@ app.get('/get/offer', function (req, res) {
   }).populate('offers').exec(function (err, project) {
 
     Project.find({}, function (err, projects) {
-      var offers= project.offers
+      var offers = project.offers
 
-      
+
       res.render('pm/manage-offer', {
         projects: projects,
         currentProject: req.query.id,
-        offers:offers
+        offers: offers
       })
     })
   });
