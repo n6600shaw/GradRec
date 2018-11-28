@@ -2,10 +2,8 @@
 
 Graduate Recruitment (GradRec) system is a web based project. It is developed to recruit the graduate students for the suitable project with required supervisor (project faculty). The projects are administered by a project manager.
 
-# Folder Structure
-
-- **Documentation**
-  - Final Version of Documentation (reflect shpping product)  
+# Documentation
+- Final Version of Documentation (reflect shipping product)  
     - use case model
     - brief use case description for all actors
     - detailed use case description for essential cases
@@ -14,10 +12,10 @@ Graduate Recruitment (GradRec) system is a web based project. It is developed to
     - architecture structure
     - UI screenshots
     - Design Goals
-  - [Assignment 1 Version](https://github.com/n6600shaw/GradRec/tree/master/Documentation/Assignment_1)
-  - [Assignment 2 Version](https://github.com/n6600shaw/GradRec/tree/master/Documentation/Assignment_2)
-  
-- **Source Code**
+- [Assignment 1 Version](https://github.com/n6600shaw/GradRec/tree/master/Documentation/Assignment_1)
+- [Assignment 2 Version](https://github.com/n6600shaw/GradRec/tree/master/Documentation/Assignment_2)
+
+# Source Code
 All other folders and files are part of the source code.
 
 # View the Demo Page
