@@ -28,7 +28,7 @@ For previous versions, you can find them at [Assignment 1 Version](https://githu
 
 # View the Demo Page
 
-To view the demo page, just visit [cs-3.cs.mun.ca](http://cs-3.cs.mun.ca/).
+To view the demo page, just visit [sc-3.cs.mun.ca/](http://sc-3.cs.mun.ca/).
 
 # Source Code
 
