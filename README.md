@@ -3,28 +3,39 @@
 Graduate Recruitment (GradRec) system is a web based project. It is developed to recruit the graduate students for the suitable project with required supervisor (project faculty). The projects are administered by a project manager.
 
 # Documentation
-- Final Version of Documentation (reflect shipping product)  
-    - use case model
-    - brief use case description for all actors
-    - detailed use case description for essential cases
-    - class diagram
-    - sequence diagram for essential cases
-    - architecture structure
-    - UI screenshots
-    - Design Goals
-- [Assignment 1 Version](https://github.com/n6600shaw/GradRec/tree/master/Documentation/Assignment_1)
-- [Assignment 2 Version](https://github.com/n6600shaw/GradRec/tree/master/Documentation/Assignment_2)
 
-# Source Code
-All other folders and files are part of the source code.
+Here is the structure of the final documentation, which reflects our shipping product: 
+
+1. Introduction
+2. Current System
+3. Proposed System
+   1. Overview
+   2. Functional requirements
+   3. Nonfunctional requirements
+   4. Constraints
+4. System models
+   1. Use case model
+   2. Brief use case description for all actors
+   3. Detailed use case description for enssential use cases
+   4. Class diagram
+   5. Sequence diagram
+5. 3-layer-architecture
+6. UI screenshots
+7. Design goals
+
+For previous versions, you can find them at [Assignment 1 Version](https://github.com/n6600shaw/GradRec/tree/master/Documentation/Assignment_1) and [Assignment 2 Version](https://github.com/n6600shaw/GradRec/tree/master/Documentation/Assignment_2)
 
 # View the Demo Page
 
 To view the demo page, just visit [cs-3.cs.mun.ca](http://cs-3.cs.mun.ca/).
 
-# Group members (Group 3)
+# Source Code
 
-- Dalia Ibrahim
-- Hailong Feng
-- Xiaolong Liu
-- Yamini Kosaraju
+The source code of the system can be found at our [GitHub repository](https://github.com/n6600shaw/GradRec). 
+
+# Group Members & Contribution Points (Group 3)
+
+- Dalia Ibrahim (points: 10)
+- Hailong Feng (points: 10)
+- Xiaolong Liu (points: 10)
+- Yamini Kosaraju (points: 10)
