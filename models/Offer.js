@@ -11,7 +11,7 @@ const offerSchema = new Schema({
     email:String,
     content:String,
     isaccept:Boolean,
-    isactive:Boolean,
+    isactive:Boolean
     
 
 

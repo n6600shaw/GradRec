@@ -32,9 +32,13 @@ app.use(bodyParser.urlencoded({
 app.set('views', 'views');
 app.set('view engine', 'jade');
 
-const Project = mongoose.model('projects');
 const User = mongoose.model('users');
+const Project = mongoose.model('projects');
+
 const Offer = mongoose.model('offers');
+
+
+//
 
 //about
 app.get('/about',function(req,res){
@@ -443,11 +447,19 @@ app.get('/offer',function(req,res){
   var sess=req.session
  console.log(sess.email)
  if(sess.email){
-  User.findOne({email:sess.email}).populate('offers').exec(function(err,user){
+  User.findOne({email:sess.email}).populate({path:'offers',select:"title email content isaccept isactive"}).exec(function(err,user){
 
-     console.log("user:",user)
-     
-    res.render('student/offer',{offer:user.offers,user:user});
+     console.log(user)
+    Project.findOne({title:user.offers.title},function(err,project){
+
+
+       console.log(project)
+        res.render('student/offer',{offer:user.offers,user:user,project:project});
+   
+
+
+    })
+    
 
   
 
@@ -458,6 +470,128 @@ app.get('/offer',function(req,res){
 } else{
   res.redirect('/?message="Please login again');
 }
+
+
+})
+
+app.get('/declineOffer',function(req,res){
+
+  
+  var email=req.query.email;
+  var title=req.query.title;
+ 
+  Offer.updateOne({title:title,email:email},{
+    $set: {
+      "isaccept": false,
+      "isactive": false
+    }
+  },function(err,offer){
+    
+  })
+
+  User.updateOne({email:email},{
+    $unset: {
+      "offers":'',
+    }
+  },function(err,user){})
+
+  Offer.findOne({title:title,email:email},function(err,offer){
+
+
+    User.findOne({email:email}).populate('applied').exec(function(err,user){
+
+      if (err){
+        console.log(err)
+      }
+
+      if(user.applied.title===offer.title){
+        console.log("id:",user._id)
+        Project.updateOne({title:title},{
+
+          $pull:{
+
+            "applied":user._id
+          }
+        },function(err,project){
+          User.updateOne({email:email},{
+            $unset:{
+              "applied":'',
+            }
+          },function(err,user){
+              
+              
+              res.redirect('/offer');
+          })
+
+        })
+
+      }
+  
+    })
+  })
+
+
+  
+
+
+
+
+
+
+
+
+
+})
+
+
+//accept offer
+app.get('/acceptOffer',function(req,res){
+
+  
+  var email=req.query.email;
+  var title=req.query.title;
+ 
+  //update offer status
+  Offer.updateOne({title:title,email:email},{
+    $set: {
+      "isaccept": true,
+      "isactive": false
+    }
+  },function(err,offer){
+    
+  })
+
+console.log(email)
+User.findOne({email:email},function(err,user){
+
+  Project.findOne({title:title},function(err,theproject){
+
+    
+    //add student to enrolled
+    Project.updateOne({title:title},{
+
+      $push:{
+        "enrolled":user._id
+      }
+    },function(err,project){
+      
+      User.updateOne({email:email},{
+        $set:{
+          "enrolled":theproject._id,
+        }
+      },function(err,user){
+
+          res.redirect('/offer');
+      })
+
+    })
+
+
+
+})
+
+
+})
 
 
 
@@ -532,10 +666,12 @@ app.get('/manage-project', function (req, res) {
   }).populate('matched').populate('applied').populate('enrolled').exec(function (err, project) {
 
     Project.find({}, function (err, projects) {
+      if(project){
       var matched = project.matched
       var applied = project.applied
       var enrolled = project.enrolled
       console.log(matched)
+     
       res.render('pm/manage-projects', {
         projects: projects,
         currentProject: 0,
@@ -545,7 +681,7 @@ app.get('/manage-project', function (req, res) {
         message:req.query.message
       })
 
-
+    } else{ res.render('pm/manage-projects')}
     })
 
 
@@ -559,13 +695,15 @@ app.get('/get/project', function (req, res) {
 
   Project.findOne({
     title: req.query.title
-  }).populate('matched').populate('applied').populate('enrolled').exec(function (err, project) {
+  }).populate('enrolled').populate('applied').populate('matched').exec(function (err, project) {
 
     Project.find({}, function (err, projects) {
       var matched = project.matched
       var applied = project.applied
+      
       var enrolled = project.enrolled
-      console.log(matched)
+      console.log("enrolled:",enrolled)
+      console.log("id:",project._id)
       res.render('pm/manage-projects', {
         projects: projects,
         currentProject: req.query.id,
@@ -620,14 +758,14 @@ app.get('/delete', function (req, res) {
 
   var title = req.query.title;
   console.log(title)
-  Project.deleteOne({
-    title: title
-  }, function (err) {
+
+ 
+  Project.remove({title:title},function(err){
     console.log("project deleted")
     res.redirect('/manage-project')
 
-
   })
+
 
 })
 
@@ -711,14 +849,16 @@ app.get('/manage-offer',function(req,res){
   }).populate('offers').exec(function (err, project) {
 
     Project.find({}, function (err, projects) {
+      if(project){
       var offers = project.offers
-
+      
       console.log(offers)
       res.render('pm/manage-offer', {
         projects: projects,
         currentProject: 0,
         offers: offers,
       })
+    } else{res.render('pm/manage-offer')}
 
 
     })

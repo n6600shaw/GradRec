@@ -10,7 +10,9 @@ include ../layouts/_pm_header.jade
             .row.mt-3.mb-md-5
                 .col-3.mr-1
                     #publishedList.nav.flex-column.nav-pills
-                         
+                        -if(!projects){
+                        a.btn.btn-outline-success.btn-block.mt-4(href='/create-project') Create project
+                        - } else{
                          
                          -for (var i=0;i<projects.length;i++){
                              
@@ -251,7 +253,7 @@ include ../layouts/_pm_header.jade
                 button.btn.btn-secondary(type='button', data-dismiss='modal') Close
 -}
 
-
+-}
 // Optional JavaScript
 // jQuery first, then Popper.js, then Bootstrap JS
 script(src='https://code.jquery.com/jquery-3.3.1.min.js')

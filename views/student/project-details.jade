@@ -32,7 +32,7 @@ include ../layouts/_student_header.jade
                     .btn-toolbar
                         a.btn.btn-outline-info.btn-lg.mr-5.mt-4(href='mailto:admin@gradrec.ca?subject=Project1') Contact Project Manager
                         a(href='/apply?title=#{projects[i].title}&id=#{i}')
-                           -if(user.applied){
+                           -if(user.applied && user.enrolled){
                               
                               button.btn.btn-primary.btn-lg.px-5.mt-4.disabled(type='button',value='Apply') Apply
                               -}

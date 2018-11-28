@@ -14,3 +14,11 @@
                                                                     button.btn.btn-secondary(type='button', data-dismiss='modal') Close
 
                                                                     href='/approve?email=#{applied[j].email}&title=#{projects[i].title}'
+
+
+
+-if(role=='"student"'){
+include ./layouts/_student_header.jade
+-}else{ 
+include ./layouts/_pm_header.jade
+-}

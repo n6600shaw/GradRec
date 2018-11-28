@@ -9,7 +9,7 @@
             .row.mt-3.mb-md-5
                 .col-3.mr-1
                     #publishedList.nav.flex-column.nav-pills
-                         
+                        -if(projects){
                          
                          -for (var i=0;i<projects.length;i++){
                              
@@ -26,6 +26,16 @@
                                 - for(var j=0;j<offers.length;j++){
                                 tr
                                     td #{offers[j].name}
+                                    td 
+                                                -if (offers[j].isactive){
+                                                P #[strong Status:] Pending
+                                                -} else {
+                                                -if (offers[j].isaccept){
+                                                P #[strong Status:] Accepted by applicant
+                                                -} else{
+                                                P #[strong Status:] Declined by applicant
+                                                -}
+                                                -}
                                     td
                                         .btn-group.d-flex.justify-content-end
                                             button.btn.btn-sm.btn-outline-secondary(type='button', data-toggle='modal', data-target='#offerContent#{j}') View Content
@@ -37,13 +47,29 @@
     .modal-dialog
         .modal-content
             .modal-header
+                -if (offers[j].isactive){
+                P #[strong Status:] Pending
+                -} else {
+                -if (offers[j].isaccept){
+                P #[strong Status:] Accepted by applicant
+                -} else{
+                P #[strong Status:] Declined by applicant
+                -}
+                -}
+
                 h5.modal-title #{offers[j].name} &apos;s Offer
             .modal-body
                 P #[strong Offer:] #{offers[j].content}
             .modal-footer
-                if (offers[j].isaccept)
-                P #[strong Status:] Accepted
-                if (offers[j].isactive)
-                P #[strong Status:] Pending
+                button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+
+-}
 -}
 include ../layouts/_footer.jade
+
+// Optional JavaScript
+// jQuery first, then Popper.js, then Bootstrap JS
+script(src='https://code.jquery.com/jquery-3.3.1.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49', crossorigin='anonymous')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy', crossorigin='anonymous')
+script(src='../../js/main-script.js')
