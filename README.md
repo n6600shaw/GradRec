@@ -22,6 +22,7 @@ Here is the structure of the final documentation, which reflects our shipping pr
 5. 3-layer-architecture
 6. UI screenshots
 7. Design goals
+8. System scenario example
 
 For previous versions, you can find them at [Assignment 1 Version](https://github.com/n6600shaw/GradRec/tree/master/Documentation/Assignment_1) and [Assignment 2 Version](https://github.com/n6600shaw/GradRec/tree/master/Documentation/Assignment_2).
 
