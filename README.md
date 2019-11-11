@@ -33,10 +33,3 @@ To view the demo page, just visit [sc-3.cs.mun.ca/](http://sc-3.cs.mun.ca/).
 # Source Code
 
 The source code of the system can be found at our [GitHub repository](https://github.com/n6600shaw/GradRec). 
-
-# Group Members & Contribution Points (Group 3)
-
-- Dalia Ibrahim (points: 10)
-- Hailong Feng (points: 10)
-- Xiaolong Liu (points: 10)
-- Yamini Kosaraju (points: 10)
